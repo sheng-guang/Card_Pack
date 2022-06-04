@@ -1,0 +1,16 @@
+{
+    "name": "Pack.Graph",
+    "rootNamespace": "",
+    "references": [
+        "GUID:4d86c28a807ba044fafa24e11c3fc1bc"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

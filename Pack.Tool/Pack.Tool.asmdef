@@ -1,0 +1,17 @@
+{
+    "name": "Pack.Tool",
+    "rootNamespace": "",
+    "references": [
+        "GUID:d167bdb477629144f9e9bc563501d210",
+        "GUID:4d86c28a807ba044fafa24e11c3fc1bc"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
