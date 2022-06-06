@@ -5,14 +5,6 @@ using UnityEngine;
 
 namespace Pack
 {
-    public class F0_Visible : Func0<Skill, bool> { }
-    public class F1_NodeForm : Func1<InputSkill, int, IEnumerable<string>> { }
-    public class F1_GetFloat : Func2<InputSkill, string, int, N<float>> { }
-    public class F2_GetBool : Func2<InputSkill, string, int, N<bool>> { }
-
-
-    public class F1_TestNodeUseful : Func1<InputSkill, InputNode, bool> { }
-
     public class InputSkill_Delegate:InputSkill
     {
         public InputSkill_Delegate()
@@ -30,18 +22,18 @@ namespace Pack
             A_Tested_Then_RunSkill.SetSelf(this);
 
         }
-        public F0_Visible F_Visible { get; set; } = new F0_Visible().Act(x=>x.SetDef(true));
+        public Func0<Skill, bool> F_Visible { get; set; } = new Func0<Skill, bool>().Act(x=>x.SetDef(true));
         public override bool Visible => F_Visible.Invoke();
 
         //forPreView
-        public F1_NodeForm F_NodeForm { get; set; } = new F1_NodeForm().Act(x=>x.SetDef(null));
+        public Func1<InputSkill, int, IEnumerable<string>> F_NodeForm { get; set; } = new Func1<InputSkill, int, IEnumerable<string>>().Act(x=>x.SetDef(null));
         public override IEnumerable<string> NodeForm(int kind) { return F_NodeForm.Invoke(kind); }
 
         //----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-        public F1_GetFloat F_GetFloat { get; set; } = new F1_GetFloat().Act(x=>x.SetDef(null));
+        public Func2<InputSkill, string, int, N<float>> F_GetFloat { get; set; } = new Func2<InputSkill, string, int, N<float>>().Act(x=>x.SetDef(null));
         public override N<float> GetFloat(string DataName, int kind) { return F_GetFloat.Invoke(DataName, kind); }
 
-        public F2_GetBool F_GetBool { get; set; }= new F2_GetBool().Act(x=>x.SetDef(null));
+        public Func2<InputSkill, string, int, N<bool>> F_GetBool { get; set; }= new Func2<InputSkill, string, int, N<bool>>().Act(x=>x.SetDef(null));
         public override N<bool> GetBool(string DataName, int kind) { return F_GetBool.Invoke(DataName, kind); }
 
         public Func2<InputSkill, string, int, N<int>> F_GetInt { get; set; } = new Func2<InputSkill, string, int, N<int>>().SetDef(null);
@@ -53,7 +45,7 @@ namespace Pack
         public Func0<InputSkill, bool> F_HighLightTest { get; set; } = new Func0<InputSkill, bool>().SetDef(true);
         public override bool HighLightTest() { return F_HighLightTest.Invoke(); }
 
-        public F1_TestNodeUseful F_TestNodeUseful { get; set; } = new F1_TestNodeUseful().Act(x => x.SetDef(true));
+        public Func1<InputSkill, InputNode, bool> F_TestNodeUseful { get; set; } = new Func1<InputSkill, InputNode, bool>().Act(x => x.SetDef(true));
         public override bool TestNodeUseful(InputNode n) { return F_TestNodeUseful.Invoke(n); }
 
         // node tree

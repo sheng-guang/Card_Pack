@@ -7,7 +7,11 @@ namespace Pack
 
     public static class SkillExtra
     {
-
+        public static Unit GetUnit(this InputNode n)
+        {
+            if (n.LayerID.HasValue == false) return null;
+            return IDs<Unit>.Get(n.LayerID.Value);
+        }
         public static bool HaveUnit(this InputNode n, out Unit to)
         {
             to = null;

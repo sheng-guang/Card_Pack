@@ -30,8 +30,14 @@ public class ExamplesCfg_Pack
             yield return typeof(T<int>);
             yield return typeof(LongSkil_Delegate);
             yield return typeof(SkillNodeResult);
-            yield return typeof(F1_TestNodeUseful);
-            yield return typeof(Func1<Skill,int,int>);
+
+            yield return typeof(FuncMix<int, int, Func0<int, int>, Func0Node<int, int>>.Func);
+
+
+            yield return typeof(Func0<Skill,int>);
+            yield return typeof(Func1<Skill, int, int>);
+            yield return typeof(Func2<Skill, int, int,int>);
+            yield return typeof(Func3<Skill, int, int,int,int>);
 
             yield return typeof(eve);
         }
