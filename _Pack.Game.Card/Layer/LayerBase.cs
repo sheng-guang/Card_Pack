@@ -58,9 +58,7 @@ namespace Pack
         public virtual void SetID(int id)
         {
             ID= id;
-            IDs<LayerID>.Add(this,id);
-            IDs<IIDTarget>.Add(this,id);
-            IDs<IInputUser>.Add(this,id);
+            GameList.AddToIDs(this,id);
         }
     }
 

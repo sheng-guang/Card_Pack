@@ -18,8 +18,6 @@ namespace Pack
         public override void SetID(int id)
         {
             base.SetID(id);
-            //IDs<LayerID>.Add(this,0);
-            IDs<Host>.Add(this,0);
             Event.SetMaster(ID);
             OnSetID_Awake();
         }

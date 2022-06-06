@@ -106,6 +106,14 @@ namespace Pack
         }
         public Vector3 TarV3()
         {
+            var to = TarID().To<IIDTarget>();
+            if (to != null) { return to.RealPoss; }
+            return groupData.Ex_Ptr<Vector3>(NN.Input_TargetV3 + GroupIndex).Value;
+        }
+        public Vector3 TarV3Visual()
+        {
+            var to = TarID().To<IIDTarget>();
+            if (to != null) { return to.VisualPoss; }
             return groupData.Ex_Ptr<Vector3>(NN.Input_TargetV3 + GroupIndex).Value;
         }
         public N<int> TarID()
@@ -159,6 +167,8 @@ namespace Pack
     partial class Skill : IIDTarget
     {
         public Vector3 RealPoss => up.RealPoss;
+
+        public Vector3 VisualPoss => up.VisualPoss;
     }
     public partial class Skill //SetID/  load structure
     {
@@ -171,9 +181,7 @@ namespace Pack
         public virtual void SetID(int i)
         {
             ID = i;
-            IDs<IIDTarget>.Add(this, i);
-            IDs<IInputUser>.Add(this, i);
-            IDs<Skill>.Add(this, i);
+            GameList.AddToIDs(this,i);
             UPID.SetID(ID);
             _groupData.SetID(ID);
             _classSetting.SetID(ID);
@@ -194,9 +202,9 @@ namespace Pack
         public SkillComp Comp { get; set; }
 
     }
+
     public abstract partial class Skill //input Msg  /static
     {
-
         public static InputMsg CreatInput(byte kind)
         {
             InputMsg to = new InputMsg();
@@ -205,15 +213,14 @@ namespace Pack
             to.Form.SkillKind = kind;
             return to;
         }
-
     }
 
     public abstract partial class Skill : ISetKV //set  kv
     {
         public virtual void setKV(string key, object o) { }
-
     }
-    partial class Skill
+
+    partial class Skill//stack ¿¨ÅÆ¶Ñµþ
     {
         public int StackInde = 0;
         public int StackTotal = 0;
@@ -225,6 +232,9 @@ namespace Pack
         public bool InStack => StackInde >= 0;
         public bool IsStackTop =>InStack&& (StackInde == (StackTotal - 1));
     }
-
+    partial class Skill
+    {
+        public bool HasMoreThanOneTar { get; protected set; } =false;
+    }
 
 }

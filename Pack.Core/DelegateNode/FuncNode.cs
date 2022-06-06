@@ -1,12 +1,13 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace Pack
 {
-    public abstract class FuncMix<c, Tr, TGroup, TNode> : NodeMixSelf<c, TGroup, TNode>
-        where TGroup : FuncMix<c, Tr, TGroup, TNode>.Func
-        where TNode : FuncMix<c, Tr, TGroup, TNode>.Node
+    public abstract class FuncMix<s, Tr, TGroup, TNode> : NodeMixSelf<s, TGroup, TNode>
+        where TGroup : FuncMix<s, Tr, TGroup, TNode>.Func
+        where TNode : FuncMix<s, Tr, TGroup, TNode>.Node
     {
         public abstract class Func : group_Self
         {
@@ -42,77 +43,88 @@ namespace Pack
 
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-    public class Func0<c, Tr> : FuncMix<c, Tr, Func0<c, Tr>, Func0Node<c, Tr>>.Func
+    public class Func0<s, Tr> : FuncMix<s, Tr, Func0<s, Tr>, Func0Node<s, Tr>>.Func
     {
         public override void InvokeOnPoint() { OnPoint.Invoke(); }
+        public void AddFunc(Func<s,Tr> f) { Add(new Func0Node_Func<s, Tr>() { func = f }); }
     }
-    public abstract class Func0Node<c, Tr> : FuncMix<c, Tr, Func0<c, Tr>, Func0Node<c, Tr>>.Node
+    public abstract class Func0Node<s, Tr> : FuncMix<s, Tr, Func0<s, Tr>, Func0Node<s, Tr>>.Node
     {
         public abstract void Invoke();
     }
-
+    public class Func0Node_Func<s, Tr> : Func0Node<s, Tr>
+    {
+        public Func<s, Tr> func;
+        public override void Invoke()        {            func?.Invoke(self);        }
+    }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------
-    public class Func1<c, T1, Tr> : FuncMix<c, Tr, Func1<c, T1, Tr>, Func1Node<c, T1, Tr>>.Func
+    public class Func1<s, T1, Tr> : FuncMix<s, Tr, Func1<s, T1, Tr>, Func1Node<s, T1, Tr>>.Func
     {
         public T1 param1;
-        public Tr Invoke(T1 p1)
-        {
-            param1 = p1;
-            return Invoke();
-        }
-
+        public Tr Invoke(T1 p1) { param1 = p1; return Invoke(); }
         public override void InvokeOnPoint() { OnPoint.Invoke(param1); }
+        public void AddFunc(Func<s,T1, Tr> f) { Add(new Func1Node_Func<s,T1, Tr>() { func = f }); }
+
     }
-    public abstract class Func1Node<c, T1, Tr> : FuncMix<c, Tr, Func1<c, T1, Tr>, Func1Node<c, T1, Tr>>.Node
+    public abstract class Func1Node<s, T1, Tr> : FuncMix<s, Tr, Func1<s, T1, Tr>, Func1Node<s, T1, Tr>>.Node
     {
         public abstract void Invoke(T1 p1);
     }
-
+    public class Func1Node_Func<s, T1, Tr> : Func1Node<s, T1, Tr>
+    {
+        public Func<s,T1, Tr> func;
+        public override void Invoke(T1 p1)
+        {
+            func?.Invoke(self, p1);
+        }
+    }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------
-    public class Func2<c, T1, T2, Tr> : FuncMix<c, Tr, Func2<c, T1, T2, Tr>, Func2Node<c, T1, T2, Tr>>.Func
+    public class Func2<s, T1, T2, Tr> : FuncMix<s, Tr, Func2<s, T1, T2, Tr>, Func2Node<s, T1, T2, Tr>>.Func
     {
         public T1 param1;
         public T2 param2;
 
-        public Tr Invoke(T1 p1, T2 p2)
-        {
-            param1 = p1;
-            param2 = p2;
-            return Invoke();
-        }
+        public Tr Invoke(T1 p1, T2 p2) { param1 = p1; param2 = p2; return Invoke(); }
 
         public override void InvokeOnPoint() { OnPoint.Invoke(param1, param2); }
+        public void AddFunc(Func<s, T1, T2, Tr> f) { Add(new Func2Node_Func<s, T1, T2, Tr>() { func = f }); }
+
     }
-    public abstract class Func2Node<c, T1, T2, Tr> : FuncMix<c, Tr, Func2<c, T1, T2, Tr>, Func2Node<c, T1, T2, Tr>>.Node
+    public abstract class Func2Node<s, T1, T2, Tr> : FuncMix<s, Tr, Func2<s, T1, T2, Tr>, Func2Node<s, T1, T2, Tr>>.Node
     {
         public abstract void Invoke(T1 p1, T2 p2);
     }
+    public class Func2Node_Func<s, T1, T2, Tr> : Func2Node<s, T1, T2, Tr>
+    {
+        public Func<s, T1,T2, Tr> func;
+        public override void Invoke(T1 p1, T2 p2)        {            func?.Invoke(self, p1, p2);        }
+    }
 
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------
-    public class Func3<c, T1, T2, T3, Tr> : FuncMix<c, Tr, Func3<c, T1, T2, T3, Tr>, Func3Node<c, T1, T2, T3, Tr>>.Func
+    public class Func3<s, T1, T2, T3, Tr> : FuncMix<s, Tr, Func3<s, T1, T2, T3, Tr>, Func3Node<s, T1, T2, T3, Tr>>.Func
     {
         public T1 param1;
         public T2 param2;
         public T3 param3;
 
-        public Tr Invoke(T1 p1, T2 p2, T3 p3)
-        {
-            param1 = p1;
-            param2 = p2;
-            param3 = p3;
-            return Invoke();
-        }
+        public Tr Invoke(T1 p1, T2 p2, T3 p3) { param1 = p1; param2 = p2; param3 = p3; return Invoke(); }
 
         public override void InvokeOnPoint()
         {
             OnPoint.Invoke(param1, param2, param3);
         }
+        public void AddFunc(Func<s, T1, T2, T3, Tr> f) { Add(new Func3Node_Func<s, T1, T2, T3, Tr>() { func = f }); }
+
     }
-    public abstract class Func3Node<c, T1, T2, T3, Tr> : FuncMix<c, Tr, Func3<c, T1, T2, T3, Tr>, Func3Node<c, T1, T2, T3, Tr>>.Node
+    public abstract class Func3Node<s, T1, T2, T3, Tr> : FuncMix<s, Tr, Func3<s, T1, T2, T3, Tr>, Func3Node<s, T1, T2, T3, Tr>>.Node
     {
         public abstract void Invoke(T1 p1, T2 p2, T3 p3);
     }
-
+    public class Func3Node_Func<s, T1, T2, T3, Tr> : Func3Node<s, T1, T2, T3, Tr>
+    {
+        public Func<s, T1, T2, T3, Tr> func;
+        public override void Invoke(T1 p1, T2 p2,T3 p3) { func?.Invoke(self, p1, p2,p3); }
+    }
 
 
 }
@@ -120,9 +132,9 @@ namespace Pack
 
 
 
-//public abstract class FuncMix<c, Tr, TGroup,TNode> 
-//    where TGroup : FuncMix<c, Tr, TGroup,TNode>.Func
-//    where TNode :FuncMix<c,Tr,TGroup,TNode>.Node
+//public abstract class FuncMix<s, Tr, TGroup,TNode> 
+//    where TGroup : FuncMix<s, Tr, TGroup,TNode>.Func
+//    where TNode :FuncMix<s,Tr,TGroup,TNode>.Node
 //{
 //    public abstract class Func
 //    {

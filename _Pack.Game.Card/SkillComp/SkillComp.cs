@@ -72,13 +72,14 @@ namespace Pack
 
         public void FreshLineTar()
         {
-            lineTar.SetLineActive(skill.IsStackTop);
-            if (skill.IsStackTop == false) return;
-
+            bool show = skill.HasMoreThanOneTar && skill.IsStackTop;
+            lineTar.SetLineActive(show);
+            if (show == false) return;
+            
             lineTar.SetPoint(startPointt.position, 0);
             lineTar.SetPoint(Tail1t.position, 1);
             lineTar.SetPoint(Tail2t.position, 2);
-            lineTar.SetPoint(Vector3.zero, 3);
+            lineTar.SetPoint(skill.TarV3Visual(), 3);
             //skill.TarID
             //var UnitPoss = skill.unit.RealPoss;
             //var p = UnitPoss.ShowInNewCam(Cam.MainCam, Cam.UI3DCam);

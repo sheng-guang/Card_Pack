@@ -21,10 +21,25 @@ namespace Pack
 
         public static void Fresh3DPoint()
         {
-            EventSys.Fresh(0);
+            RaycastHit hit = new RaycastHit();
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            bool hited = Physics.Raycast(ray, out hit);
+            if (hited)
+            {
+                Mouse3DPosition = hit.point;
+                Mouse3DPositionReal = hit.point;
+
+            }
+            else
+            {
+
+                Mouse3DPosition = null;
+                Mouse3DPositionReal = null;
+            }
+            //EventSys.Fresh(0);
         }
-        public static N<Vector3> Mouse3DPosition => EventSys.OnPointV3;
-        public static N<Vector3> Mouse3DPositionReal => EventSys.OnPointV3;
+        public static N<Vector3> Mouse3DPosition { get; set; }
+        public static N<Vector3> Mouse3DPositionReal { get; set; }
 
     }
 

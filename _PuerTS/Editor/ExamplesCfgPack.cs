@@ -4,6 +4,7 @@ using System;
 using UnityEngine;
 using System.Reflection;
 using System.Linq;
+using Pack;
 
 [Configure]
 public class ExamplesCfg_Pack
@@ -29,6 +30,8 @@ public class ExamplesCfg_Pack
             yield return typeof(T<int>);
             yield return typeof(LongSkil_Delegate);
             yield return typeof(SkillNodeResult);
+            yield return typeof(F1_TestNodeUseful);
+            yield return typeof(Func1<Skill,int,int>);
 
             yield return typeof(eve);
         }

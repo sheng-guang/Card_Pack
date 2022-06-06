@@ -11,7 +11,6 @@ namespace Pack
         public override void SetID(int id)
         {
             base.SetID(id);
-            IDs<Unit>.Add(this,id);
             Event.SetMaster(ID);
             //Debug.Log(this + "2   " + transform.position);
             OnSetID_Awake();

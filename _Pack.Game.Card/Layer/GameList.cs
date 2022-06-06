@@ -18,6 +18,24 @@ namespace Pack
         public static Driver driver { get;  set; }
         public static Host NowHost { get;set; }
         public static List<Player> playerList { get; private set; }= new List<Player>();
+        //ids------------------------------------------------------------------------------------
+        public static void AddToIDs(object o,int id)
+        {
+            TryAdd<IIDTarget>(o,id);
+            TryAdd<IInputUser>(o, id);
+            if (TryAdd<Skill>(o, id)) return;
+
+            TryAdd<LayerID>(o, id);
+            if (TryAdd<Unit>(o, id)) return;
+            if (TryAdd<Player>(o, id)) return;
+            if (TryAdd<Host>(o, id)) return;
+        }
+        public static bool TryAdd<T>(object o,int id)where T : class
+        {
+            if (o is T == false) return false;
+            IDs<T>.Add((o as T), id);
+            return true;
+        }
         //-------------------------------------------------------------------------------------------------------------------------------
         public static void AddToCallList(Unit u)
         {
@@ -31,10 +49,11 @@ namespace Pack
         }
         public static void ForEachCallList(Action<Unit> a)
         {
-            foreach (var item in UnitCallList)
+            for (int i = 0; i < UnitCallList.Count; i++)
             {
-                a(item);
+                a(UnitCallList[i]);
             }
+        
         }
         //todo 改成链表和字典结合
          static List<Unit> UnitCallList { get;  set; }=new List<Unit>();

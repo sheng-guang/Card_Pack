@@ -27,6 +27,7 @@ namespace Pack
             s.F_NodeForm.Add(new NodeForm_Reach_OneTarget())
                 .Set(NN.Reach, s.Ex_Ptr<N<float>>(NN.Reach))
                 .Set(NN.HighThrow,s.Ex_Ptr<N<bool>>(NN.HighThrow));
+            s.HasMoreThanOneTar = true;
         }
         /// <summary>
         ///  must add *.0f
