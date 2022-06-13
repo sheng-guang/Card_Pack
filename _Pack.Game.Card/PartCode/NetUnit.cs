@@ -10,7 +10,11 @@ namespace Pack
         public virtual void DoCall(Call call) 
         {
             if(call.Kind== CallKind.Destory) OnGetDestoryCall(call);
-        
+            for (int i = 0; i < TriggerSkills.Count; i++)
+            {
+                var to = TriggerSkills[i];
+                to.OnCall(call);
+            }
         }
         public virtual void OnGetDestoryCall(Call c)
         {

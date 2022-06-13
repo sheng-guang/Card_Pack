@@ -58,15 +58,7 @@ namespace Pack
 
     }
 
-    public class SkillKind
-    {
-        public const int zero=0;
-        public const int Input = 2;
-        public const int becall = 4;
-        public const int becall50 = 8;
 
-
-    }
     public abstract partial class LayerID //skill
     {
         public HashSet_NodeList<Skill> skills { get; private set; } = new HashSet_NodeList<Skill>();
@@ -74,7 +66,8 @@ namespace Pack
         public List<InputSkill> InputSkills = new List<InputSkill>();
         public List<IBeCallSkill> loopSkills = new List<IBeCallSkill>();
         public List<IBeCallSkill50ms> loopSkills50ms = new List<IBeCallSkill50ms>();
-        public void AddSkill_2input_4call_8call50(object to,int AddOption,byte Ex_kind=0)
+        public List<ITriggerSkill> TriggerSkills = new List<ITriggerSkill>();
+        public void AddSkill(object to,int ToAddMask,byte inputSkillKind=0)
         {
             if(to is Skill)
             {
@@ -82,65 +75,31 @@ namespace Pack
                 skills.EnsureAdd(s);
                 s.SetUP(this);
             }
-            if (AddOption.MaskContain(2)&&to is InputSkill)
+            if (ToAddMask.MaskContain(SkillKind.Input)&&to is InputSkill)
             {
                 InputSkill s=to as InputSkill;
-                s.SkillKind = Ex_kind;
+                s.SkillKind = inputSkillKind;
                 InputSkills.EnsureIndex_ThenSet(s.SkillKind, s);
                 InputSkillVersion++;
             }
-            if(AddOption.MaskContain(4)&& to is IBeCallSkill)
+            if(ToAddMask.MaskContain(SkillKind.becall)&& to is IBeCallSkill)
             {
                 IBeCallSkill s = to as IBeCallSkill;
                 loopSkills.Add(s);
             }
-            if (AddOption.MaskContain(8) && to is IBeCallSkill50ms)
+            if (ToAddMask.MaskContain(SkillKind.becall50) && to is IBeCallSkill50ms)
             {
                 IBeCallSkill50ms s = to as IBeCallSkill50ms;
                 loopSkills50ms.Add(s);
             }
-
+            if (ToAddMask.MaskContain(SkillKind.TriggerSkill) && to is ITriggerSkill)
+            {
+                ITriggerSkill s = to as ITriggerSkill;
+                TriggerSkills.Add(s);
+            }
         }
 
 
-        //public void AddAnySkill(object to)
-        //{
-        //    if (to is Skill == false) return;
-        //    Skill s = to as Skill;
-        //    skills.EnsureAdd(s);
-        //    s.SetUp(this);
-        //}
-        //public void AddInputSkill(object to, byte kind)
-        //{
-        //    if (to is InputSkill == false) return;
-        //    InputSkill s = to as InputSkill;
-        //    skills.EnsureAdd(s);
-        //    s.SetUp(this);
-
-        //    s.SkillKind = kind;
-        //    InputSkills.EnsureIndex_ThenSet(s.SkillKind, s);
-        //    InputSkillVersion++;
-        //}
-        //public void AddBeCallSkill(object to)
-        //{
-        //    if (to is IBeCallSkill == false) return;
-        //    Skill s = to as Skill;
-        //    skills.EnsureAdd(s);
-        //    s.SetUp(this);
-
-        //    IBeCallSkill ss = to as IBeCallSkill;
-        //    loopSkills.Add(ss);
-        //}
-        //public void AddBeCallSkill_50(object to)
-        //{
-        //    if (to is IBeCallSkill50ms == false) return;
-        //    Skill s = to as Skill;
-        //    skills.EnsureAdd(s);
-        //    s.SetUp(this);
-
-        //    IBeCallSkill50ms ss = to as IBeCallSkill50ms;
-        //    loopSkills50ms.Add(ss);
-        //}
 
         //inputskill---------------------------------------------------------------------------------
         public int InputSkillVersion { get; private set; }

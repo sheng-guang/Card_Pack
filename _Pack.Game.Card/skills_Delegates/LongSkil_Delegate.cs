@@ -4,7 +4,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using Pack;
 
-public class LongSkil_Delegate : Skill_Delegate, ILongSkill
+public interface ILongSkil_Delegate:ISkill_Delegate
+{
+    SkillNodeGroupOnce A_FixStart { get; set; }
+    SkillNodeGroupStep A_Fix { get; set; }
+    SkillNodeGroupStep A_Fix50 { get; set; }
+}
+
+public class LongSkil_Delegate : Skill_Delegate, ILongSkill,ILongSkil_Delegate
 {
     public LongSkil_Delegate()
     {

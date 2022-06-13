@@ -12,12 +12,11 @@ namespace Pack
     {
       public  static string ToStreamingAssetFullPath(this string BaseStr)
         {
-
+            if (BaseStr.Contains(":")) return BaseStr;
             if (BaseStr.Contains("StreamingAssets") == false)
             {
                 //Debug.Log("extend                " + BaseStr);
                 BaseStr = Application.streamingAssetsPath + "/" + BaseStr;
-
             }
             return BaseStr;
         }

@@ -26,20 +26,54 @@ public class ExamplesCfg_Pack
         {
             yield return typeof(VarUnit);
             yield return typeof(LSkill);
+
+            yield return typeof(eve);
+
             yield return typeof(Func<int>);
             yield return typeof(T<int>);
+
+
+
+            yield return typeof(Skill_Delegate);
+            yield return typeof(ISkill_Delegate);
+
             yield return typeof(LongSkil_Delegate);
+            yield return typeof(ILongSkil_Delegate);
+            yield return typeof(BeCallSkill_Delegate);
+            yield return typeof(IBeCallSkill_Delegate);
+            yield return typeof(InputSkill_Delegate);
+            yield return typeof(IInputSkill_Delegate);
+            yield return typeof(StackSkill_Delegate);
+            yield return typeof(IStackSkill_Delegate);
+            yield return typeof(MixSkill_Delegate);
+            yield return typeof(IMixSkill_Delegate);
+            yield return typeof(TriggerSkill_Delegate);
+            yield return typeof(ITriggerSkill_Delegate);
+            yield return typeof(CallReaction_Delegate);
+
+            yield return typeof(Buff_Delegate);
+
+
+
             yield return typeof(SkillNodeResult);
+            yield return typeof(CallSys);
 
             yield return typeof(FuncMix<int, int, Func0<int, int>, Func0Node<int, int>>.Func);
 
 
-            yield return typeof(Func0<Skill,int>);
-            yield return typeof(Func1<Skill, int, int>);
-            yield return typeof(Func2<Skill, int, int,int>);
-            yield return typeof(Func3<Skill, int, int,int,int>);
+            yield return typeof(Func0<int, int>);
+            yield return typeof(N<int>);
+            yield return typeof(Func1<int, int, int>);
+            yield return typeof(Func2<int, int, int,int>);
+            yield return typeof(Func3<int, int, int,int,int>);
 
-            yield return typeof(eve);
+            yield return typeof(Act0<int>);
+            yield return typeof(Act1<int,int>);
+            yield return typeof(Act2<int, int, int>);
+            yield return typeof(Act3<int, int, int, int>);
+            
+
+            yield return typeof(ParamBuffable<int>);
         }
     }
     [Binding]

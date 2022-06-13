@@ -81,6 +81,7 @@ namespace Pack
                 BuffSys.AddChangedData(this);
             }
         }
+
         public IGet<T> Value_Buffed_IGet => BuffedData;
         public override string ToString()
         {

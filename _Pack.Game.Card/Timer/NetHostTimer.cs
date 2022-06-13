@@ -49,15 +49,16 @@ public class NetHostTimer :MonoBehaviour
             BuffSys.Fresh();
             CallSys.DoCall(new Call(CallKind.Destory));
 
-
             AfterSimulate.Update();
             GameTime.AddTime(TimeSetting.FixedDeltaTime);
+
         }
         else
         {
 
             Physics.SyncTransforms();
             SendMsg(-1);
+        
         }
 
 

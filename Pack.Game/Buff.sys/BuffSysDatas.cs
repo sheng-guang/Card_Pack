@@ -41,7 +41,7 @@ namespace Pack
         {
             return IBuffableDatas.Ensure_SetKey(data);
         }
-        public static void AttachToData(this IBuff buff, IBuffSysBuffableData data)
+        public static void WillApplyToData(this IBuff buff, IBuffSysBuffableData data)
         {
             var to = EnsureBuffsToOneData(data);
             to.buffs.EnsureAdd(buff);

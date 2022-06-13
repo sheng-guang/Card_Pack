@@ -84,15 +84,15 @@ namespace Pack
     }
     public abstract partial class Skill //One Target Input
     {
-        public static void ApplyOneTargetInput(Skill self, InputForm p1)
+        public static void ApplyOneTargetInput(Skill skill, InputForm p1)
         {
-            self.groupData.Ex_Ptr<Vector3>(NN.Input_StartV3 + self.GroupIndex)
-                .SetIGet(self.unit.RealPoss);
-            self.groupData.Ex_Ptr<Vector3>(NN.Input_DirectionV3 + self.GroupIndex)
-                 .SetIGet((p1.Child.Point.Value - self.unit.RealPoss).normalized);
-            self.groupData.Ex_Ptr<Vector3>(NN.Input_TargetV3 + self.GroupIndex)
+            skill.groupData.Ex_Ptr<Vector3>(NN.Input_StartV3 + skill.GroupIndex)
+                .SetIGet(skill.unit.RealPoss);
+            skill.groupData.Ex_Ptr<Vector3>(NN.Input_DirectionV3 + skill.GroupIndex)
+                 .SetIGet((p1.Child.Point.Value - skill.unit.RealPoss).normalized);
+            skill.groupData.Ex_Ptr<Vector3>(NN.Input_TargetV3 + skill.GroupIndex)
                 .SetIGet(p1.Child.Point.Value);
-            self.groupData.Ex_Ptr<N<int>>(NN.LayerID + self.GroupIndex)
+            skill.groupData.Ex_Ptr<N<int>>(NN.LayerID + skill.GroupIndex)
                 .SetIGet(p1.Child.LayerID);
         }
         public string GroupIndex = "";

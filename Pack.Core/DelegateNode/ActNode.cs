@@ -32,7 +32,7 @@ namespace Pack
 
 
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------
-    public abstract class Act0<s> : ActMix<s, Act0<s>, Act0Node<s>>.Act
+    public  class Act0<s> : ActMix<s, Act0<s>, Act0Node<s>>.Act
     {
         public override void InvokeOnPoint() { OnPoint.invoke(); }
         public void AddAct(Action<s> c) { Add(new Act0Node_Act<s>() { act = c }); }

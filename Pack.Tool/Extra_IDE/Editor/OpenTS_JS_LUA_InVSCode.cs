@@ -2,13 +2,13 @@ using System;
 using System.Diagnostics;
 using System.IO;
 using System.Threading;
+using Unity.CodeEditor;
 using UnityEditor;
 using UnityEditor.Callbacks;
 using UnityEngine;
 
 public class OpenShaderInNotepad
 {
-	private const string VsCode = @"G:\Microsoft VS Code\Code.exe";
 	static Process process;
 	[OnOpenAsset(0)]
 	public static bool OpenInNotepad(int instanceID, int line, int column)
@@ -25,32 +25,36 @@ public class OpenShaderInNotepad
 		if (p.EndsWith(".csv")) UseVSCode = true;
 		if (UseVSCode == false) return false;
 
-		if (process == null)
-		{
-			UnityEngine.Debug.Log("VSC null");
-			process = Process.Start(VsCode);
-			Thread.Sleep(1000);
-			Process.Start(VsCode, Application.dataPath + "/Assets");
-			Thread.Sleep(1000);
-
+		OpenVsCode(Application.dataPath + "/Assets");
+		OpenVsCode(p);
+        if (isJS_txt)
+        {
+            string to2 = p.Replace(".js.txt", ".ts");
+            if (File.Exists(to2)) OpenVsCode(to2);
 		}
-
-		if (process == null || process.HasExited)
-		{
-			UnityEngine.Debug.Log("VSC closed open new");
-			process = Process.Start(VsCode);
-			Thread.Sleep(1000);
-			Process.Start(VsCode, Application.dataPath + "/Assets");
-			Thread.Sleep(1000);
-
-		}
-		Process.Start(VsCode, p);
-		if (isJS_txt)
-		{
-			string to2 = p.Replace(".js.txt", ".ts");
-			if (File.Exists(to2)) Process.Start(VsCode, to2);
-		}
-		return true;
+    
+        return true;
 	}
+
+	private const string VsCode = @"G:\Microsoft VS Code\Code.exe";
+
+	public static void OpenVsCode(string filePath)
+	{
+		Open(VsCode, filePath);
+	}
+
+	public static void Open(string app, string args)
+	{
+		using (Process myProcess = new Process())
+		{
+			myProcess.StartInfo.UseShellExecute = true;
+			myProcess.StartInfo.FileName = app;
+			myProcess.StartInfo.Arguments = args;
+			myProcess.StartInfo.CreateNoWindow = true;
+			myProcess.Start();
+		}
+	}
+
+
 
 }

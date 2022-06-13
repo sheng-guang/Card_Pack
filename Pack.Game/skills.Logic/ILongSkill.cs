@@ -12,11 +12,5 @@ namespace Pack
         void Fix50();
     }
 
-    //public interface ILongSkil_Delegate
-    //{
-    //    SkillNodeGroupOnce A_FixStart { get; set; }
-    //    SkillNodeGroupStep A_Fix { get; set; }
-    //    SkillNodeGroupStep A_Fix50 { get; set; }
-    //}
 
 }
