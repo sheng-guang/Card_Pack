@@ -67,14 +67,23 @@ namespace Pack
         public List<IBeCallSkill> loopSkills = new List<IBeCallSkill>();
         public List<IBeCallSkill50ms> loopSkills50ms = new List<IBeCallSkill50ms>();
         public List<ITriggerSkill> TriggerSkills = new List<ITriggerSkill>();
-        public void AddSkill(object to,int ToAddMask,byte inputSkillKind=0)
+        public void LinkToSkill(object to)
         {
-            if(to is Skill)
+            if (to is Skill)
+            {
+                Skill s = to as Skill;
+                s.SetUP(this);
+            }
+        }
+        public void AddSkill(object to, int ToAddMask, byte inputSkillKind = 0)
+        {
+            if (to is Skill)
             {
                 Skill s = to as Skill;
                 skills.EnsureAdd(s);
-                s.SetUP(this);
             }
+            LinkToSkill(to);
+
             if (ToAddMask.MaskContain(SkillKind.Input)&&to is InputSkill)
             {
                 InputSkill s=to as InputSkill;

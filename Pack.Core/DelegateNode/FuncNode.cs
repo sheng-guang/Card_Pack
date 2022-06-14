@@ -40,7 +40,7 @@ namespace Pack
     public class Func0<s, Tr> : FuncMix<s, Tr, Func0<s, Tr>, Func0Node<s, Tr>>.Func
     {
         public override void InvokeOnPoint() { OnPoint.Invoke(); }
-        public void AddFunc(Action<s> f) { Add(new Func0Node_Func<s, Tr>() { func = f }); }
+        public void AddFunc(Action<s> f) { AddNode(new Func0Node_Func<s, Tr>() { func = f }); }
     }
     public abstract class Func0Node<s, Tr> : FuncMix<s, Tr, Func0<s, Tr>, Func0Node<s, Tr>>.Node
     {
@@ -57,7 +57,7 @@ namespace Pack
         public T1 param1;
         public Tr Invoke(T1 p1) { param1 = p1; return Invoke(); }
         public override void InvokeOnPoint() { OnPoint.Invoke(param1); }
-        public void AddFunc(Action<s, T1> f) { Add(new Func1Node_Func<s,T1, Tr>() { func = f }); }
+        public void AddFunc(Action<s, T1> f) { AddNode(new Func1Node_Func<s,T1, Tr>() { func = f }); }
 
     }
     public abstract class Func1Node<s, T1, Tr> : FuncMix<s, Tr, Func1<s, T1, Tr>, Func1Node<s, T1, Tr>>.Node
@@ -81,7 +81,7 @@ namespace Pack
         public Tr Invoke(T1 p1, T2 p2) { param1 = p1; param2 = p2; return Invoke(); }
 
         public override void InvokeOnPoint() { OnPoint.Invoke(param1, param2); }
-        public void AddFunc(Action<s, T1, T2> f) { Add(new Func2Node_Func<s, T1, T2, Tr>() { func = f }); }
+        public void AddFunc(Action<s, T1, T2> f) { AddNode(new Func2Node_Func<s, T1, T2, Tr>() { func = f }); }
 
     }
     public abstract class Func2Node<s, T1, T2, Tr> : FuncMix<s, Tr, Func2<s, T1, T2, Tr>, Func2Node<s, T1, T2, Tr>>.Node
@@ -107,7 +107,7 @@ namespace Pack
         {
             OnPoint.Invoke(param1, param2, param3);
         }
-        public void AddFunc(Action<s, T1, T2, T3> f) { Add(new Func3Node_Func<s, T1, T2, T3, Tr>() { func = f }); }
+        public void AddFunc(Action<s, T1, T2, T3> f) { AddNode(new Func3Node_Func<s, T1, T2, T3, Tr>() { func = f }); }
 
     }
     public abstract class Func3Node<s, T1, T2, T3, Tr> : FuncMix<s, Tr, Func3<s, T1, T2, T3, Tr>, Func3Node<s, T1, T2, T3, Tr>>.Node

@@ -35,7 +35,7 @@ namespace Pack
     public  class Act0<s> : ActMix<s, Act0<s>, Act0Node<s>>.Act
     {
         public override void InvokeOnPoint() { OnPoint.invoke(); }
-        public void AddAct(Action<s> c) { Add(new Act0Node_Act<s>() { act = c }); }
+        public void AddAct(Action<s> c) { AddNode(new Act0Node_Act<s>() { act = c }); }
     }
     public abstract class Act0Node<s> : ActMix<s, Act0<s>, Act0Node<s>>.Node
     { public abstract void invoke(); }
@@ -54,7 +54,7 @@ namespace Pack
         public void Invoke(T1 p1) { param1 = p1; Invoke(); }
         public T1 param1;
         public override void InvokeOnPoint() { OnPoint.invoke(param1); }
-        public void AddAct(Action<s,T1> c) { Add(new Act1Node_Act<s,T1>() { act = c }); }
+        public void AddAct(Action<s,T1> c) { AddNode(new Act1Node_Act<s,T1>() { act = c }); }
     }
     public abstract class Act1Node<s, T1> : ActMix<s, Act1<s, T1>, Act1Node<s, T1>>.Node
     { public abstract void invoke(T1 p1); }
@@ -79,7 +79,7 @@ namespace Pack
             Invoke();
         }
         public override void InvokeOnPoint() { OnPoint.invoke(param1, param2); }
-        public void AddAct(Action<s, T1,T2> c) { Add(new Act2Node_Act<s, T1,T2>() { act = c }); }
+        public void AddAct(Action<s, T1,T2> c) { AddNode(new Act2Node_Act<s, T1,T2>() { act = c }); }
     }
     public abstract class Act2Node<s, T1, T2> : ActMix<s, Act2<s, T1, T2>, Act2Node<s, T1, T2>>.Node
     { public abstract void invoke(T1 p1, T2 p2); }
@@ -106,7 +106,7 @@ namespace Pack
         }
 
         public override void InvokeOnPoint() { OnPoint.invoke(param1, param2, param3); }
-        public void AddAct(Action<s, T1, T2,T3> c) { Add(new Act3Node_Act<s, T1, T2,T3>() { act = c }); }
+        public void AddAct(Action<s, T1, T2,T3> c) { AddNode(new Act3Node_Act<s, T1, T2,T3>() { act = c }); }
     }
     public abstract class Act3Node<s, T1, T2, T3> : ActMix<s, Act3<s, T1, T2, T3>, Act3Node<s, T1, T2, T3>>.Node
     { public abstract void invoke(T1 p1, T2 p2, T3 p3); }

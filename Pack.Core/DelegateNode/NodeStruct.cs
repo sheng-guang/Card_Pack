@@ -10,7 +10,7 @@ namespace Pack
         public abstract class groupBase
         {
             public TNode First, Last, OnPoint;
-            public TNode Add(TNode ne)
+            public TNode AddNode(TNode ne)
             {
                 if (ne.IsNull_or_EqualNull()) { Debug.LogWarning("error node null");return null; }
                 ne.group = this as TGroup;

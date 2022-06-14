@@ -75,6 +75,9 @@ public class ExamplesCfg_Pack
 
             yield return typeof(ParamBuffable<int>);
         }
+        {
+
+        }
     }
     [Binding]
     static IEnumerable<Type> Bindings => b();

@@ -48,7 +48,7 @@ namespace Pack
             var ne = CreaterObject.GetNew(FullName);
             var node = ne as SKillNode;
             if (ne == null) return null;
-            g.Add(node);
+            g.AddNode(node);
             return node;
         }
 
@@ -57,7 +57,7 @@ namespace Pack
            var ne= CreaterObject.GetNew(FullName);
             var node = ne as SKillNode;
             if (ne == null) return null;
-            g.Add(node);
+            g.AddNode(node);
             return node;
         }
     }
@@ -66,7 +66,7 @@ namespace Pack
     {
         public void AddFunc(Func<int> f)
         {
-            Add(new SkillNodeFunc() { func = f });
+            AddNode(new SkillNodeFunc() { func = f });
         }
         public void SetExistAction(Action<object> a) { ExistAct = a; }
         protected virtual void Exist() { ExistAct?.Invoke(self); }

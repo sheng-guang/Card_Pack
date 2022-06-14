@@ -133,7 +133,7 @@ namespace Pack
     {
         public override string ToString()
         {
-            return GetType().Name + "[" + ID + "]";
+            return FullName + "[" + ID + "]";
         }
         public int ID_ = IDs.NullID;
         public int ID { get => ID_; set { ID_ = value; } }

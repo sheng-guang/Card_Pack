@@ -13,6 +13,17 @@ partial class eve//call
         CallSys.DoCall(c);
     }
 }
+partial class eve//skill
+{
+    public static void SetSkillUp(this Skill s,LayerID up)
+    {
+        up.LinkToSkill(s);
+    }
+    public static void EnsureSkillComp(this Skill s)
+    {
+        s.EnsureComp();
+    }
+}
 
 public static partial class eve//damage
 {
