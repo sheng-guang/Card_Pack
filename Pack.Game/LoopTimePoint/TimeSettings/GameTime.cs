@@ -1,6 +1,5 @@
 using UnityEngine.VFX;
-namespace Pack
-{
+
     public static class GameTimeExtra
     {
         public static void FreshGameTime(this VisualEffect e)
@@ -34,4 +33,3 @@ namespace Pack
     }
 
     
-}

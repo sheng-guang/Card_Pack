@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Pack;
+
 using Puerts;
 using System;
 public static class Creater_TXT_PuerTS

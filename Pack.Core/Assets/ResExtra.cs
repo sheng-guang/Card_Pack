@@ -1,8 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-namespace Pack
-{
+
     public static partial class ResExtra
     {
         public static string FullName(this IRes r)
@@ -53,4 +52,3 @@ namespace Pack
         //    b.assetBundleVariant = "Async";
         //}
     }
-}

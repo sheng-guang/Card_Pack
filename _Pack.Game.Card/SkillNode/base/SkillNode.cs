@@ -2,10 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
-using Pack;
 
-namespace Pack
-{    
+
+
     
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------
     public static class SkillNodeGroupExtra
@@ -116,7 +115,6 @@ namespace Pack
             return ToNext;
         }
     }
-}
 public class SkillNodeResult
 {
     public const int Exit = SKillNode.Exit;

@@ -3,8 +3,7 @@
 using System;
 using Mirror;
 
-namespace Pack
-{
+
     public static class ServerEvent
     {
         public static Action<NetworkConnection> OnConnectionConnected;
@@ -14,5 +13,4 @@ namespace Pack
             OnConnectionConnected?.Invoke(c);
         }
     }
-}
 #endif

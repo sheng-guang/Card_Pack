@@ -1,8 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-namespace Pack
-{
+
     //[DefaultExecutionOrder(-1000)]
     public class UpDateVersion : MonoBehaviour
     {
@@ -29,5 +28,3 @@ namespace Pack
 
 
     }
-
-}

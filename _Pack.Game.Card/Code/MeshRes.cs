@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Pack;
+
 [RequireComponent(typeof(ResTool))]
 public class MeshRes : MonoBehaviour,IRes,IResGetter<MeshRes>,IResData
 {

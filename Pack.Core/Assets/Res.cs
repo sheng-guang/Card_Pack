@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
-namespace Pack
-{
+
 
     public interface IRes
     {
@@ -73,4 +72,3 @@ namespace Pack
 
 
 
-}

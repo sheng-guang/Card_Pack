@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Pack;
+
 public interface IStackSkill_Delegate:ISkill_Delegate
 {
     SkillNodeGroupOnce A_StackStart { get; set; }

@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Pack;
+
 using UnityEngine.EventSystems;
 using System;
 using TMPro;

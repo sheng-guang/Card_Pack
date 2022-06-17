@@ -3,8 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Pack
-{
+
     //public interface IGetSeat_N<T> :IGet<N<T>>, IGet<T> where T : struct, IEquatable<T>
     //{
     //    IGet<N<T>> IGet { get; set; }
@@ -52,4 +51,3 @@ namespace Pack
         }
     }
 
-}

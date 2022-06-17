@@ -3,8 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Pack
-{
+
     //interface-----------------------------------------------------------------------------------------------------------------
     public interface IGet<T>
     {
@@ -93,4 +92,3 @@ namespace Pack
         }
     }
 
-}

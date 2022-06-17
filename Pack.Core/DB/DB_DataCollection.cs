@@ -2,8 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
-namespace Pack
-{
+
     public interface IDataCollection<T>
     {
         void LoadAll();
@@ -98,4 +97,3 @@ namespace Pack
 
     }
 
-}

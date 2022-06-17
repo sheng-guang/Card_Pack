@@ -4,8 +4,7 @@ using UnityEngine;
 using System;
 using System.IO;
 
-namespace Pack
-{
+
     public interface IResData
     {
         string DataKind { get; }
@@ -54,4 +53,3 @@ namespace Pack
             return ne;
         }
     }
-}

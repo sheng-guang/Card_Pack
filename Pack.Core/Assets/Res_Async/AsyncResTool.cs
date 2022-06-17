@@ -2,12 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
-using Pack;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
-namespace Pack
-{
+
 
     public class AsyncResTool : MonoBehaviour,IBeforeAsPrefabe,IAfterAsPrefabe
     {
@@ -85,5 +83,4 @@ namespace Pack
             c.SetAsLastSibling();
         }
     }
-}
 

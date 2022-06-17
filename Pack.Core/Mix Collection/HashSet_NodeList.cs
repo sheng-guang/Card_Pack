@@ -2,8 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
-namespace Pack
-{
+
     //partial class HashSet_NodeList<T> : IEnumerable<T>
     //{
     //    public class HashSet_NodeListEnum : IEnumerator<T>
@@ -77,4 +76,3 @@ namespace Pack
     }
 
 
-}

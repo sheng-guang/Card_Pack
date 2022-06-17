@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Pack;
 public class CallSys
 {
     public static HashSet_NodeList<ICallListener> listeners = new HashSet_NodeList<ICallListener>();
@@ -25,8 +24,7 @@ public class CallSys
     }
 }
 
-namespace Pack
-{
+
 
     public class Call
     {
@@ -69,4 +67,3 @@ namespace Pack
     {
         void Do();
     }
-}

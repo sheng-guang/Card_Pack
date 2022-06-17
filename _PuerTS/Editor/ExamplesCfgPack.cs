@@ -4,7 +4,7 @@ using System;
 using UnityEngine;
 using System.Reflection;
 using System.Linq;
-using Pack;
+
 
 [Configure]
 public class ExamplesCfg_Pack
@@ -15,7 +15,8 @@ public class ExamplesCfg_Pack
             var to = Assembly.Load("Assembly-CSharp")
                 .GetExportedTypes()
                 .Where(x => {
-                    return x.Namespace == "Pack"
+                    return 
+                    x.Namespace == "Pack"
                     || x.GetCustomAttribute<ApiAttribute>() != null
                     ;
                     });
@@ -46,6 +47,8 @@ public class ExamplesCfg_Pack
             yield return typeof(T<int>);
 
 
+
+            yield return typeof(Skill);
 
             yield return typeof(Skill_Delegate);
             yield return typeof(ISkill_Delegate);

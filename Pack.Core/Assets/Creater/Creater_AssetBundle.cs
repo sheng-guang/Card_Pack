@@ -6,8 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 
-namespace Pack
-{
+
     class Creater_AssetBundle
     {
         public static bool CanCreate(string dir, string kind)
@@ -69,4 +68,3 @@ namespace Pack
             return g.getter.GetNew(args);
         }
     }
-}

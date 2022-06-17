@@ -1,8 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-namespace Pack
-{
+
     public interface IAfterSimulate
     {
         void AfterSimulate_();
@@ -14,4 +13,3 @@ namespace Pack
         public static UpdCollection<IAfterSimulate> collection = new UpdCollection<IAfterSimulate>();
         public static void Update() { collection.ForEach(x => x.AfterSimulate_()); }
     }
-}

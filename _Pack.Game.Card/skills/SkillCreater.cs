@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-namespace Pack
-{
+
     public struct SkillBuilder
     {
 
@@ -80,4 +79,3 @@ namespace Pack
 
     }
 
-}

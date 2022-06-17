@@ -4,8 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Pack
-{
+
     //新游戏开始时调用      运行初始化方法
     public static class NewGameClear
     {
@@ -39,4 +38,3 @@ namespace Pack
 
 
 
-}

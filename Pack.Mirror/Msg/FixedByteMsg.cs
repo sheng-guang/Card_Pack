@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Mirror;
 using System.Runtime.InteropServices;
-namespace Pack
-{
+
     public static class ByteMsgFunctions
     {
         public static void Serialize(this NetworkWriter w, FixedLenByteMsg value)
@@ -74,4 +73,3 @@ namespace Pack
         }
     }
 
-}

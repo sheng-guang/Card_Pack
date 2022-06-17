@@ -2,8 +2,7 @@ using Mirror;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-namespace Pack
-{
+
     //driver      //driver      //driver      //driver      //driver      //driver      //driver      //driver      //driver      //driver      //driver      //driver      //driver      //driver  
     public abstract partial class Driver : NetworkManager
     {
@@ -21,4 +20,3 @@ namespace Pack
         }
     }
 
-}

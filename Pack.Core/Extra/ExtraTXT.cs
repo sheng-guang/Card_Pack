@@ -6,8 +6,7 @@ using System.Threading.Tasks;
 using System.IO;
 using System.Collections;
 using UnityEngine;
-namespace Pack
-{
+
     public static class StreamingAssetsTXTHub
     {
         //dele
@@ -114,4 +113,4 @@ namespace Pack
             return re;
         }
     }
-}
+

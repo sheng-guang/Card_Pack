@@ -2,8 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
-namespace Pack
-{
+
     public class ListOption
     {
         public const int Add = 1;
@@ -60,4 +59,3 @@ namespace Pack
         }
 
     }
-}

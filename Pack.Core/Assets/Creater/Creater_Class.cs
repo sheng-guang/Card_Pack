@@ -5,8 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 using System.Reflection;
-namespace Pack
-{
+
    public class Creater_Class
     {
         public static bool CanCreate(string kind)
@@ -59,4 +58,3 @@ namespace Pack
             return (T)Creater_Class.GetNew(kind, args);
         }
     }
-}

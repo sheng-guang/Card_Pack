@@ -1,8 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-namespace Pack
-{
+
     //Host      //Host      //Host      //Host      //Host      //Host      //Host      //Host      //Host      //Host      //Host      //Host      //Host      //Host  
 
     [RequireComponent(typeof(ResTool))]
@@ -31,4 +30,3 @@ namespace Pack
 
     }
 
-}

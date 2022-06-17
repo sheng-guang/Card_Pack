@@ -2,8 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-namespace Pack
-{
+
 
     public interface IParam<T> : IGet<T>
     {
@@ -19,7 +18,6 @@ namespace Pack
     {
         void BackToBase();
     }
-}
 
 
 

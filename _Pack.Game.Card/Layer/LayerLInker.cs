@@ -4,8 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Pack
-{
+
     public interface ILayerLinkUp
     {
         public void Listen(ILayerLinkFollower Linstener);
@@ -14,4 +13,3 @@ namespace Pack
     {
         public void SetUpLayer(LayerID layer);
     }
-}

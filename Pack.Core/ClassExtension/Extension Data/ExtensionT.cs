@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-namespace Pack
-{
+
     public static class Extension<T> where T:new ()
     {
         public static Dictionary<string,T> dic = new Dictionary<string, T>();
@@ -41,4 +40,5 @@ namespace Pack
             return re;
         }
     }
-}
+
+

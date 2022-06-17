@@ -1,8 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-namespace Pack
-{
+
     public interface ISetObj
     {
         void setValue(object value);
@@ -16,4 +15,3 @@ namespace Pack
             to.setValue(value);
         }
     }
-}

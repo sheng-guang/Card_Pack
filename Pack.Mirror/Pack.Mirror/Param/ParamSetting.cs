@@ -2,8 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-namespace Pack
-{
+
     public class ParamSetting
     {
         [RuntimeInitializeOnLoadMethod]
@@ -20,4 +19,3 @@ namespace Pack
         public static bool IsServer = false;
     }
 
-}

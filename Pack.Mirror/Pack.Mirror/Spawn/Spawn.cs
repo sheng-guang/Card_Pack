@@ -4,8 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using Mirror;
-namespace Pack
-{
+
 
     public interface ISpawnable
     {
@@ -67,5 +66,4 @@ namespace Pack
         public string dir;
         public string Kind;
     }
-}
 #endif

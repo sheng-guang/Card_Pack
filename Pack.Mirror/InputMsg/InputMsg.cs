@@ -3,8 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Pack
-{
+
     public static class InputMsgFunctions
     {
         public static void Serialize(this NetworkWriter w, InputMsg value)
@@ -50,4 +49,3 @@ namespace Pack
         public InputForm Form;
     }
 
-}

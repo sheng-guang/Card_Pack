@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Animations;
 using System.Linq;
 using System;
-using Pack;
+
 
 partial class eve//根据id获取玩家
 {

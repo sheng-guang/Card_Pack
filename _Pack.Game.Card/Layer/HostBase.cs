@@ -1,8 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-namespace Pack
-{
+
     public abstract partial class Host : LayerID//Layer/SetID/Event/CreatGamePlayerForNetPlayer
     {
         public override Host host => this;
@@ -22,4 +21,3 @@ namespace Pack
             OnSetID_Awake();
         }
     }
-}

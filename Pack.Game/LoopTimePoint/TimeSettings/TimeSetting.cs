@@ -2,8 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-namespace Pack
-{
+
     public static class TimeExtra
     {
         public static float GetPercentage(this float NowTime, float Start, float Len)
@@ -70,4 +69,3 @@ namespace Pack
             }
         }
     }
-}

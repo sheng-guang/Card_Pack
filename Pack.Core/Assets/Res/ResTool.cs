@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
-namespace Pack
-{
+
     public interface IBeforeAsPrefabe
     {
         void BeforeAsPrefabe1(IRes res);
@@ -43,4 +42,3 @@ namespace Pack
         }
     }
 
-}

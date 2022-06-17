@@ -5,8 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 
-namespace Pack
-{
+
     //----------------------------------------------------------------------------------------------------------------------------------------------------------------------
     public partial class SyncMonitor<T> : IBuffSysMonitor
     {
@@ -75,4 +74,3 @@ namespace Pack
         }
     }
 
-}

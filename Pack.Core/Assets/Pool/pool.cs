@@ -4,8 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Pack
-{
+
     public static class PoolExtra
     {
         public static void SaveToPool_Str<T>(this T to)where T : IPoolObj_Str
@@ -84,4 +83,3 @@ namespace Pack
     //        return re;
     //    }
     //}
-}

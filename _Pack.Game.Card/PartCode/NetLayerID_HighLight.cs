@@ -1,8 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace Pack
-{
+
     //layerID      //layerID      //layerID      //layerID      //layerID      //layerID      //layerID      //layerID      //layerID      //layerID      //layerID      //layerID      //layerID      //layerID  
     public abstract partial class LayerID //highlight
     {
@@ -37,4 +36,3 @@ namespace Pack
         }
     }
 
-}

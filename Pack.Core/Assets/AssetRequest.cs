@@ -2,8 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
-namespace Pack
-{
+
 
     public class AssetRequest<T>where T : UnityEngine.Object
     {
@@ -61,7 +60,6 @@ namespace Pack
     }
 
 
-}
 
 
 

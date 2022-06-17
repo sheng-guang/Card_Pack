@@ -6,8 +6,7 @@ using System.Threading.Tasks;
 using System.IO;
 using System.Collections;
 using UnityEngine;
-namespace Pack
-{
+
     public static class FileInfoExtra
     {
       public  static string ToStreamingAssetFullPath(this string BaseStr)
@@ -50,4 +49,3 @@ namespace Pack
         }
     }
 
-}

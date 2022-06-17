@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System;
-namespace Pack
-{
+
     public static class ImageExtra
     {
         
@@ -90,7 +89,6 @@ namespace Pack
             ImgLoader.LoadTexture(act, dir, which);
         }
     }
-}
   
 
 

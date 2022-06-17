@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-namespace Pack
-{
+
     //各种扩展方法
     //List 扩展
     public static class ListExtra
@@ -135,4 +134,3 @@ namespace Pack
     }
 
 
-}

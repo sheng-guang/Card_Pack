@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Pack;
+
 public interface IBeCallSkill_Delegate:ISkill_Delegate
 {
     SkillNodeGroupLoop A_Fix { get; set; }

@@ -1,9 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Pack;
-namespace Pack
-{
+
 
     public partial class CamSpace : MonoBehaviour//ins
     {
@@ -108,4 +106,3 @@ namespace Pack
         }
     }
 
-}

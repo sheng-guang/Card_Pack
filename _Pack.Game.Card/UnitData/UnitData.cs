@@ -5,8 +5,7 @@ using System.IO;
 using System;
 using System.Linq;
 
-namespace Pack
-{
+
 
 
     public class UnitData
@@ -179,4 +178,3 @@ namespace Pack
     }
 
 
-}

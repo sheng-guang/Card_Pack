@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Pack;
+
 public class CamSpaceTest : MonoBehaviour, ICamSpaceObject
 {
     private void Awake()

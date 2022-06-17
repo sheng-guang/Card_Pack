@@ -1,8 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-namespace Pack
-{
+
     public  class NodeMix<TGroup,TNode>
         where TGroup : NodeMix<TGroup, TNode>.groupBase
         where TNode : NodeMix<TGroup, TNode>.nodeBase
@@ -113,4 +112,3 @@ namespace Pack
     //    }
     //}
 
-}

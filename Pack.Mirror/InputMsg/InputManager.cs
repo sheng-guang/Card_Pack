@@ -2,8 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Mirror;
-namespace Pack
-{
+
     public interface IInputUser
     {
         int NetID { get; }
@@ -62,4 +61,3 @@ namespace Pack
 
     }
 
-}

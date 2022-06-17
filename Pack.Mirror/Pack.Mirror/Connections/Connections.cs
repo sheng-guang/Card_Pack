@@ -2,10 +2,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Pack;
 using Mirror;
-namespace Pack
-{
+
     public static class Connections
     {
         [RuntimeInitializeOnLoadMethod]
@@ -71,6 +69,5 @@ namespace Pack
         }
 
     }
-}
 
 #endif

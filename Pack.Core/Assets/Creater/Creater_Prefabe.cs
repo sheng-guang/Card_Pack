@@ -4,8 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Pack
-{
+
     public static class Creater_Prefabe
     {
         public static bool CanCreate(string kind)
@@ -47,4 +46,3 @@ namespace Pack
             return g.GetNew(args);
         }
     }
-}

@@ -4,8 +4,7 @@ using UnityEngine;
 using UnityEditor;
 using System.IO;
 
-namespace Pack
-{
+
 
 
 
@@ -242,7 +241,6 @@ namespace Pack
             return objs.ToArray();
         }
     }
-}
 
 
 

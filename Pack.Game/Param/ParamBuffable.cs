@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
 
-namespace Pack
-{
+
    
     public partial class ParamBuffable<T> : IBuffSysBuffableData//back
     {
@@ -88,4 +87,3 @@ namespace Pack
             return GetType().Name+"<"+typeof(T)+">";
         }
     }
-}

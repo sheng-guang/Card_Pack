@@ -4,8 +4,7 @@ using UnityEngine;
 using System.IO;
 using System;
 
-namespace Pack
-{
+
 
     public class Deck 
     {
@@ -89,4 +88,4 @@ namespace Pack
 
     }
 
-}
+

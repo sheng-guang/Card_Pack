@@ -3,8 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Pack
-{
+
     public class VarChangeEvent_Class<T>where T : class
     {
         Action onChange;
@@ -64,4 +63,3 @@ namespace Pack
 
 
 
-}

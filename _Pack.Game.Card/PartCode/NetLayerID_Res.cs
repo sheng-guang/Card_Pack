@@ -5,8 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 
-namespace Pack
-{
+
     public abstract partial class LayerID//ToString
     {
         public override string ToString()
@@ -43,4 +42,3 @@ namespace Pack
         public virtual Vector3 RealPoss => Vector3.zero;
         public virtual Vector3 VisualPoss => RealPoss + Vector3.up * 0.5f;
     }
-}

@@ -2,8 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Pack
-{
+
     //-----------------------------------------------------------------------------------------------------------------------------------------------------------------
     /// <summary>
     /// NodeKind Reach  reversal
@@ -58,4 +57,3 @@ namespace Pack
 
     }
 
-}

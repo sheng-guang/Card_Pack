@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Pack
-{
+
 
 
 
@@ -193,4 +192,3 @@ namespace Pack
         }
 #endif
     }
-}

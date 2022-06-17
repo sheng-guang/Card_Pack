@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Pack;
+
 public class ComUnit3DUI : LayerCompResUI, ICameraFollowe_update
 {
     public override void Awake_OnSetMaster()

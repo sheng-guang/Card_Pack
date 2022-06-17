@@ -4,8 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Pack
-{
+
     //public static class HighLightExtra
     //{
     //    public static void TurnOnHightLight<T>(this T i) where T : IHighLightAble
@@ -64,4 +63,3 @@ namespace Pack
 
 
 
-}

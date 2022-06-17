@@ -4,8 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
-namespace Pack
-{
+
    public class PreViewPointNode: PreViewNodeMono
     {
         public override string KindName => "Point";
@@ -22,4 +21,3 @@ namespace Pack
         }
        
     }
-}

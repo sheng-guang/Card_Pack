@@ -2,8 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Pack
-{
+
     public struct FormGetterStruct : IFormGetter
     {
         public void SetFormGetter(LayerID l, int k)
@@ -23,4 +22,4 @@ namespace Pack
             return to.GetEmptyForm();
         }
     }
-}
+

@@ -1,8 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-namespace Pack
-{
+
     public class Setting<T>
     {
         static object obj=new object();
@@ -13,4 +12,3 @@ namespace Pack
 
     }
 
-}

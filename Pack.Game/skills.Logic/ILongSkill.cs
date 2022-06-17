@@ -2,8 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-namespace Pack
-{
+
     public interface ILongSkill
     {
         void SetExitListAction(Action<object> a);
@@ -13,4 +12,3 @@ namespace Pack
     }
 
 
-}

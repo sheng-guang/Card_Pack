@@ -6,8 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 
-namespace Pack
-{
+
     public interface IFormGetter 
     {
         InputForm GetCopyForm();
@@ -298,4 +297,3 @@ namespace Pack
             //Debug.Log(Time.time);
         }
     }
-}

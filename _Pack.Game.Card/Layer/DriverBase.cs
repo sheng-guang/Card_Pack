@@ -2,8 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Pack
-{
+
     //Driver------------------------------------------------------------------------------------------------------------------------------------------------------------------
     public abstract partial class Driver//base
     {
@@ -45,4 +44,3 @@ namespace Pack
 
     }
 
-}

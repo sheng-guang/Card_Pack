@@ -2,8 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
-namespace Pack
-{
+
     public static partial class BuffSysData
     {
         //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -95,4 +94,3 @@ namespace Pack
     }
 
 
-    }

@@ -3,8 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Pack
-{
+
     public abstract class FuncMix<s, Tr, TGroup, TNode> : NodeMixSelf<s, TGroup, TNode>
         where TGroup : FuncMix<s, Tr, TGroup, TNode>.Func
         where TNode : FuncMix<s, Tr, TGroup, TNode>.Node
@@ -121,7 +120,6 @@ namespace Pack
     }
 
 
-}
 
 
 

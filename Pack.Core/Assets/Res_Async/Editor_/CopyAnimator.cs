@@ -5,8 +5,7 @@ using UnityEditor;
 using UnityEditor.Animations;
 using UnityEngine;
 
-namespace Pack
-{
+
     public class ForAnimator
     {
         public static void CopyAnimator(Animator old,Animator ne)
@@ -100,5 +99,4 @@ namespace Pack
             return re;
         }
     }
-}
 #endif

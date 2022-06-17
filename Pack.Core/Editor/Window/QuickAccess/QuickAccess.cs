@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 using System.IO;
-using Pack;
+
 
 public class QuickAccess : EditorWindow
 {

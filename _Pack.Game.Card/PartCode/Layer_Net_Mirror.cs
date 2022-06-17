@@ -1,7 +1,6 @@
 using Mirror;
 
-namespace Pack
-{
+
     //layer      //layer      //layer      //layer      //layer      //layer      //layer      //layer      //layer      //layer      //layer      //layer      //layer      //layer  
     public abstract partial class Layer //net
     {
@@ -9,4 +8,3 @@ namespace Pack
         public bool isServer => NetworkServer.active;
 
     }
-}

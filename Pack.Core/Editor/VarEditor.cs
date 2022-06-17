@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
-namespace Pack
-{
+
 
     public class Editor<T> : Editor where T : class
     {
@@ -14,7 +13,6 @@ namespace Pack
             if (tar == null) tar = (target as Component).GetComponent<T>();
         }
     }
-}
 
 public static class EditorSaveData<T>
 {

@@ -6,8 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 
-namespace Pack
-{   
+
     
 
     public struct InputDataPoint : IInputData
@@ -37,4 +36,3 @@ namespace Pack
 
         public N<int> LayerId => unitID;
     }
-}

@@ -1,8 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-namespace Pack
-{
+
 
 
     public enum canvas_kind : int
@@ -46,4 +45,3 @@ namespace Pack
             //tr.transform.localPosition = Vector3.zero;
         }
     }
-}

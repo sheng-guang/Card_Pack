@@ -2,8 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
-namespace Pack
-{
+
 
     public class ASyncCreater<T> where T : UnityEngine.Object
     {
@@ -17,4 +16,3 @@ namespace Pack
 
 
 
-}

@@ -1,10 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Pack;
 using System;
-namespace Pack
-{
+
     public partial class HostEvent:IUpdata_
     {
 
@@ -129,4 +127,3 @@ namespace Pack
         public VarChangeEvent<N<int>> AtkCall = new VarChangeEvent<N<int>>();
     }       
 
-}

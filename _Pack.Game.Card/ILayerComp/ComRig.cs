@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Pack;
+
 [RequireComponent(typeof(Rigidbody))]
 public class ComRig : LayerComp
 {

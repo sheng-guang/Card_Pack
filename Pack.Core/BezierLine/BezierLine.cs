@@ -2,8 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Pack
-{
+
     public class BezierLine
     {
         public BezierLine(int count=2)
@@ -104,4 +103,3 @@ namespace Pack
     //    }
 
     //}
-}

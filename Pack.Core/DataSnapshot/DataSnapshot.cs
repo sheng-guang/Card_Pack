@@ -2,8 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Pack
-{
+
     //public interface IGetT<T>
     //{
     //    T value { get; }
@@ -33,4 +32,3 @@ namespace Pack
     }
 
 
-}

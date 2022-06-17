@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Pack;
+
 public interface ISkill_Delegate
 {
     Func0<Skill, bool> F_Visible { get; set; }

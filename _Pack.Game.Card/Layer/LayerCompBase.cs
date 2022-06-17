@@ -2,8 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
-namespace Pack
-{
+
 
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------
     public partial interface ILayerComp//base
@@ -136,4 +135,3 @@ namespace Pack
     }
 
 
-}

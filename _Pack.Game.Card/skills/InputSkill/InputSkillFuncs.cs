@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-namespace Pack
-{
+
     public static class OneTargetInputSkill
     {
         public const int FirstNodeKind = 1;
@@ -66,4 +65,3 @@ namespace Pack
     }
 
 
-}

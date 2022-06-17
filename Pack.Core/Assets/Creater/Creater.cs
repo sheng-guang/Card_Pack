@@ -5,8 +5,7 @@ using System.IO;
 using UnityEngine.Events;
 
 
-namespace Pack
-{
+
     public class Creater<T>
     {
 
@@ -70,5 +69,4 @@ namespace Pack
         }
 
     }
-}
 

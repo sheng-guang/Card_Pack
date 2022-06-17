@@ -1,11 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Pack;
 using UnityEngine.EventSystems;
-namespace Pack
-{
-    partial class SkillComp : IPointerEnterHandler//target
+
+   public partial class SkillComp : IPointerEnterHandler//target
     {
         public void OnPointerEnter(PointerEventData eventData)
         {
@@ -13,7 +11,7 @@ namespace Pack
         }
     }
 
-    public partial class SkillComp //设置skill 加载图片 set up
+    partial class SkillComp //设置skill 加载图片 set up
     {
         public Skill skill { get; private set; }
         public void SetSkill(Skill s)
@@ -37,7 +35,7 @@ namespace Pack
         }
     }
    
-    public partial class SkillComp // 曲线 LineRender
+    partial class SkillComp // 曲线 LineRender
     {
         public BezierLineMeshPoints LineStart;
         public BezierLineMeshPoints LineTar;
@@ -45,7 +43,7 @@ namespace Pack
     }
 
 
-    public partial class SkillComp : ICameraFollowe_update//刷新  update
+    partial class SkillComp : ICameraFollowe_update//刷新  update
     {
         public void FollowCamUpdate_()
         {
@@ -89,7 +87,7 @@ namespace Pack
 
         }
     }
-    public partial class SkillComp//暂停标志  pausing icon
+    partial class SkillComp//暂停标志  pausing icon
     {
         [Header("Pausing Color")]
         public string ColorName;
@@ -123,7 +121,7 @@ namespace Pack
 
         }
     }
-    public partial class SkillComp : IPointerMoveHandler,IPointerDownHandler//暂停 pause
+    partial class SkillComp : IPointerMoveHandler,IPointerDownHandler//暂停 pause
     {
         public void Fresh()
         {
@@ -142,7 +140,7 @@ namespace Pack
         }
     }
 
-    public partial class SkillComp : MonoBehaviour, IResGetter<SkillComp>, IRes//资源加载 res 
+    partial class SkillComp : MonoBehaviour, IResGetter<SkillComp>, IRes//资源加载 res 
     {
         public string DirectoryName => "Assets/"+nameof(SkillComp);
 
@@ -161,4 +159,3 @@ namespace Pack
         //
 
     }
-}

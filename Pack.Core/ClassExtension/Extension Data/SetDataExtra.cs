@@ -4,8 +4,7 @@ using UnityEngine;
 using System;
 using System.Reflection;
 
-namespace Pack
-{
+
 
     public static partial class SetDataExtra
     {
@@ -133,4 +132,3 @@ namespace Pack
         public T Value { set => a?.Invoke(value); }
     }
 
-}

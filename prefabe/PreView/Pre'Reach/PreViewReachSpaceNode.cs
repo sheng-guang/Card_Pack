@@ -4,8 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
-namespace Pack
-{
+
     public class PreViewReachSpaceNode:PreViewNodeMono
     {
         public override string KindName => "Reach";
@@ -19,4 +18,3 @@ namespace Pack
             transform.localScale = Vector3.one * reach.Value;
         }
     }
-}

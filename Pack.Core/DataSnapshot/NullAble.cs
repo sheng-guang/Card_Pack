@@ -2,8 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-namespace Pack
-{
+
     public struct N<T>:IEquatable<N<T>> where T : struct,IEquatable<T>
     {
 
@@ -78,4 +77,3 @@ namespace Pack
 
 
 
-}

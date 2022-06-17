@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-namespace Pack
-{
+
     public interface IStackSkill
     {
         void SetExistStackAction(Action<object> a);
@@ -18,4 +17,3 @@ namespace Pack
     //    SkillNodeGroupStack A_Run_ToBreak { get; set; }
     //}
 
-}

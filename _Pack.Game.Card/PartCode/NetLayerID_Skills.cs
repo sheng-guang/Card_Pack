@@ -5,8 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 
-namespace Pack
-{
+
     //layerID      //layerID      //layerID      //layerID      //layerID      //layerID      //layerID      //layerID      //layerID      //layerID      //layerID      //layerID      //layerID      //layerID  
 
     public abstract partial class LayerID //add comp   add mesh 
@@ -190,4 +189,3 @@ namespace Pack
 
 
     }
-}

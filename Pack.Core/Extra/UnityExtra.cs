@@ -1,8 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-namespace Pack
-{
+
     //Unity 扩展方法
     public static class UnityExtra
     {
@@ -75,4 +74,3 @@ namespace Pack
         }
     }
 
-}

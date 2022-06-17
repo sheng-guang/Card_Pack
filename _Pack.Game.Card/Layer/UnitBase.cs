@@ -1,8 +1,7 @@
  using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-namespace Pack
-{
+
     public abstract partial class Unit: LayerID//base
     {
         public override Unit unit => this;
@@ -17,4 +16,3 @@ namespace Pack
         }
     }
 
-}

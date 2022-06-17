@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Pack
-{
+
     ////LayerComp      //LayerComp      //LayerComp      //LayerComp      //LayerComp      //LayerComp      //LayerComp      //LayerComp      //LayerComp      //LayerComp      
     [RequireComponent(typeof(ResTool))]
     public abstract partial class LayerCompRes : IRes
@@ -10,4 +9,3 @@ namespace Pack
         public virtual string PackName => "-";
         public virtual string KindName => GetType().ToString();
     }
-}

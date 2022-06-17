@@ -2,8 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Pack
-{
+
     public class Visable_OnCard : Func0Node<Skill, bool>
     {
         public override void Invoke()
@@ -21,4 +20,3 @@ namespace Pack
     }
 
 
-}

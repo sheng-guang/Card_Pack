@@ -6,8 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Pack
-{
+
     public struct PassMsg : NetworkMessage
     {
         public string pass;
@@ -20,5 +19,4 @@ namespace Pack
     //public partial struct SyncDataMsg : NetworkMessage
     //{
     //}
-}
 #endif

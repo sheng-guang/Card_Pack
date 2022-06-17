@@ -5,8 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Mirror;
-namespace Pack
-{
+
     public class NetPlayer
     {
         public NetworkConnection conn;
@@ -19,5 +18,4 @@ namespace Pack
     {
 
     }
-}
 #endif

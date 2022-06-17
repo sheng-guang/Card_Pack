@@ -2,8 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-namespace Pack
-{
+
     public interface IUpdata_
     {
         void Update_();
@@ -23,4 +22,3 @@ namespace Pack
             collection.AddToList(u);
         }
     }
-}

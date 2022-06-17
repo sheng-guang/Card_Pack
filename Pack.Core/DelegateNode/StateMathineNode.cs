@@ -1,8 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-namespace Pack
-{
+
     public class StateMix<c, TGroup, TNode> : NodeMixSelf<c, TGroup, TNode>
         where TGroup : StateMix<c, TGroup, TNode>.Act
         where TNode : StateMix<c, TGroup, TNode>.Node
@@ -27,4 +26,3 @@ namespace Pack
             public void re() { group.re(); }
         }
     }
-}

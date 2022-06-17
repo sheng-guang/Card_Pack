@@ -2,8 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-namespace Pack
-{
+
     public class SyncListCollection<T> 
     {
 
@@ -27,4 +26,3 @@ namespace Pack
         List<T> data = new List<T>();
     }
 
-}

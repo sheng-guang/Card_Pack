@@ -2,8 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-namespace Pack
-{
+
 
     public class ActionGroup<Tr>
     {
@@ -64,4 +63,3 @@ namespace Pack
         public T value;
 
     }
-}

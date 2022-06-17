@@ -5,8 +5,7 @@ using System.IO;
 using UnityEngine;
 using UnityEngine.Networking;
 
-namespace Pack
-{
+
     
     public class ImgLoader:MonoBehaviour
     {
@@ -81,4 +80,3 @@ namespace Pack
         }
     }
 
-}

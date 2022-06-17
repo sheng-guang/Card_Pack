@@ -2,8 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Pack
-{
+
     public class ResArgs
     {
         public Dictionary<string, object> dictionary = new Dictionary<string, object>(); 
@@ -118,4 +117,3 @@ namespace Pack
     }
 
 
-}

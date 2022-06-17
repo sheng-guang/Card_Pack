@@ -1,8 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-namespace Pack
-{
+
     //unit      //unit      //unit      //unit      //unit      //unit      //unit      //unit      //unit      //unit      //unit      //unit      //unit      //unit  
 
     partial class Unit : ICallListener //´¥·¢ call 
@@ -294,4 +293,3 @@ namespace Pack
         public override Hero CanBeHero => this;
         public override bool IsHero => player.hero == this;
     }
-}

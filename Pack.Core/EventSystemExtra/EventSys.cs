@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-namespace Pack
-{
+
     public static class OnMousePoint
     {
         class Empty : ITarget, IInputData
@@ -78,4 +77,3 @@ namespace Pack
 
     }
 
-}

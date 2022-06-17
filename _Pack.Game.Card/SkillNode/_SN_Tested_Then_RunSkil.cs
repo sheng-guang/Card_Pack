@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-namespace Pack
-{
+
     //1   get new skill
     public class SN_GetCopySkill : Act1Node<InputSkill, InputForm>, IGet<Skill>
     {
@@ -190,4 +189,3 @@ namespace Pack
         }
     }
 
-}

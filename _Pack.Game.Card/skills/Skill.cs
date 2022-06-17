@@ -1,8 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-namespace Pack
-{
+
     [SerializeField]
     public struct PauseSkill
     {
@@ -24,7 +23,7 @@ namespace Pack
             return tar;
         }
     }
-    public partial class Skill : IInputUser // msg
+    partial class Skill : IInputUser // msg
     {
         public virtual void ServerUseInput(InputMsg msg)
         {
@@ -38,7 +37,7 @@ namespace Pack
             }
         }
     }
-    public abstract partial class Skill //Pasue
+    partial class Skill //Pasue
     {
         public const int Pause_Off = 10001;
         public const int Pause_On = 10002;
@@ -60,7 +59,7 @@ namespace Pack
     }
 
 
-    public abstract partial class Skill //res
+    partial class Skill //res
     {
         public Skill()
         {
@@ -71,7 +70,7 @@ namespace Pack
     }
 
 
-    public abstract partial class Skill //Visible
+    partial class Skill //Visible
     {
         public virtual bool Visible => true;
     }
@@ -82,7 +81,7 @@ namespace Pack
             return unit.hero;
         }
     }
-    public abstract partial class Skill //One Target Input
+    partial class Skill //One Target Input
     {
         public static void ApplyOneTargetInput(Skill skill, InputForm p1)
         {
@@ -129,7 +128,7 @@ namespace Pack
             return TarID().To<Skill>();
         }
     }
-    public abstract partial class Skill //Param /ID /to string
+    partial class Skill //Param /ID /to string
     {
         public override string ToString()
         {
@@ -145,19 +144,20 @@ namespace Pack
         public int groupData { get => _groupData.Value; set { _groupData.Value = value; } }
         public int ClassSetting { get => _classSetting.Value; set { _classSetting.Value = value; } }
     }
+[Api]
     public abstract partial class Skill //layer 
     {
         public virtual LayerID up { get => IDs<LayerID>.Get(upID); private set { upID = value.ID; } }
         public virtual Unit unit => up.unit;
         public virtual Player player => up.player;
     }
-    public abstract partial class Skill //copy/branch/origin 
+    partial class Skill //copy/branch/origin 
     {
         public Skill GetCopy() { return Layer.CreatSkill(FullName).SetUp(up).Copy(this); }
         public Skill GetBranch(string Name) { return Layer.CreatSkill(Name).SetUp(up).Branch(this); }
         public Skill GetOrigin(string Name) { return Layer.CreatSkill(Name).SetUp(up).Origin(); }
     }
-    public abstract partial class Skill : ISpawnable//spawn/ kind / NetID
+    partial class Skill : ISpawnable//spawn/ kind / NetID
     {
         public int NetID => ID;
         public virtual string dirPass => "";
@@ -170,7 +170,7 @@ namespace Pack
 
         public Vector3 VisualPoss => up.VisualPoss;
     }
-    public partial class Skill //SetID/  load structure
+    partial class Skill //SetID/  load structure
     {
         public virtual void SetUP(LayerID l)
         {
@@ -191,7 +191,7 @@ namespace Pack
 
     }
 
-    public abstract partial class Skill //comp
+    partial class Skill //comp
     {
         public void EnsureComp()
         {
@@ -203,7 +203,7 @@ namespace Pack
 
     }
 
-    public abstract partial class Skill //input Msg  /static
+    partial class Skill //input Msg  /static
     {
         public static InputMsg CreatInput(byte kind)
         {
@@ -215,7 +215,7 @@ namespace Pack
         }
     }
 
-    public abstract partial class Skill : ISetKV //set  kv
+    partial class Skill : ISetKV //set  kv
     {
         public virtual void setKV(string key, object o) { }
     }
@@ -237,4 +237,3 @@ namespace Pack
         public bool HasMoreThanOneTar { get; protected set; } =false;
     }
 
-}

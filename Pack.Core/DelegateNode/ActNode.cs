@@ -2,8 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
-namespace Pack
-{
+
     public class ActMix<s, TGroup, TNode> : NodeMixSelf<s, TGroup, TNode>
         where TGroup : ActMix<s, TGroup, TNode>.Act
         where TNode : ActMix<s, TGroup, TNode>.Node
@@ -116,7 +115,6 @@ namespace Pack
         public override void invoke(T1 t1, T2 t2,T3 t3) { act?.Invoke(self, t1, t2,t3); }
     }
 
-}
 
 
 //public class ActionMix<s, TGroup, TNode>

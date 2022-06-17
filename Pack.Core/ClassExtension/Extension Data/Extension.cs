@@ -2,8 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-namespace Pack
-{
+
     public static class Extension
     {
         public static IGetSeat<T> Ex_Ptr<T>(this object obj, string DataName)
@@ -19,4 +18,3 @@ namespace Pack
         }
     }
 
-}

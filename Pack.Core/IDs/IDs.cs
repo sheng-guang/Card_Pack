@@ -4,9 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
-using Pack;
-namespace Pack
-{
+
+
     //存储带有唯一id的实例
     public static class IDs<T>
     {
@@ -53,4 +52,3 @@ namespace Pack
         public static int NextID => ++lastID;
     }
 
-}

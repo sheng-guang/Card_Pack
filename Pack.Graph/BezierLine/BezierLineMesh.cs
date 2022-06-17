@@ -1,8 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-namespace Pack
-{
+
     public class BezierLineMesh : MonoBehaviour
     {
         public void SetLineActive(bool b)
@@ -44,4 +43,3 @@ namespace Pack
         }
     }
 
-}

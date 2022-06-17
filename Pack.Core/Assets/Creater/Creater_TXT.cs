@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 using System;
-namespace Pack
-{
+
     public class ResGetter_JS : IResGetter
     {
         public string path;
@@ -55,4 +54,3 @@ namespace Pack
             return obj.GetNewObject(args);
         }
     }
-}

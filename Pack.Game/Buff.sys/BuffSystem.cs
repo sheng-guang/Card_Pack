@@ -3,8 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Pack
-{
+
     
     public static partial class BuffSys
     {
@@ -106,4 +105,3 @@ namespace Pack
 
 
 
-    }

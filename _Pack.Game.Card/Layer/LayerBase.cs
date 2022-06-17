@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Pack
-{
+
     public interface IHaveID
     {
         int ID { get; }
@@ -64,5 +63,4 @@ namespace Pack
 
 
 
-}
 

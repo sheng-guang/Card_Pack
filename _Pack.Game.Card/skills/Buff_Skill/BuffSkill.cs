@@ -2,8 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Pack
-{
+
     public abstract class BuffSkill : Skill, IBuff
     {
         public int NowVersion => BuffSys.FreshVersion;
@@ -20,4 +19,3 @@ namespace Pack
         }
     }
 
-}

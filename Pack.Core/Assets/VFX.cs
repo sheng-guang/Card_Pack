@@ -1,8 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-namespace Pack
-{
+
     public class VFX : MonoBehaviour
     {
         public virtual void SetStartGameTime(float t)
@@ -26,5 +25,4 @@ namespace Pack
         public object GetNewObject(ResArgs a) { return GetNew(a); }
 
     }
-}
 

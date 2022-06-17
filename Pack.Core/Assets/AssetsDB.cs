@@ -2,9 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
-namespace Pack
-{
-   
+
     public  class AssetsDB<T>
     {
         public static Dictionary<string, AssetSeat<T>> dic = new Dictionary<string, AssetSeat<T>>();
@@ -42,4 +40,3 @@ namespace Pack
         Loading,
         Loaded,
     }
-}

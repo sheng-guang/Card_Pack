@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-namespace Pack {
     public interface IOnAsyncLoaded
     {
         void OnLoaded();
@@ -15,4 +14,3 @@ namespace Pack {
     //    }
     //    public abstract void OnCreat();
     //}
-}

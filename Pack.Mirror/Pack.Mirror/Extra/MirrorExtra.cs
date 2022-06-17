@@ -2,8 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Mirror;
-namespace Pack
-{
+
     //Mirror °üÀ©Õ¹
     public static class MirrotExtra
     {
@@ -56,4 +55,3 @@ namespace Pack
         }
 
     }
-}

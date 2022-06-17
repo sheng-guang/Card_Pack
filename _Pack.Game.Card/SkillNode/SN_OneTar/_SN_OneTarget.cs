@@ -2,8 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Pack
-{
+
 
     public class HighLightTest_ManaEnough : Func0Node<InputSkill, bool>
     {
@@ -201,4 +200,3 @@ namespace Pack
 
 
 
-}

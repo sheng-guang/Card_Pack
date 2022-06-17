@@ -2,8 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
-namespace Pack
-{
+
     public class LandTarget : MonoBehaviour,  IPointerEnterHandler,ITarget
     {
         static InputDataPoint data = new InputDataPoint();
@@ -19,4 +18,3 @@ namespace Pack
         }
     }
 
-}

@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Pack;
+
 public interface IInputSkill_Delegate:ISkill_Delegate
 {
     Func1<InputSkill, int, IEnumerable<string>> F_NodeForm { get; set; }

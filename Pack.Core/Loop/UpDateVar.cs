@@ -2,8 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-namespace Pack
-{
+
     public class UpdCollection<T>
     {
         public void NewGame_Clear()
@@ -72,4 +71,3 @@ namespace Pack
 
         }
     }
-}

@@ -1,8 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-namespace Pack
-{
+
 
     public class FormWriter : MonoBehaviour,ICameraFollowe_update
     {
@@ -12,7 +11,7 @@ namespace Pack
             Debug.Log("[Load]"+nameof(FormWriter));
 
         }
-         static void VoidInvoke() { int i = 0; }
+         //static void VoidInvoke() { int i = 0; }
         static FormWriter()
         {
             var ne = new GameObject().AddComponent<FormWriter>();
@@ -140,5 +139,4 @@ namespace Pack
     }
 
 
-}
 

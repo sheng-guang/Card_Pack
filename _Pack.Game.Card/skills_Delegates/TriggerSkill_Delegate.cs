@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Pack;
+
 public interface ITriggerSkill_Delegate:ISkill_Delegate
 {
     Act1<Skill, Call> A_OnCall { get; set; }

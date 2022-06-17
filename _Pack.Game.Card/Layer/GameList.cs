@@ -3,8 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Pack
-{
+
     public static class GameList
     {
         static  GameList()
@@ -69,4 +68,3 @@ namespace Pack
         static List<Unit> UnitSpaceList { get;  set; }=new List<Unit>();
     }
 
-}

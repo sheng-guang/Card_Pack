@@ -1,8 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-namespace Pack
-{
+
     public static class PhyExtra 
     {
         public static Vector3 GetThrowVelocity(Vector3 target, Vector3 start, bool highThrow, float speed)
@@ -171,4 +170,3 @@ namespace Pack
         public bool MirrorTurn=false;
     }
 
-}

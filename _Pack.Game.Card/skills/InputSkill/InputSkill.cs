@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
-namespace Pack
-{
+
     public abstract partial class InputSkill//IHighLightInput
     {
         public HighLightStruct IsHighLightInput { get; private set; } = new HighLightStruct();
@@ -87,4 +86,3 @@ namespace Pack
 
 
 
-}

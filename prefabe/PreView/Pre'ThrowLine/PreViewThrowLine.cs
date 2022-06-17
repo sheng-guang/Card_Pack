@@ -2,8 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Pack
-{
+
     public class PreViewThrowLine : PreViewNodeMono
     {
         public override string KindName => "ThrowLine";
@@ -94,4 +93,3 @@ namespace Pack
     }
 
 
-}
