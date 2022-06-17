@@ -13,7 +13,7 @@ namespace Pack
         }
     }
 
-    public partial class SkillComp //set up
+    public partial class SkillComp //设置skill 加载图片 set up
     {
         public Skill skill { get; private set; }
         public void SetSkill(Skill s)
@@ -32,77 +32,32 @@ namespace Pack
             StackSkillSpace.AddtoStackSpace(transform);
             this.AddToCamFollowerList();
             FollowCamUpdate_();
-            ImgMesh.LoadTexture("_MainTex", ImageW_H(), skill.unit.FullName(), 0);
+            ImgMesh.LoadTexture("_MainTex", ImageW_H(), skill.FullName, 0);
 
         }
     }
    
-    public partial class SkillComp // LineRender
+    public partial class SkillComp // 曲线 LineRender
     {
-        [Header("line")]
-        public BezierLineMesh line;
-        public Transform startPoint;
-        public Transform Tail1;
-        public Transform Tail2;
-
-        public void FreshLine()
-        {
-            line.SetLineActive(skill.IsStackTop);
-            if (skill.IsStackTop == false) return;
-
-            line.SetPoint(startPoint.position, 0);
-            line.SetPoint(Tail1.position, 1);
-            line.SetPoint(Tail2.position, 2);
-
-            var p = skill.unit.RealPoss;
-             //p = p.ShowInNewCam(Cam.MainCam, Cam.UI3DCam);
-            line.SetPoint(p, 3);
-            
-            line.FreshLine();
-        }
-  
-    }
-    public partial class SkillComp // LineRender2
-    {
-        [Header("lineTar")]
-        public BezierLineMesh lineTar;
-        public Transform startPointt;
-        public Transform Tail1t;
-        public Transform Tail2t;
-
-        public void FreshLineTar()
-        {
-            bool show = skill.HasMoreThanOneTar && skill.IsStackTop;
-            lineTar.SetLineActive(show);
-            if (show == false) return;
-            
-            lineTar.SetPoint(startPointt.position, 0);
-            lineTar.SetPoint(Tail1t.position, 1);
-            lineTar.SetPoint(Tail2t.position, 2);
-            lineTar.SetPoint(skill.TarV3Visual(), 3);
-            //skill.TarID
-            //var UnitPoss = skill.unit.RealPoss;
-            //var p = UnitPoss.ShowInNewCam(Cam.MainCam, Cam.UI3DCam);
-            //lineTar.SetPoint(p, 3);
-
-            lineTar.FreshLine();
-        }
-
+        public BezierLineMeshPoints LineStart;
+        public BezierLineMeshPoints LineTar;
+    
     }
 
 
-    public partial class SkillComp : ICameraFollowe_update//update
+    public partial class SkillComp : ICameraFollowe_update//刷新  update
     {
         public void FollowCamUpdate_()
         {
             FreshPoss();
             if (gameObject.activeInHierarchy == false) return;
-            FreshLine();
-            FreshLineTar();
+            LineStart.Fresh(skill.IsStackTop, skill.unit.VisualPoss);
+            bool show = skill.HasMoreThanOneTar && skill.IsStackTop;
+            LineTar.Fresh(show, skill.TarV3Visual());
             FreshIcon();
         }
     }
-    partial class SkillComp//freshPoss
+    partial class SkillComp//刷新位置 freshPoss
     {
         [Header("poss")]
         public Transform LittleOffset;
@@ -134,7 +89,7 @@ namespace Pack
 
         }
     }
-    public partial class SkillComp//pausing icon
+    public partial class SkillComp//暂停标志  pausing icon
     {
         [Header("Pausing Color")]
         public string ColorName;
@@ -168,7 +123,7 @@ namespace Pack
 
         }
     }
-    public partial class SkillComp : IPointerMoveHandler,IPointerDownHandler//pause
+    public partial class SkillComp : IPointerMoveHandler,IPointerDownHandler//暂停 pause
     {
         public void Fresh()
         {
@@ -187,7 +142,7 @@ namespace Pack
         }
     }
 
-    public partial class SkillComp : MonoBehaviour, IResGetter<SkillComp>, IRes//res
+    public partial class SkillComp : MonoBehaviour, IResGetter<SkillComp>, IRes//资源加载 res 
     {
         public string DirectoryName => "Assets/"+nameof(SkillComp);
 

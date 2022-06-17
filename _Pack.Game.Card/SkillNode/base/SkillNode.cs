@@ -60,6 +60,11 @@ namespace Pack
             g.AddNode(node);
             return node;
         }
+        public static SKillNode AddNod(this SkillNodeGroup g, SKillNode node)
+        {
+            g.AddNode(node);
+            return node;
+        }
     }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------
     public abstract class SkillNodeGroup : NodeMixSelf<Skill, SkillNodeGroup, SKillNode>.group_Self

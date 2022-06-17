@@ -86,39 +86,39 @@ namespace Pack
     {
         public static void ApplyOneTargetInput(Skill skill, InputForm p1)
         {
-            skill.groupData.Ex_Ptr<Vector3>(NN.Input_StartV3 + skill.GroupIndex)
+            skill.groupData.Ex_Ptr<Vector3>(nn.Input_StartV3 + skill.GroupIndex)
                 .SetIGet(skill.unit.RealPoss);
-            skill.groupData.Ex_Ptr<Vector3>(NN.Input_DirectionV3 + skill.GroupIndex)
+            skill.groupData.Ex_Ptr<Vector3>(nn.Input_DirectionV3 + skill.GroupIndex)
                  .SetIGet((p1.Child.Point.Value - skill.unit.RealPoss).normalized);
-            skill.groupData.Ex_Ptr<Vector3>(NN.Input_TargetV3 + skill.GroupIndex)
+            skill.groupData.Ex_Ptr<Vector3>(nn.Input_TargetV3 + skill.GroupIndex)
                 .SetIGet(p1.Child.Point.Value);
-            skill.groupData.Ex_Ptr<N<int>>(NN.LayerID + skill.GroupIndex)
+            skill.groupData.Ex_Ptr<N<int>>(nn.LayerID + skill.GroupIndex)
                 .SetIGet(p1.Child.LayerID);
         }
         public string GroupIndex = "";
         public Vector3 StartV3()
         {
-            return groupData.Ex_Ptr<Vector3>(NN.Input_StartV3 + GroupIndex).Value;
+            return groupData.Ex_Ptr<Vector3>(nn.Input_StartV3 + GroupIndex).Value;
         }
         public Vector3 DirV3()
         {
-            return groupData.Ex_Ptr<Vector3>(NN.Input_DirectionV3 + GroupIndex).Value;
+            return groupData.Ex_Ptr<Vector3>(nn.Input_DirectionV3 + GroupIndex).Value;
         }
         public Vector3 TarV3()
         {
             var to = TarID().To<IIDTarget>();
             if (to != null) { return to.RealPoss; }
-            return groupData.Ex_Ptr<Vector3>(NN.Input_TargetV3 + GroupIndex).Value;
+            return groupData.Ex_Ptr<Vector3>(nn.Input_TargetV3 + GroupIndex).Value;
         }
         public Vector3 TarV3Visual()
         {
             var to = TarID().To<IIDTarget>();
             if (to != null) { return to.VisualPoss; }
-            return groupData.Ex_Ptr<Vector3>(NN.Input_TargetV3 + GroupIndex).Value;
+            return groupData.Ex_Ptr<Vector3>(nn.Input_TargetV3 + GroupIndex).Value;
         }
         public N<int> TarID()
         {
-            return groupData.Ex_Ptr<N<int>>(NN.LayerID + GroupIndex).Value;
+            return groupData.Ex_Ptr<N<int>>(nn.LayerID + GroupIndex).Value;
         }
         public Unit TarUnit()
         {

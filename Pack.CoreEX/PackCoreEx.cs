@@ -2,9 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Pack;
-public static partial class eve//IDs
+public static partial class eve//int转Layer                   IDs
 {
-    //int ת Layer
     public static T To<T>(this int id)
     {
         return IDs<T>.Get(id);

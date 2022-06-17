@@ -15,8 +15,8 @@ namespace Pack
         public override void Set_(string key, object o)
         {
             base.Set_(key, o);
-            if (key == NN.NodeKind) o.TryToIGet_ref(ref NodeKind);
-            else if (key == NN.reversal) o.TryToIGet_ref(ref reversal);
+            if (key == nn.NodeKind) o.TryToIGet_ref(ref NodeKind);
+            else if (key == nn.reversal) o.TryToIGet_ref(ref reversal);
         }
         IGet<int> NodeKind = OneTargetInputSkill.FirstNodeKind.ToIGet<int>();
         IGet<bool> reversal = false.ToIGet<bool>();
@@ -38,9 +38,9 @@ namespace Pack
         public override void Set_(string key, object o)
         {
             base.Set_(key, o);
-            if (key == NN.NodeKind) o.TryToIGet_ref(ref NodeKind);
-            else if (key == NN.Reach) o.TryToIGet_ref(ref Reach);
-            else if (key == NN.reversal) o.TryToIGet_ref(ref reversal);
+            if (key == nn.NodeKind) o.TryToIGet_ref(ref NodeKind);
+            else if (key == nn.Reach) o.TryToIGet_ref(ref Reach);
+            else if (key == nn.reversal) o.TryToIGet_ref(ref reversal);
         }
 
         IGet<int> NodeKind = OneTargetInputSkill.FirstNodeKind.ToIGet<int>();

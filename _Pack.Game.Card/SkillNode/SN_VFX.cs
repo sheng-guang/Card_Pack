@@ -11,7 +11,7 @@ public class SN_NewVFX : SKillNode
     public override void Set_(string key, object o)
     {
         base.Set_(key, o);
-        if (key == NN.ResName) o.TryToIGet_ref(ref EffName);
+        if (key == nn.ResName) o.TryToIGet_ref(ref EffName);
     }
     IGet<string> EffName;
     public override int Fix_1Exit_2ToNext_4Break()

@@ -11,7 +11,7 @@ namespace Pack
         public override void Set_(string key, object o)
         {
             base.Set_(key, o);
-            if(key==NN.result)result=o.ToISet<Skill>();
+            if(key==nn.result)result=o.ToISet<Skill>();
         }
         ISet<Skill> result;
         public Skill Value { get; private set; }
@@ -28,7 +28,7 @@ namespace Pack
         public override void Set_(string key, object o)
         {
             base.Set_(key, o);
-            if (key == NN.SkillName) o.TryToIGet_ref(ref skillname);
+            if (key == nn.SkillName) o.TryToIGet_ref(ref skillname);
         }
         IGet<string> skillname;
         public override void invoke(InputForm p1)
@@ -45,7 +45,7 @@ namespace Pack
         public override void Set_(string key, object o)
         {
             base.Set_(key, o);
-            if (key == NN.Skill) skill = o.ToIGet<Skill>();
+            if (key == nn.Skill) skill = o.ToIGet<Skill>();
         }
         IGet<Skill> skill = (null as object).ToIGet<Skill>();
         public override void invoke(InputForm p1)
@@ -62,8 +62,8 @@ namespace Pack
         public override void Set_(string key, object o)
         {
             base.Set_(key, o);
-            if(key==NN.Skill) skill = o.ToIGet<Skill>();
-            if(key==NN.SkillListKind_1Stack_2Long)SkillList=o.ToIGet<int>();
+            if(key==nn.Skill) skill = o.ToIGet<Skill>();
+            if(key==nn.SkillListKind_1Stack_2Long)SkillList=o.ToIGet<int>();
         }
         IGet<Skill> skill = (null as object).ToIGet<Skill>();
         IGet<int> SkillList = 0.ToIGet<int>();
@@ -90,7 +90,7 @@ namespace Pack
         public override void Set_(string key, object o)
         {
             base.Set_(key, o);
-            if(key==NN.Skill)skill=o.ToIGet<Skill>();
+            if(key==nn.Skill)skill=o.ToIGet<Skill>();
         }
        IGet<Skill> skill=(null as object).ToIGet<Skill>();
         public override void invoke(InputForm p1)
@@ -106,7 +106,7 @@ namespace Pack
         public override void Set_(string key, object o)
         {
             base.Set_(key, o);
-            if (key == NN.Skill) skill = o.ToIGet<Skill>();
+            if (key == nn.Skill) skill = o.ToIGet<Skill>();
         }
         IGet<Skill> skill = (null as object).ToIGet<Skill>();
         public override void invoke(InputForm p1)
@@ -124,8 +124,8 @@ namespace Pack
         public override void Set_(string key, object o)
         {
             base.Set_(key, o);
-             if (key == NN.SkillKind_1Stack_2Long) o.TryToIGet_ref(ref ListKind);
-            else if (key == NN.Action) o.TryToIGet_ref(ref TransferAction);
+             if (key == nn.SkillKind_1Stack_2Long) o.TryToIGet_ref(ref ListKind);
+            else if (key == nn.Action) o.TryToIGet_ref(ref TransferAction);
         }
         IGet<int> ListKind=0.ToIGet<int>();
         IGet<Action<Skill, InputForm, Skill>> TransferAction;
@@ -159,9 +159,9 @@ namespace Pack
         public override void Set_(string key, object o)
         {
             base.Set_(key, o);
-            if (key == NN.SkillName) o.TryToIGet_ref(ref SkillName);
-            else if (key == NN.SkillKind_1Stack_2Long) o.TryToIGet_ref(ref ListKind);
-            else if (key == NN.Action) o.TryToIGet_ref(ref TransferAction);
+            if (key == nn.SkillName) o.TryToIGet_ref(ref SkillName);
+            else if (key == nn.SkillKind_1Stack_2Long) o.TryToIGet_ref(ref ListKind);
+            else if (key == nn.Action) o.TryToIGet_ref(ref TransferAction);
         }
         IGet<int> ListKind;
         IGet<string> SkillName;

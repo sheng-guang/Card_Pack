@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 namespace Pack
 {
-
-   public abstract partial class Unit: LayerID//base
+    public abstract partial class Unit: LayerID//base
     {
         public override Unit unit => this;
         public UnitEvent Event = new UnitEvent();

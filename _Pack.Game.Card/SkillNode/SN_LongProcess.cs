@@ -11,9 +11,9 @@ public class SN_ShowBeforeMagicEffect : SKillNode
     public override void Set_(string key, object o)
     {
         base.Set_(key, o);
-        if (key == NN.StartPoint) o.TryToIGet_ref(ref StartPoint);
-        else if (key == NN.Direction) o.TryToIGet_ref(ref Dir);
-        else if (key == NN.TimeLeft) 
+        if (key == nn.StartPoint) o.TryToIGet_ref(ref StartPoint);
+        else if (key == nn.Direction) o.TryToIGet_ref(ref Dir);
+        else if (key == nn.TimeLeft) 
         {
             o.TryToIGet_ref(ref timeLeftGetter); 
             TimeLeft = timeLeftGetter.Value;

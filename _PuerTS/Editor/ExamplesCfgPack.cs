@@ -12,7 +12,13 @@ public class ExamplesCfg_Pack
     static IEnumerable<Type> b()
     {
         {
-            var to = Assembly.Load("Assembly-CSharp").GetExportedTypes().Where(x => x.Namespace == "Pack");
+            var to = Assembly.Load("Assembly-CSharp")
+                .GetExportedTypes()
+                .Where(x => {
+                    return x.Namespace == "Pack"
+                    || x.GetCustomAttribute<ApiAttribute>() != null
+                    ;
+                    });
             foreach (var t in to) yield return t;
         }
         {
@@ -24,10 +30,17 @@ public class ExamplesCfg_Pack
             foreach (var t in to) yield return t;
         }
         {
-            yield return typeof(VarUnit);
-            yield return typeof(LSkill);
-
+            yield return typeof(ts);
             yield return typeof(eve);
+
+        }
+        {
+            yield return typeof(TsInit);
+        }
+
+        {
+            yield return typeof(VarUnit);
+
 
             yield return typeof(Func<int>);
             yield return typeof(T<int>);
@@ -52,7 +65,15 @@ public class ExamplesCfg_Pack
             yield return typeof(CallReaction_Delegate);
 
             yield return typeof(Buff_Delegate);
+        }
+        {//skill
+            yield return typeof(SkillNodeGroup);
+            yield return typeof(NodeMixSelf<Skill, SkillNodeGroup, SKillNode>.group_Self);
+            yield return typeof(NodeMixSelf<Skill, SkillNodeGroup, SKillNode>.node_Self);
+            
 
+        }
+        { 
 
 
             yield return typeof(SkillNodeResult);

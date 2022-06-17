@@ -34,12 +34,14 @@ namespace Pack
 
         public override void OnInspectorGUI()
         {
+           
             GUILayout.BeginHorizontal();
             if (GUILayout.Button("Clear")) Clear(tar);
             if (GUILayout.Button("AsPrefabe")) AsPrefabe(tar);
             if (GUILayout.Button("AsPackage")) AsPackage(tar);
             GUILayout.EndHorizontal();
-            base.OnInspectorGUI();
+            //base.OnInspectorGUI();
+
         }
 
         public static void Clear(ResTool tar)

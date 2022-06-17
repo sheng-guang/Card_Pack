@@ -75,14 +75,14 @@ namespace Pack
         }
         public virtual N<Vector3> GetV3(string DataName)
         {
-            if (DataName == NN.Point) return Point;
+            if (DataName == nn.Point) return Point;
             return MasterSkill.GetV3(DataName, NodeKind);
         }
         //int
         public virtual N<int> LayerID { get; set; }
         public virtual N<int> GetInt(string DataName)
         {
-            if (DataName == NN.LayerID) return LayerID;
+            if (DataName == nn.LayerID) return LayerID;
             return MasterSkill.GetInt(DataName, NodeKind);
         }
         //float
@@ -94,7 +94,7 @@ namespace Pack
         //bool
         public virtual N<bool> GetBool(string DataName)
         {
-            if (DataName == NN.Useful) return MasterSkill.TestNodeUseful(this);
+            if (DataName == nn.Useful) return MasterSkill.TestNodeUseful(this);
             return MasterSkill.GetBool(DataName, NodeKind);
         }
 

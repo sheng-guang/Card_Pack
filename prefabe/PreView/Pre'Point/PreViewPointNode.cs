@@ -13,10 +13,10 @@ namespace Pack
         public override void Fresh()
         {
             //print("point haveValue   " + Master.Point.HasValue);
-            var p = Master.GetV3(NN.Point);
+            var p = Master.GetV3(nn.Point);
             if (p.NoValue) { gameObject.SetActive(false); return; }
             gameObject.SetActive(true);
-            var useful = Master.GetBool(NN.Useful);
+            var useful = Master.GetBool(nn.Useful);
             UseFulPoint.SetActive(useful.HasValue?useful.Value:false);
             transform.position = p.Value;
         }

@@ -6,7 +6,7 @@ using System.Linq;
 using System;
 using Pack;
 
-public static partial class eve//getplayer
+partial class eve//根据id获取玩家
 {
     public static Player getPlayer_offSet(int baseID, int offset)
     {
@@ -27,19 +27,9 @@ public static partial class eve//getplayer
         return GameList.playerList[toIndex];
     }
 }
-public static partial class eve
-{
-    public static bool IsFollowing(this Unit u)
-    {
-        return u.up != u.player && u.up != GameList.NowHost;
-    }
 
-    //player
-    public static void SetHero(Player p, Unit u)
-    {
-        if (u.CanBeHero == false) return;
-        p.MainHero = u.CanBeHero;
-    }
+partial class eve//向量计算
+{
     public static Vector3 GetMoveVector(Player p, int ws, int da)
     {
         var right = p.CamFoward.Value.GetRight_normal();
@@ -47,7 +37,52 @@ public static partial class eve
         var re = right * da + foward * ws;
         return re.normalized;
     }
-    //unit
+    public static float Distance(this LayerID a, LayerID b)
+    {
+        return Vector3.Distance(a.RealPoss, b.RealPoss);
+    }
+}
+partial class eve//物理计算
+{
+    //phy
+    static Collider[] c = new Collider[1024];
+    public static void OverlapUnit(Vector3 point, float r, Action<Unit> WriteResult)
+    {
+        int count = Physics.OverlapSphereNonAlloc(point, r, c);
+        if (count >= 1024) Debug.LogWarning("overlap Out of index  now count" + count);
+        for (int i = 0; i < count; i++)
+        {
+            var Getter = c[i].ToUnit();
+            //todogc
+            if (Getter.IsNull_or_EqualNull()) continue;
+            WriteResult(Getter.u);
+        }
+    }
+
+    public static void OverLapCollider(Vector3 point, float r, Action<Collider> WriteResult)
+    {
+        int count = Physics.OverlapSphereNonAlloc(point, r, c);
+        if (count >= 1024) Debug.LogWarning("overlap Out of index  now count" + count);
+        for (int i = 0; i < count; i++)
+        {
+            var coll = c[i];
+            WriteResult(coll);
+        }
+    }
+
+}
+partial class eve//修改玩家属性
+{
+    //player
+    public static void SetHero(Player p, Unit u)
+    {
+        if (u.CanBeHero == false) return;
+        p.MainHero = u.CanBeHero;
+    }
+}
+partial class eve//修改unit 属性
+{
+   //unit
     public static void UseMana(Unit u, Player p)
     {
         if (u.ManaCost.Value_Buffed.HasValue == false) return;
@@ -57,7 +92,6 @@ public static partial class eve
     {
         u.State.Value = s;
     }
-
     public static void SetSpace(Unit u, int toSpace)
     {
         int lastSpace = u.Space.Value;
@@ -91,10 +125,6 @@ public static partial class eve
         l.AddUnitFollower(u);
     }
 
-    //public static void AddToCallList( Unit u)
-    //{
-    //    Driver.instance.UnitCallList.Add(u);
-    //}
     public static void AddPoss(Unit u, Vector3 poss)
     {
         u._SetPoss(u.RealPoss + poss);
@@ -111,37 +141,9 @@ public static partial class eve
     {
         u.rig.velocity = v;
     }
-    //loop
-    //tob use job system
-    public static void ForEachCallListUnit(Action<Unit> act)
-    {
-        GameList.ForEachCallList(act);
-    }
-    //phy
-    static Collider[] c = new Collider[1024];
-    public static void OverlapUnit(Vector3 point, float r, Action<Unit> WriteResult)
-    {
-        int count = Physics.OverlapSphereNonAlloc(point, r, c);
-        if (count >= 1024) Debug.LogWarning("overlap Out of index  now count" + count);
-        for (int i = 0; i < count; i++)
-        {
-            var Getter = c[i].ToUnit();
-            //todogc
-            if (Getter.IsNull_or_EqualNull()) continue;
-            WriteResult(Getter.u);
-        }
-    }
-
-    public static void OverLapCollider(Vector3 point, float r, Action<Collider> WriteResult)
-    {
-        int count = Physics.OverlapSphereNonAlloc(point, r, c);
-        if (count >= 1024) Debug.LogWarning("overlap Out of index  now count" + count);
-        for (int i = 0; i < count; i++)
-        {
-            var coll = c[i];
-            WriteResult(coll);
-        }
-    }
+}
+partial class eve//初始化
+{  
     //layer
     public static void AwakeLoad(LayerID l)
     {
@@ -150,15 +152,26 @@ public static partial class eve
             AfterSimulate.collection.AddToList(l.AsIAfterSimulate);
         }
     }
-    public static float Distance(this LayerID a, LayerID b)
+
+}
+partial class eve//遍历 unity
+{ 
+    //loop
+    //todo use job system
+    public static void ForEachCallListUnit(Action<Unit> act)
     {
-        return Vector3.Distance(a.RealPoss, b.RealPoss);
+        GameList.ForEachCallList(act);
     }
+
 }
 
 
-public static partial class eve//text
+public static partial class eve//状态判断 关系判断                 isTest
 {
+    public static bool IsFollowing(this Unit u)
+    {
+        return u.up != u.player && u.up != GameList.NowHost;
+    }
     public static bool IsCardInHand(this Unit u)
     {
         if (u == null) return false;

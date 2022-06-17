@@ -16,8 +16,8 @@ namespace Pack
         public float Wide = 0.05f;
         public override void Fresh()
         {
-            var now = Master.GetV3(NN.Point);
-            var up = Master.UPViewNode.GetV3(NN.Point);
+            var now = Master.GetV3(nn.Point);
+            var up = Master.UPViewNode.GetV3(nn.Point);
             if (now .NoValue || up.NoValue) { gameObject.SetActive(false); return; }
             gameObject.SetActive(true);
             transform.position = now.Value;

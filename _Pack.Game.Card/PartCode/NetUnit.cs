@@ -5,7 +5,7 @@ namespace Pack
 {
     //unit      //unit      //unit      //unit      //unit      //unit      //unit      //unit      //unit      //unit      //unit      //unit      //unit      //unit  
 
-    partial class Unit : ICallListener //call 
+    partial class Unit : ICallListener //触发 call 
     {
         public virtual void DoCall(Call call) 
         {
@@ -42,11 +42,13 @@ namespace Pack
         }
     }
 
-    public abstract partial class Unit // awake functions 初始化函数
+    partial class Unit //初始化函数  awake functions 
     {
         public override void OnSetID_Awake()
         {
             base.OnSetID_Awake();
+            LoadUnitData();
+
             //Debug.Log(this + "2.0   " + transform.position);
 
             OnSetID_Awake_Param();
@@ -62,12 +64,12 @@ namespace Pack
         public override void Awake()
         {
             base.Awake();
-            Awake_UnitData();
-            rig = GetComponent<Rigidbody>();
+            if(rig==null) rig = GetComponent<Rigidbody>();
         }
     }
-    public abstract partial class Unit//unit Data配置的数据
+    partial class Unit//配置的数据 unit Data
     {
+        public virtual bool CreatUnitData => true;
         UnitData _BaseData = null;
         public UnitData BaseData
         {
@@ -77,8 +79,9 @@ namespace Pack
                 return _BaseData;
             }
         }
-        public void Awake_UnitData()
+        public void LoadUnitData()
         {
+            Debug.Log(this.FullName());
             ManaCost.Value_Base = BaseData.Mana;
             atk.Value_Base = BaseData.atk;
             speed.Value_Base = BaseData.speed;
@@ -86,7 +89,7 @@ namespace Pack
             HP.Value = BaseData.MaxHp;
         }
     }
-    public abstract partial class Unit //param 网络同步属性
+    partial class Unit //网络同步属性 param 
     {
         public float UIHeight => BaseData.UIHeight;
         public float UIWide => BaseData.WideR;
@@ -136,7 +139,7 @@ namespace Pack
     [RequireComponent(typeof(Rigidbody))]
     [RequireComponent(typeof(ResTool))]
     [RequireComponent(typeof(ComRig))]
-    public abstract partial class Unit //layer实现layer相关属性和函数
+    partial class Unit // 实现layer相关属性和函数  layer
     {
         public override Unit TopUnit { get { if (up.unit == null) { return this; } else return up.TopUnit; } }
         //hero
@@ -148,7 +151,7 @@ namespace Pack
         public Rigidbody rig;
     }
 
-    public abstract partial class Unit : IResGetter<Unit>  //res资源接口
+    partial class Unit : IResGetter<Unit>  //资源创建 res
     {
         public override string DirectoryName => "Assets/" + nameof(Unit);
         public Unit GetNew(ResArgs args)
@@ -161,7 +164,7 @@ namespace Pack
         public object GetNewObject(ResArgs a) { return GetNew(a); }
     }
 
-    public abstract partial class Unit : IAfterSimulate//onland物理刷新是否在地上
+    partial class Unit : IAfterSimulate//物理刷新   是否在地上  onland
     {
         public virtual void AfterSimulate_()
         {
@@ -175,7 +178,7 @@ namespace Pack
     }
 
 
-    public abstract partial class Unit : ITarget   // 输入目标
+    partial class Unit : ITarget   //作为 输入目标
     {
         //target
         public IInputData GetData()
@@ -188,7 +191,7 @@ namespace Pack
 
 
 
-    public abstract partial class Unit // realposs poss 空间坐标
+    partial class Unit //空间坐标  realposs poss 
     {
         public void _SetPoss(Vector3 v) { transform.position = v; }
         public override Vector3 RealPoss
@@ -211,7 +214,7 @@ namespace Pack
 
 
 
-    public abstract partial class Unit //follower 添加或移除 附着卡牌
+    partial class Unit //添加或移除 附着卡牌 follower 
     {
         public override void AddUnitFollower(Unit u)
         {

@@ -10,11 +10,11 @@ public class SN_CreatNewUnitForPlayer : SKillNode
     public override void Set_(string key, object o)
     {
         base.Set_(key, o);
-        if (key == NN.FullName) o.TryToIGet_ref(ref unitFullName);
-        else if (key == NN.space) o.TryToIGet_ref(ref space);
-        else if (key == NN.state) o.TryToIGet_ref(ref state);
-        else if (key == NN.OffSetY) o.TryToIGet_ref(ref offsetY);
-        else if (key == NN.ID_offset) o.TryToIGet_ref(ref IDoffSet);
+        if (key == nn.FullName) o.TryToIGet_ref(ref unitFullName);
+        else if (key == nn.space) o.TryToIGet_ref(ref space);
+        else if (key == nn.state) o.TryToIGet_ref(ref state);
+        else if (key == nn.OffSetY) o.TryToIGet_ref(ref offsetY);
+        else if (key == nn.ID_offset) o.TryToIGet_ref(ref IDoffSet);
     }
     IGet<int>IDoffSet=0.ToIGet<int>();
     IGet<string> unitFullName;

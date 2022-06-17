@@ -58,13 +58,25 @@ public class Cfg : EditorWindow
         var datas = UnitData.GetAllData().ToList();
         //Debug.Log("Load Count: "+datas.Count);
         var list = PrefabList.GetListCopy();
+        HashSet<string> DontCreateUnitData = new HashSet<string>();
         foreach (var item in list)
         {
             if (item.pre == null) continue;
             Unit u = item.pre.GetComponent<Unit>();
             if (u == null) continue;
+            if (u.CreatUnitData == false) { DontCreateUnitData.Add(u.FullName()); continue; }
             UnitData.EnsureData(u.FullName());
         }
+
+        //todo ¶ÁÈ¡ÎÄ¼þ¼Ð
+        
+        DirectoryInfo UnitDir = new DirectoryInfo(PathForAsset.AssetsResPath("Unit"));
+        foreach (var item in UnitDir.GetDirectories())
+        {
+            if (DontCreateUnitData.Contains(item.Name)) continue;
+            UnitData.EnsureData(item.Name);
+        }
+
         UnitData.SaveAll();
         datas = UnitData.GetAllData().ToList();
         Debug.Log("Load Count: " + datas.Count);

@@ -34,26 +34,29 @@ namespace Pack
 
     public abstract partial class LayerID:IBuffOwner //buff
     {
-        //buff
-        public void AddBuff(string s)
-        {
-            Buff b = Creater<Buff>.GetNew(s);
-            AddBuff(b);
-        }
+
         public void AddBuff(Buff b)
         {
             b.SetUp(this);
             buffs.EnsureAdd(b);
         }
-        public HashSet_NodeList<BuffBase> buffs { get; private set; } = new HashSet_NodeList<BuffBase>();
+        HashSet_NodeList<BuffBase> buffs { get; set; } = new HashSet_NodeList<BuffBase>();
+        public void ForEachBuff(Action<BuffBase> a)
+        {
+            buffs.ForEach(a);
+        }
         public void RemoveBuff(BuffBase b)
         {
             buffs.Remove(b);
         }
-
+        public void RemoveAllBuff()
+        {
+            buffs.ForEach(x => BuffSysData.RemoveBuff(x));
+            buffs.Clear();
+        }
 
     }
-    public abstract partial class LayerID //space state  change 
+    public abstract partial class LayerID 
     {
 
     }

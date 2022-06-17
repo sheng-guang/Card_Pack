@@ -34,6 +34,11 @@ namespace Pack
             {
                 var item = inputs[i];
                 var to = IDs<IInputUser>.Get(item.NetID);
+                if (to == null)
+                {
+                    Debug.Log("use input: id  ["+item.NetID + "] no found");
+                    continue;
+                }
                 to.ServerUseInput(item);
             }
             inputs.Clear();

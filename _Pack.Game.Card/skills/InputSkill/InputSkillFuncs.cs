@@ -20,13 +20,13 @@ namespace Pack
             // test
             s.F_HighLightTest.AddNode(new HighLightTest_ManaEnough());
             s.F_TestNodeUseful.AddNode(new TestNodeUseful_In_Range())
-                    .Set(NN.NodeKind, OneTargetInputSkill.FirstNodeKind)
-                    .Set(NN.Reach, s.Ex_Ptr<N<float>>(NN.Reach));
+                    .Set(nn.NodeKind, OneTargetInputSkill.FirstNodeKind)
+                    .Set(nn.Reach, s.Ex_Ptr<N<float>>(nn.Reach));
 
             //preview
             s.F_NodeForm.AddNode(new NodeForm_Reach_OneTarget())
-                .Set(NN.Reach, s.Ex_Ptr<N<float>>(NN.Reach))
-                .Set(NN.HighThrow,s.Ex_Ptr<N<bool>>(NN.HighThrow));
+                .Set(nn.Reach, s.Ex_Ptr<N<float>>(nn.Reach))
+                .Set(nn.HighThrow,s.Ex_Ptr<N<bool>>(nn.HighThrow));
             s.HasMoreThanOneTar = true;
         }
         /// <summary>
@@ -34,22 +34,22 @@ namespace Pack
         /// </summary>
         public static void EnableReach(InputSkill_Delegate s, object o)
         {
-            var to= s.Ex_Ptr<N<float>>(NN.Reach).SetIGet(o);
+            var to= s.Ex_Ptr<N<float>>(nn.Reach).SetIGet(o);
           
-            s.F_GetFloat.AddNode(new GetFloat_Reach()).Set(NN.Reach, to);
+            s.F_GetFloat.AddNode(new GetFloat_Reach()).Set(nn.Reach, to);
         }
         public static void EnableThrowLine(InputSkill_Delegate s, object HighThrow, IGet<N<int>> speed)
         {
-            s.Ex_Ptr<N<bool>>(NN.HighThrow).SetIGet(HighThrow);
+            s.Ex_Ptr<N<bool>>(nn.HighThrow).SetIGet(HighThrow);
             
-            s.F_GetBool.AddNode(new GetBool_IsHighThrow()).Set(NN.HighThrow, HighThrow);
-            s.F_GetInt.AddNode(new GetInt_Speed()).Set(NN.speed, speed);
+            s.F_GetBool.AddNode(new GetBool_IsHighThrow()).Set(nn.HighThrow, HighThrow);
+            s.F_GetInt.AddNode(new GetInt_Speed()).Set(nn.speed, speed);
         }
         public static void EnableThrowOffset(InputSkill_Delegate s, IGet<N<float>> OffsetY, IGet<N<float>> OffsetXZ)
         {
             s.F_GetFloat.AddNode(new GetFloat_Offset())
-                .Set(NN.OffSetY, OffsetY)
-                .Set(NN.OffSetXZ,OffsetXZ);
+                .Set(nn.OffSetY, OffsetY)
+                .Set(nn.OffSetXZ,OffsetXZ);
         }
 
 

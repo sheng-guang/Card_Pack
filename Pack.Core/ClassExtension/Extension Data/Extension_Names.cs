@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public static partial class NN
+public static partial class nn
 {
     //settting
     public const string IsServer = nameof(IsServer);

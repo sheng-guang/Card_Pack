@@ -15,26 +15,26 @@ namespace Pack
         public static ResArgs SetPoss(this ResArgs arg, Vector3 v)
         {
             if (arg == null) return null;
-            arg.dictionary.Add(NN.poss, v);
+            arg.dictionary.Add(nn.poss, v);
             return arg;
         }
         public static Vector3? GetPoss(this ResArgs arg)
         {
             if (arg == null) return null;
-            if (arg.dictionary.TryGetValue(NN.poss, out var re) == false) return null;
+            if (arg.dictionary.TryGetValue(nn.poss, out var re) == false) return null;
            return re as Vector3?;
         }
         public static ResArgs SetParent(this ResArgs arg, Component t)
         {
             if (arg == null) return null;
-            arg.dictionary.Add(NN.transf, t.transform);
+            arg.dictionary.Add(nn.transf, t.transform);
             return arg;
         }
 
         public static Transform GetParent(this ResArgs arg)
         {
             if (arg == null) return null;
-            if(arg.dictionary.TryGetValue(NN.transf, out var re) == false) return null;
+            if(arg.dictionary.TryGetValue(nn.transf, out var re) == false) return null;
             return re as Transform;
         }
         public static ResArgs SetObj(this ResArgs arg,string key,object obj)

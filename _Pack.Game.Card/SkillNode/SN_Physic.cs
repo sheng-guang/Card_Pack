@@ -19,8 +19,8 @@ public class SN_SetPoss : SKillNode
     public override void Set_(string key, object o)
     {
         base.Set_(key, o);
-        if (key == NN.Point) o.TryToIGet_ref(ref poss);
-        else if (key == NN.Unit) o.TryToIGet_ref(ref TarGetUnit);
+        if (key == nn.Point) o.TryToIGet_ref(ref poss);
+        else if (key == nn.Unit) o.TryToIGet_ref(ref TarGetUnit);
     }
     IGet<Vector3> poss=Vector3.zero.ToIGet<Vector3>();
     IGet<Unit> TarGetUnit;
@@ -41,7 +41,7 @@ public class SN_SetV : SKillNode
     public override void Set_(string key, object o)
     {
         base.Set_(key, o);
-        if (key == NN.V) o.TryToIGet_ref(ref v);
+        if (key == nn.V) o.TryToIGet_ref(ref v);
         //v = self.Param_V3(o.Cast<string>());
     }
     IGet<Vector3> v;
@@ -59,8 +59,8 @@ public class SN_ThrowUnit : SKillNode
     public override void Set_(string key, object o)
     {
         base.Set_(key, o);
-        if (key == NN.TarGetPoint) o.TryToIGet_ref(ref TargetPoint);
-        else if (key == NN.HighThrow) o.TryToIGet_ref(ref HighThrow);
+        if (key == nn.TarGetPoint) o.TryToIGet_ref(ref TargetPoint);
+        else if (key == nn.HighThrow) o.TryToIGet_ref(ref HighThrow);
     }
     IGet<Vector3> TargetPoint;
     IGet<N<bool>> HighThrow = false.ToIGet<N<bool>>();
@@ -89,7 +89,7 @@ public class SN_WaitTouchLand_OrBreak : SKillNode
     public override void Set_(string key, object o)
     {
         base.Set_(key, o);
-        if (key == NN.R) o.TryToIGet_ref(ref r);
+        if (key == nn.R) o.TryToIGet_ref(ref r);
     }
     public SN_WaitTouchLand_OrBreak()
     {

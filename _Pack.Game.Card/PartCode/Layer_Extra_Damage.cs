@@ -6,15 +6,36 @@ using System.Linq;
 using System;
 
 using Pack;
-partial class eve//call
+partial class eve//触发 call
 {
     public static void DoCall(Call c)
     {
         CallSys.DoCall(c);
     }
 }
-partial class eve//skill
+partial class eve//技能 相关
 {
+
+    public static void PauseSkillForPlayer_EnsureComp(this Skill s,int PausePlayerID)
+    {
+        s.EnsureComp();
+        s.ServerSetPausing(PausePlayerID);
+    }
+    public static int SN_TestPause(this Skill s)
+    {
+        if (s.IsPausing) return SkillNodeResult.Break_TryThisAgain;
+        return SkillNodeResult.ToNext;
+    }
+
+
+    public static void AddSkillToLayerID(this Skill s, LayerID l,int SkillKindMask,byte kind=0)
+    {
+        l.AddSkill(s, SkillKindMask, kind);
+    }
+    public static void SetSkillImageName(this Skill s,string name)
+    {
+        s.FullName = name;
+    }
     public static void SetSkillUp(this Skill s,LayerID up)
     {
         up.LinkToSkill(s);
@@ -25,7 +46,18 @@ partial class eve//skill
     }
 }
 
-public static partial class eve//damage
+partial class eve//沉默 buff
+{
+    public static void RemoveBuff(Buff b)
+    {
+        b.RemoveSelf();
+    }
+    public static void Silence(Unit u)
+    {
+        u.RemoveAllBuff();
+    }
+}
+partial class eve//伤害 摧毁
 {
     public static void DestoryUnit(Unit u)
     {

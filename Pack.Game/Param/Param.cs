@@ -114,7 +114,7 @@ namespace Pack
     {
         public int NetHashCode { get; set; }
         bool LinkedToNet = false;
-        static IGetSeat<bool> IsServer = Setting<bool>.GetSetting(NN.IsServer);
+        static IGetSeat<bool> IsServer = Setting<bool>.GetSetting(nn.IsServer);
         bool isServer => IsServer.Value;
     }
     //----------------------------------------------------------------------------------------------------------------------------------------------------------------------

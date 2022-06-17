@@ -103,11 +103,13 @@ namespace Pack
     {
         public virtual void Invoke()
         {
+            //todo·ÀÖ¹¿¨×¡
             while (OnPoint != null)
             {
                 var re = OnPoint.Fix_1Exit_2ToNext_4Break();
                 if (re.MaskContain(1)) { Exist(); break; }
                 if (re.MaskContain(2)) { ToNext(); }
+            
             }
             //Debug.Log("Once skill   [" + self + "]  exist");
         }

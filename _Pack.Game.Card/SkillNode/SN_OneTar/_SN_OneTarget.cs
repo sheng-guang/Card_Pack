@@ -28,8 +28,8 @@ namespace Pack
         public override void Set_(string key, object o)
         {
             base.Set_(key, o);
-            if (key == NN.Reach) o.TryToIGet_ref(ref Reach);
-            else if (key == NN.HighThrow) 
+            if (key == nn.Reach) o.TryToIGet_ref(ref Reach);
+            else if (key == nn.HighThrow) 
             {
                 o.TryToIGet_ref(ref HighThrow);
                 //Debug.Log(HighThrow);
@@ -73,14 +73,14 @@ namespace Pack
         public override void Set_(string key, object o)
         {
             base.Set_(key, o);
-            if (key == NN.NodeKind) o.TryToIGet_ref(ref kind);
-            else if (key == NN.Reach) o.TryToIGet_ref(ref reach);
+            if (key == nn.NodeKind) o.TryToIGet_ref(ref kind);
+            else if (key == nn.Reach) o.TryToIGet_ref(ref reach);
         }
         public IGet<int> kind;
         public IGet<N<float>> reach;
         public override void Invoke(string p1, int p2)
         {
-            if (p1 != NN.Reach) return;
+            if (p1 != nn.Reach) return;
             if(kind!=null&&kind.Value!=p2) return;
             if (reach.IsNull_or_EqualNull()) return;
             if (reach.Value.HasValue == false) return;
@@ -94,9 +94,9 @@ namespace Pack
         public override void Set_(string key, object o)
         {
             base.Set_(key, o);
-            if (key == NN.NodeKind) o.TryToIGet_ref(ref kind);
-            else if (key == NN.OffSetY) o.TryToIGet_ref(ref OffSetY);
-            else if (key == NN.OffSetXZ) o.TryToIGet_ref(ref OffSetXZ);
+            if (key == nn.NodeKind) o.TryToIGet_ref(ref kind);
+            else if (key == nn.OffSetY) o.TryToIGet_ref(ref OffSetY);
+            else if (key == nn.OffSetXZ) o.TryToIGet_ref(ref OffSetXZ);
         }
         public IGet<int> kind;
         public IGet<N<float>> OffSetY;
@@ -104,13 +104,13 @@ namespace Pack
         public override void Invoke(string p1, int p2)
         {
             if (kind != null && kind.Value != p2) return;
-            if (p1 == NN.OffSetY)
+            if (p1 == nn.OffSetY)
             {
                 if (OffSetY.IsNull_or_EqualNull()) return;
                 if (OffSetY.Value.HasValue == false) return;
                 re(OffSetY.Value);
             }
-            else if(p1== NN.OffSetXZ)
+            else if(p1== nn.OffSetXZ)
             {
                 if (OffSetXZ.IsNull_or_EqualNull()) return;
                 if (OffSetXZ.Value.HasValue == false) return;
@@ -127,14 +127,14 @@ namespace Pack
         public override void Set_(string key, object o)
         {
             base.Set_(key, o);
-            if (key == NN.NodeKind) o.TryToIGet_ref(ref kind);
-            else if (key == NN.speed) o.TryToIGet_ref(ref Speed);
+            if (key == nn.NodeKind) o.TryToIGet_ref(ref kind);
+            else if (key == nn.speed) o.TryToIGet_ref(ref Speed);
         }
         public IGet<int> kind;
         public IGet<N<int>> Speed;
         public override void Invoke(string p1, int p2)
         {
-            if (p1 != NN.speed) return;
+            if (p1 != nn.speed) return;
             if (kind != null && kind.Value != p2) return;
             if(Speed.IsNull_or_EqualNull()) return;
             if(Speed.Value.HasValue == false) return;
@@ -148,8 +148,8 @@ namespace Pack
         public override void Set_(string key, object o)
         {
             base.Set_(key, o);
-            if (key == NN.NodeKind) o.TryToIGet_ref(ref kind);
-            else if (key == NN.HighThrow) 
+            if (key == nn.NodeKind) o.TryToIGet_ref(ref kind);
+            else if (key == nn.HighThrow) 
             {
                 o.TryToIGet_ref(ref HighThrow);
 
@@ -159,7 +159,7 @@ namespace Pack
         public IGet<N<bool>> HighThrow;
         public override void Invoke(string p1, int p2)
         {
-            if (p1 != NN.HighThrow) return;
+            if (p1 != nn.HighThrow) return;
             if (kind != null && kind.Value != p2) return;
             if (HighThrow.IsNull_or_EqualNull()) return;
             if (HighThrow.Value.HasValue == false) return;
@@ -175,7 +175,7 @@ namespace Pack
         public override void Set_(string key, object o)
         {
             base.Set_(key, o);
-            if (key == NN.MaxInde) o.TryToIGet_ref(ref MaxNodeIndex);
+            if (key == nn.MaxInde) o.TryToIGet_ref(ref MaxNodeIndex);
         }
         public IGet<int> MaxNodeIndex = (1).ToIGet<int>();
         public override void Invoke(InputNode p1, int p2)

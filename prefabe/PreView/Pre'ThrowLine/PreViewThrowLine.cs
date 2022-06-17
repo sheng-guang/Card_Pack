@@ -21,18 +21,18 @@ namespace Pack
         }
         public override void Fresh()
         {
-            var speed = Master.GetInt(NN.speed);
-            var highThrow = Master.GetBool(NN.HighThrow);
-            var now = Master.GetV3(NN.Point);
-            var up = Master.UPViewNode.GetV3(NN.Point);
+            var speed = Master.GetInt(nn.speed);
+            var highThrow = Master.GetBool(nn.HighThrow);
+            var now = Master.GetV3(nn.Point);
+            var up = Master.UPViewNode.GetV3(nn.Point);
 
 
             //Debug.Log(now.HasValue + "|" + up.HasValue + "|" + speed.HasValue + "|" + highThrow.HasValue);
             if (now.NoValue || up.NoValue || speed.NoValue || highThrow.NoValue) { gameObject.SetActive(false); return; }
             var start = up.Value;
             {
-                var offsety = Master.GetFloat(NN.OffSetY);
-                var offsetXZ = Master.GetFloat(NN.OffSetXZ);
+                var offsety = Master.GetFloat(nn.OffSetY);
+                var offsetXZ = Master.GetFloat(nn.OffSetXZ);
                 if (offsety.HasValue) 
                 {
                     start += offsety.Value * Vector3.up;

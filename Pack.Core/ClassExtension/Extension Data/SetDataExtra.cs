@@ -20,7 +20,7 @@ namespace Pack
                 var t = obj.GetType();
                 if (methods.ContainsKey(t) == false)
                 {
-                    var info = t.GetMethod(NN.TrySetMethodName);
+                    var info = t.GetMethod(nn.TrySetMethodName);
                     methods.Add(t, info);
                 }
                 var m = methods[t];
