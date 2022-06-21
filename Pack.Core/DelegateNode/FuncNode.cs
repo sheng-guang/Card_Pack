@@ -2,13 +2,16 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Pack;
 
-
+//
+namespace Pack
+{
     public abstract class FuncMix<s, Tr, TGroup, TNode> : NodeMixSelf<s, TGroup, TNode>
         where TGroup : FuncMix<s, Tr, TGroup, TNode>.Func
         where TNode : FuncMix<s, Tr, TGroup, TNode>.Node
     {
-        public abstract class Func : group_Self
+    public abstract class Func : group_Self
         {
             public Tr result;
             public TGroup SetDef(Tr def) { this.def = def; return this as TGroup; }
@@ -29,14 +32,17 @@ using UnityEngine;
             public void re(Tr re) { result = re; OnPoint = null; }
 
         }
-        public abstract class Node : node_Self
+    [Api]
+
+    public abstract class Node : node_Self
         {
             public void re(Tr re) { group.re(re); }
         }
     }
+}
 
-    //------------------------------------------------------------------------------------------------------------------------------------------------------------------
-    public class Func0<s, Tr> : FuncMix<s, Tr, Func0<s, Tr>, Func0Node<s, Tr>>.Func
+//------------------------------------------------------------------------------------------------------------------------------------------------------------------
+public class Func0<s, Tr> : FuncMix<s, Tr, Func0<s, Tr>, Func0Node<s, Tr>>.Func
     {
         public override void InvokeOnPoint() { OnPoint.Invoke(); }
         public void AddFunc(Action<s> f) { AddNode(new Func0Node_Func<s, Tr>() { func = f }); }

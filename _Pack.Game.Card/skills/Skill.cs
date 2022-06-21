@@ -14,7 +14,7 @@ using UnityEngine;
 
         public N<int> LayerId => skill.ID;
     }
-    partial class Skill : ITarget//tar
+    partial class Skill : ITarget//作为 目标
     {
         InputDataSkill tar=new InputDataSkill();
         public IInputData GetData()
@@ -23,7 +23,7 @@ using UnityEngine;
             return tar;
         }
     }
-    partial class Skill : IInputUser // msg
+    partial class Skill : IInputUser // 网络数据包
     {
         public virtual void ServerUseInput(InputMsg msg)
         {
@@ -37,7 +37,7 @@ using UnityEngine;
             }
         }
     }
-    partial class Skill //Pasue
+    partial class Skill //暂停
     {
         public const int Pause_Off = 10001;
         public const int Pause_On = 10002;
@@ -59,7 +59,7 @@ using UnityEngine;
     }
 
 
-    partial class Skill //res
+    partial class Skill //种类 名称 Res
     {
         public Skill()
         {
@@ -70,18 +70,12 @@ using UnityEngine;
     }
 
 
-    partial class Skill //Visible
+    partial class Skill //是否可见
     {
         public virtual bool Visible => true;
     }
-    partial class Skill
-    {
-        public Unit SelfHero()
-        {
-            return unit.hero;
-        }
-    }
-    partial class Skill //One Target Input
+
+    partial class Skill //一个目标的技能
     {
         public static void ApplyOneTargetInput(Skill skill, InputForm p1)
         {
@@ -128,7 +122,7 @@ using UnityEngine;
             return TarID().To<Skill>();
         }
     }
-    partial class Skill //Param /ID /to string
+    partial class Skill //转string ID 网络同步数据
     {
         public override string ToString()
         {
@@ -145,32 +139,36 @@ using UnityEngine;
         public int ClassSetting { get => _classSetting.Value; set { _classSetting.Value = value; } }
     }
 [Api]
-    public abstract partial class Skill //layer 
+    public abstract partial class Skill //上级单位
     {
-        public virtual LayerID up { get => IDs<LayerID>.Get(upID); private set { upID = value.ID; } }
+    public Unit SelfHero()
+    {
+        return unit.hero;
+    }
+    public virtual LayerID up { get => IDs<LayerID>.Get(upID); private set { upID = value.ID; } }
         public virtual Unit unit => up.unit;
         public virtual Player player => up.player;
     }
-    partial class Skill //copy/branch/origin 
+    partial class Skill //创建 复制 分支 原始
     {
         public Skill GetCopy() { return Layer.CreatSkill(FullName).SetUp(up).Copy(this); }
         public Skill GetBranch(string Name) { return Layer.CreatSkill(Name).SetUp(up).Branch(this); }
         public Skill GetOrigin(string Name) { return Layer.CreatSkill(Name).SetUp(up).Origin(); }
     }
-    partial class Skill : ISpawnable//spawn/ kind / NetID
+    partial class Skill : ISpawnable//网络同步 spwan
     {
         public int NetID => ID;
         public virtual string dirPass => "";
         public virtual string kindID => GetType().Name;
         public void ClientSetNetID(int NetID) { SetID(NetID); }
     }
-    partial class Skill : IIDTarget
+    partial class Skill : IIDTarget//真实坐标  虚拟坐标
     {
         public Vector3 RealPoss => up.RealPoss;
 
         public Vector3 VisualPoss => up.VisualPoss;
     }
-    partial class Skill //SetID/  load structure
+    partial class Skill //设置ID 设置上级 初始化函数
     {
         public virtual void SetUP(LayerID l)
         {
@@ -191,7 +189,7 @@ using UnityEngine;
 
     }
 
-    partial class Skill //comp
+    partial class Skill //技能组件 comp
     {
         public void EnsureComp()
         {
@@ -203,7 +201,7 @@ using UnityEngine;
 
     }
 
-    partial class Skill //input Msg  /static
+    partial class Skill //创建 技能输入 网络包 input Msg  /static
     {
         public static InputMsg CreatInput(byte kind)
         {
@@ -215,13 +213,13 @@ using UnityEngine;
         }
     }
 
-    partial class Skill : ISetKV //set  kv
+    partial class Skill : ISetKV //var 设置数据 set  kv
     {
         public virtual void setKV(string key, object o) { }
     }
 
-    partial class Skill//stack 卡牌堆叠
-    {
+    partial class Skill//卡牌堆叠 stack 
+{
         public int StackInde = 0;
         public int StackTotal = 0;
         public void SetStackIndex(int index,int total)
@@ -232,7 +230,7 @@ using UnityEngine;
         public bool InStack => StackInde >= 0;
         public bool IsStackTop =>InStack&& (StackInde == (StackTotal - 1));
     }
-    partial class Skill
+    partial class Skill//是否有超过一个的单位
     {
         public bool HasMoreThanOneTar { get; protected set; } =false;
     }

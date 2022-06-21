@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using Pack;
+namespace Pack
+{
 
     public class ActMix<s, TGroup, TNode> : NodeMixSelf<s, TGroup, TNode>
         where TGroup : ActMix<s, TGroup, TNode>.Act
@@ -28,10 +31,11 @@ using System;
             public void re() { group.re(); }
         }
     }
+}
 
 
-    //------------------------------------------------------------------------------------------------------------------------------------------------------------------
-    public  class Act0<s> : ActMix<s, Act0<s>, Act0Node<s>>.Act
+//------------------------------------------------------------------------------------------------------------------------------------------------------------------
+public class Act0<s> : ActMix<s, Act0<s>, Act0Node<s>>.Act
     {
         public override void InvokeOnPoint() { OnPoint.invoke(); }
         public void AddAct(Action<s> c) { AddNode(new Act0Node_Act<s>() { act = c }); }

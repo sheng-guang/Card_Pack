@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+namespace Pack
+{
+
     public  class NodeMix<TGroup,TNode>
         where TGroup : NodeMix<TGroup, TNode>.groupBase
         where TNode : NodeMix<TGroup, TNode>.nodeBase
@@ -36,6 +39,7 @@ using UnityEngine;
         }
     }
 
+
     public  class NodeMixSelf<c,TGroup, TNode>:NodeMix<TGroup,TNode>
     where TGroup : NodeMixSelf<c,TGroup, TNode>.group_Self
     where TNode : NodeMixSelf<c,TGroup, TNode>.node_Self
@@ -51,64 +55,65 @@ using UnityEngine;
             public c GetSelf() { return self; }
         }
     }
+}
 
-    //public static class StringParam
-    //{
-    //    public static string GetString(this string[]ss,int index,string def = null)
-    //    {
-    //        if (ss.HaveIndex(index) == false) return def;
-    //        return ss[index];
-    //    }
-
-
-    //    //------------------------------------------------------------------------------------------------------------------------------
-    //    public static int GetInt(this string[] ss, int index,int def=0)
-    //    {
-    //        if (ss.HaveIndex(index) == false) return def;
-    //        if (int.TryParse(ss[index], out var re) == false) return def;
-    //        return re;
-    //    }
-
-    //    //------------------------------------------------------------------------------------------------------------------------------
-    //    public static int GetInt(this string s,int def=0)
-    //    {
-    //        if (int.TryParse(s, out var re) == false) return def;
-    //        return re;
-    //    }
-    //    public static int? GetInt_(this string s, int? def = null)
-    //    {
-    //        if (int.TryParse(s, out var re) == false) return def;
-    //        return re;
-    //    }
+//public static class StringParam
+//{
+//    public static string GetString(this string[]ss,int index,string def = null)
+//    {
+//        if (ss.HaveIndex(index) == false) return def;
+//        return ss[index];
+//    }
 
 
+//    //------------------------------------------------------------------------------------------------------------------------------
+//    public static int GetInt(this string[] ss, int index,int def=0)
+//    {
+//        if (ss.HaveIndex(index) == false) return def;
+//        if (int.TryParse(ss[index], out var re) == false) return def;
+//        return re;
+//    }
+
+//    //------------------------------------------------------------------------------------------------------------------------------
+//    public static int GetInt(this string s,int def=0)
+//    {
+//        if (int.TryParse(s, out var re) == false) return def;
+//        return re;
+//    }
+//    public static int? GetInt_(this string s, int? def = null)
+//    {
+//        if (int.TryParse(s, out var re) == false) return def;
+//        return re;
+//    }
 
 
 
-    //    //------------------------------------------------------------------------------------------------------------------------------
-    //    public static float GetFloat(this string s, float def = 0)
-    //    {
-    //        if (float.TryParse(s, out var re) == false) return def;
-    //        return re;
-    //    }
 
-    //    public static float? GetFloat_(this string s, float? def = 0)
-    //    {
-    //        if (float.TryParse(s, out var re) == false) return def;
-    //        return re;
-    //    }
-    //    //------------------------------------------------------------------------------------------------------------------------------
-    //    public static float GetFloat(this string[] ss, int index,float def=0)
-    //    {
-    //        if (ss.HaveIndex(index) == false) return def;
-    //        if( float.TryParse(ss[index], out var  re)==false)return def;
-    //        return re;
-    //    }
-    //    public static float? GetFloat_(this string[] ss, int index, float? def = null)
-    //    {
-    //        if (ss.HaveIndex(index) == false) { return def; }
-    //        if (float.TryParse(ss[index], out var re) == false) { return def; }
-    //        return re;
-    //    }
-    //}
+
+//    //------------------------------------------------------------------------------------------------------------------------------
+//    public static float GetFloat(this string s, float def = 0)
+//    {
+//        if (float.TryParse(s, out var re) == false) return def;
+//        return re;
+//    }
+
+//    public static float? GetFloat_(this string s, float? def = 0)
+//    {
+//        if (float.TryParse(s, out var re) == false) return def;
+//        return re;
+//    }
+//    //------------------------------------------------------------------------------------------------------------------------------
+//    public static float GetFloat(this string[] ss, int index,float def=0)
+//    {
+//        if (ss.HaveIndex(index) == false) return def;
+//        if( float.TryParse(ss[index], out var  re)==false)return def;
+//        return re;
+//    }
+//    public static float? GetFloat_(this string[] ss, int index, float? def = null)
+//    {
+//        if (ss.HaveIndex(index) == false) { return def; }
+//        if (float.TryParse(ss[index], out var re) == false) { return def; }
+//        return re;
+//    }
+//}
 

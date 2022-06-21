@@ -50,6 +50,7 @@ using UnityEngine;
             return ne;
         }
     }
+[Api]
     public class InputNode : IPreViewMasterNode
     {
         public InputSkill MasterSkill;

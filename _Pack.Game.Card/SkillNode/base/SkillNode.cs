@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using Pack;
 
 
-
-    
+[Api]
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------
     public static class SkillNodeGroupExtra
     {
@@ -59,11 +59,11 @@ using System;
             g.AddNode(node);
             return node;
         }
-        public static SKillNode AddNod(this SkillNodeGroup g, SKillNode node)
-        {
-            g.AddNode(node);
-            return node;
-        }
+        //public static SKillNode AddNod(this SkillNodeGroup g, SKillNode node)
+        //{
+        //    g.AddNode(node);
+        //    return node;
+        //}
     }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------
     public abstract class SkillNodeGroup : NodeMixSelf<Skill, SkillNodeGroup, SKillNode>.group_Self
@@ -78,7 +78,7 @@ using System;
     }
 
 
-
+[Api]
     public abstract class SKillNode: NodeMixSelf<Skill, SkillNodeGroup, SKillNode>.node_Self
     {
         public override string ToString()

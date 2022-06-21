@@ -12,7 +12,7 @@ using UnityEngine;
     //与ue4的gameplay框架类似
     //在其他partial中确定继承的基类
     //layer------------------------------------------------------------------------------------------------------------------------------------------------------
-    public abstract partial class Layer:IHaveID //base
+    partial class Layer:IHaveID //base
     {
         //唯一ID
         public  virtual int ID {  get => upID;set { } }

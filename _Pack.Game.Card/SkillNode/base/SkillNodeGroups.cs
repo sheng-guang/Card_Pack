@@ -4,7 +4,7 @@ using UnityEngine;
 
 
 
-
+[Api]
     //stack
     public class SkillNodeGroupStack : SkillNodeGroup
     {

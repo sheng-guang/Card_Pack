@@ -16,6 +16,7 @@ public interface IInputSkill_Delegate:ISkill_Delegate
     Func2<InputSkill, InputNode, int, InputNode> F_AfterWrite_GetNext { get; set; }
     Act1<InputSkill, InputForm> A_Tested_Then_RunSkill { get; set; }
 }
+[Api]
 public class InputSkill_Delegate : InputSkill,ISkill_Delegate,IInputSkill_Delegate
 {
     public InputSkill_Delegate()

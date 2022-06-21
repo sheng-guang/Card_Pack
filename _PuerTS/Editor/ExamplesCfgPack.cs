@@ -4,7 +4,7 @@ using System;
 using UnityEngine;
 using System.Reflection;
 using System.Linq;
-
+using Pack;
 
 [Configure]
 public class ExamplesCfg_Pack
@@ -73,7 +73,9 @@ public class ExamplesCfg_Pack
             yield return typeof(SkillNodeGroup);
             yield return typeof(NodeMixSelf<Skill, SkillNodeGroup, SKillNode>.group_Self);
             yield return typeof(NodeMixSelf<Skill, SkillNodeGroup, SKillNode>.node_Self);
-            
+
+            yield return typeof(NodeMix< SkillNodeGroup, SKillNode>.groupBase);
+            yield return typeof(NodeMix< SkillNodeGroup, SKillNode>.nodeBase);
 
         }
         { 

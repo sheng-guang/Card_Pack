@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-
+[Api]
     public static class SkillExtra
     {
         public static Unit GetUnit(this InputNode n)

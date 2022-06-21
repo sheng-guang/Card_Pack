@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[Api]
     public abstract partial class Unit: LayerID//base
     {
         public override Unit unit => this;
