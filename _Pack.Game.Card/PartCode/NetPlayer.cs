@@ -21,7 +21,7 @@ using System;
         public override string DirectoryName => "Assets/" + nameof(Player);
         public Player GetNew(ResArgs args)
         {
-            return this.Ex_Instantiate(args);
+            return this.ExInstantiate(args);
         }
         public object GetNewObject(ResArgs a) { return GetNew(a); }
         public override void OnSetID_Awake()

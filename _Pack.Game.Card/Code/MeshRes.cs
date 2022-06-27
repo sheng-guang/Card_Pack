@@ -18,7 +18,7 @@ public class MeshRes : MonoBehaviour,IRes,IResGetter<MeshRes>,IResData
 
     public MeshRes GetNew(ResArgs a)
     {
-        return this.Ex_Instantiate(a);
+        return this.ExInstantiate(a);
     }
     public object GetNewObject(ResArgs a) { return GetNew(a); }
 }

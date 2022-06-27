@@ -89,11 +89,12 @@ public class CreateAssets : EditorWindow
         string full = dirPath + FileName;
         string AssetPath = "Assets" + "/" + "Assets" + "/" + Asset_Dir + "/" + FullName + "/" + FileName;
         if (Directory.Exists(dirPath) == false) { Directory.CreateDirectory(dirPath); }
-        full.WriteEachLine("", fileType: "ts");
+        full.WriteEachLine("", fileType: FileKind);
         AssetDatabase.Refresh();
         var to = AssetDatabase.LoadAssetAtPath<Object>(AssetPath);
         Debug.Log(to + "  path" + AssetPath);
         Selection.objects = new Object[] { to };
+        GenFullNames.Gen();
     }
     
 }

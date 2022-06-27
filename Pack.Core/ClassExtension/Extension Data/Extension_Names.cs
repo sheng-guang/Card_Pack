@@ -5,6 +5,12 @@ using UnityEngine;
 
 public static partial class nn
 {
+    //setKV
+    public const string setKV=nameof(setKV);
+    //buff
+    public const string Version = nameof(Version);
+    public const string FreshVersion = nameof(FreshVersion);
+    public const string BuffUpgrade = nameof(BuffUpgrade);
     //settting
     public const string IsServer = nameof(IsServer);
     //result

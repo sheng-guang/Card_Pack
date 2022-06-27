@@ -32,7 +32,7 @@ using UnityEngine;
             }
 
             {
-                BuffSysData.AddMonitor(this);
+                BuffSys.AddMonitor(this);
             }
             return this;
         }

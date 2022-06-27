@@ -93,7 +93,7 @@ using UnityEngine;
         }
 
 
-        public static T Ex_Instantiate<T>(this T obj, ResArgs args) where T : UnityEngine.Object
+        public static T ExInstantiate<T>(this T obj, ResArgs args) where T : UnityEngine.Object
         {
             var poss = args.GetPoss();
             var par = args.GetParent();

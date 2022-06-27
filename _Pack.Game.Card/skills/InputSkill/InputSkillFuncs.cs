@@ -20,12 +20,12 @@ using System;
             s.F_HighLightTest.AddNode(new HighLightTest_ManaEnough());
             s.F_TestNodeUseful.AddNode(new TestNodeUseful_In_Range())
                     .Set(nn.NodeKind, OneTargetInputSkill.FirstNodeKind)
-                    .Set(nn.Reach, s.Ex_Ptr<N<float>>(nn.Reach));
+                    .Set(nn.Reach, s.ExPtr<N<float>>(nn.Reach));
 
             //preview
             s.F_NodeForm.AddNode(new NodeForm_Reach_OneTarget())
-                .Set(nn.Reach, s.Ex_Ptr<N<float>>(nn.Reach))
-                .Set(nn.HighThrow,s.Ex_Ptr<N<bool>>(nn.HighThrow));
+                .Set(nn.Reach, s.ExPtr<N<float>>(nn.Reach))
+                .Set(nn.HighThrow,s.ExPtr<N<bool>>(nn.HighThrow));
             s.HasMoreThanOneTar = true;
         }
         /// <summary>
@@ -33,13 +33,13 @@ using System;
         /// </summary>
         public static void EnableReach(InputSkill_Delegate s, object o)
         {
-            var to= s.Ex_Ptr<N<float>>(nn.Reach).SetIGet(o);
+            var to= s.ExPtr<N<float>>(nn.Reach).SetIGet(o);
           
             s.F_GetFloat.AddNode(new GetFloat_Reach()).Set(nn.Reach, to);
         }
         public static void EnableThrowLine(InputSkill_Delegate s, object HighThrow, IGet<N<int>> speed)
         {
-            s.Ex_Ptr<N<bool>>(nn.HighThrow).SetIGet(HighThrow);
+            s.ExPtr<N<bool>>(nn.HighThrow).SetIGet(HighThrow);
             
             s.F_GetBool.AddNode(new GetBool_IsHighThrow()).Set(nn.HighThrow, HighThrow);
             s.F_GetInt.AddNode(new GetInt_Speed()).Set(nn.speed, speed);

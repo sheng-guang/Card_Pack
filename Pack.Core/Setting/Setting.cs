@@ -7,7 +7,7 @@ using UnityEngine;
         static object obj=new object();
         public static IGetSeat<T> GetSetting(string key)
         {
-            return obj.Ex_Ptr<T>(key);
+            return obj.ExPtr<T>(key);
         }
 
     }

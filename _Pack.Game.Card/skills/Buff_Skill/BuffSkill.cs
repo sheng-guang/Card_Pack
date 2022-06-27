@@ -6,7 +6,9 @@ using UnityEngine;
     public abstract class BuffSkill : Skill, IBuff
     {
         public int NowVersion => BuffSys.FreshVersion;
-        public virtual void Apply()
+
+    public bool Removed { get; set; }
+    public virtual void Apply()
         {
         }
 

@@ -80,7 +80,7 @@ using UnityEngine;
         }
         public void LoadUnitData()
         {
-            Debug.Log(this.FullName());
+            //Debug.Log(this.FullName());
             ManaCost.Value_Base = BaseData.Mana;
             atk.Value_Base = BaseData.atk;
             speed.Value_Base = BaseData.speed;
@@ -156,7 +156,7 @@ using UnityEngine;
         public Unit GetNew(ResArgs args)
         {
             //Debug.Log(name + "  arg poss" + args.GetPoss());
-            var re = this.Ex_Instantiate(args);
+            var re = this.ExInstantiate(args);
             //Debug.Log(re+"  result  poss   " + re.transform.position);
             return re;
         }

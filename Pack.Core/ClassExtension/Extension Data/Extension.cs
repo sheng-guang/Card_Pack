@@ -3,18 +3,29 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-    public static class Extension
+public class IGetSeatObj : IGetSeat<object>
+{
+
+}
+[Api]
+public static class Extension
+{
+    public static IGetSeatObj ExPtrObj(this object obj,string DataName)
     {
-        public static IGetSeat<T> Ex_Ptr<T>(this object obj, string DataName)
-        {
-            if (obj == null) { Debug.Log("Ex_Ptr  null  obj"); return null; }
-            var re = Extension<IGetSeat<T>>.EnsureExtension(obj, DataName);
-            return re;
-        }
-        public static IGetSeat<T> Ex_Ptr<T>(this int hash,string DataName)
-        {
-            var re = Extension<IGetSeat<T>>.EnsureExtension(hash, DataName);
-            return re;
-        }
+        if (obj == null) { Debug.Log("Ex_Ptr  null  obj"); return null; }
+        var re = Extension<IGetSeatObj>.EnsureExtension(obj, DataName);
+        return re;
     }
+    public static IGetSeat<T> ExPtr<T>(this object obj, string DataName)
+    {
+        if (obj == null) { Debug.Log("Ex_Ptr  null  obj"); return null; }
+        var re = Extension<IGetSeat<T>>.EnsureExtension(obj, DataName);
+        return re;
+    }
+    public static IGetSeat<T> ExPtr<T>(this int hash, string DataName)
+    {
+        var re = Extension<IGetSeat<T>>.EnsureExtension(hash, DataName);
+        return re;
+    }
+}
 

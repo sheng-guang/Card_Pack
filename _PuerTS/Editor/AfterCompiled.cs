@@ -10,6 +10,7 @@ public class AfterCompiled
     {
         Debug.Log("©°©¤GenerateDTS");
         Puerts.Editor.Generator.Menu.GenerateDTS();
+        GenFullNames.Gen();
         Debug.Log("©¸©¤GenerateDTS");
 
 

@@ -29,11 +29,11 @@ using UnityEngine;
         ISpawnable IResGetter<ISpawnable>.GetNew(ResArgs args)
         {
             Debug.Log("here");
-            return this.Ex_Instantiate(args);
+            return this.ExInstantiate(args);
         }
         object IResGetter.GetNewObject(ResArgs args)
         {
-            return this.Ex_Instantiate(args);
+            return this.ExInstantiate(args);
         }
     }
     public abstract partial class LayerID : IRealPoss//poss

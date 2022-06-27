@@ -93,7 +93,7 @@ using UnityEngine;
         public virtual void Awake() { DontDestroyOnLoad(gameObject); }
 
 
-        public IPreViewNode GetNew(ResArgs args) { return this.Ex_Instantiate(args).GetComponent<IPreViewNode>(); }
+        public IPreViewNode GetNew(ResArgs args) { return this.ExInstantiate(args).GetComponent<IPreViewNode>(); }
         public object GetNewObject(ResArgs a) { return GetNew(a); }
 
         public  string Kind => this.FullName();

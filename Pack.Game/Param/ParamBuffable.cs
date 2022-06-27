@@ -12,8 +12,14 @@ using UnityEngine;
             BackToBaseData();
         }
     }
-
-    public partial class ParamBuffable<T> : IBackToBaseData, ISetParamBuffable where T : IEquatable<T>
+partial class ParamBuffable<T>//string
+{
+    public override string ToString()
+    {
+        return name+ "<" + typeof(T).Name + ">";
+    }
+}
+    public partial class ParamBuffable<T> :  ISetParamBuffable where T : IEquatable<T>
     {
         string name;
         public ParamBuffable(string name = null)
@@ -82,8 +88,5 @@ using UnityEngine;
         }
 
         public IGet<T> Value_Buffed_IGet => BuffedData;
-        public override string ToString()
-        {
-            return GetType().Name+"<"+typeof(T)+">";
-        }
+
     }

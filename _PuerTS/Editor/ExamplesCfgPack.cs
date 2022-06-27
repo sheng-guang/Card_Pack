@@ -89,6 +89,7 @@ public class ExamplesCfg_Pack
 
             yield return typeof(Func0<int, int>);
             yield return typeof(N<int>);
+            yield return typeof(VarChangeEvent<int>);
             yield return typeof(Func1<int, int, int>);
             yield return typeof(Func2<int, int, int,int>);
             yield return typeof(Func3<int, int, int,int,int>);
@@ -100,6 +101,7 @@ public class ExamplesCfg_Pack
             
 
             yield return typeof(ParamBuffable<int>);
+            yield return typeof(IGetSeat<int>);
         }
         {
 

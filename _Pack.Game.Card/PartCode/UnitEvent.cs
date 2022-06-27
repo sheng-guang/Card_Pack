@@ -10,7 +10,7 @@ using System;
         {
             base.Awake_OnSetMaster();
             this.AddToUpDate_List();
-            HostTurnTimeLeft = host.Ex_Param<float>("TurnTimeLeft");
+            HostTurnTimeLeft = host.ExParam<float>("TurnTimeLeft");
         }
         IParam<float> HostTurnTimeLeft;
         public VarChangeEvent<int> TimeLeftCall=new VarChangeEvent<int>();

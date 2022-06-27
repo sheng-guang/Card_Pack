@@ -5,7 +5,8 @@ using UnityEngine;
 
 public class InitPuer
 {
-    [MenuItem("Puerts/CreatDir")]
+    //[MenuItem("Puerts/CreatDir")]
+    [MenuItem("Puerts/--")]
     public static void InitPuerDir()
     {
 

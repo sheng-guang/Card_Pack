@@ -14,7 +14,7 @@ using UnityEngine;
         //IResGetter
         public Host GetNew(ResArgs args)
         {
-           return this.Ex_Instantiate(args);
+           return this.ExInstantiate(args);
         }
         public object GetNewObject(ResArgs a) { return GetNew(a); }
 

@@ -4,8 +4,14 @@ using UnityEngine;
 
 public class Buff_Delegate : Buff
 {
-    public string _FullName;
-    public override string FullName => _FullName;
+    public Act2<Buff, string, object> A_setKV { get; set; } = new Act2<Buff, string, object>();
+    public override void setKV(string key, object o)
+    {
+        base.setKV(key, o);
+        A_setKV.Invoke(key, o);
+    }
+
+
     public Act0<Buff> A_FreshActive { get; set; }=new Act0<Buff>();
     public override void FreshActive()
     {

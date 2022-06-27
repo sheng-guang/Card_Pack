@@ -9,6 +9,7 @@ using System;
         public void FreshActive();
         public void FreshRemove();
         public void Apply();
+    //public bool Removed { get; set; }
     }
 
     //----------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -28,7 +29,7 @@ using System;
         {
             FullName = n;
             GetValue = f;
-            BuffSysData.AddMonitor(this);
+            BuffSys.AddMonitor(this);
         }
         public string FullName { get;private set;}
         public Func<T> GetValue { get;private set; }

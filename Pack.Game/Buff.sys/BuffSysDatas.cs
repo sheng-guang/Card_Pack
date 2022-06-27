@@ -3,28 +3,31 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-    public static partial class BuffSysData
+namespace BuffSysD
+{
+    public static class BuffSysData
     {
         //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
         static Dictionary<IBuffSysData, DataListenGroup> ListenGroups = new Dictionary<IBuffSysData, DataListenGroup>();
-        public static void ListenDataChange(this IBuff buff, IBuffSysData data)
+        public static void ListenDataChange(IBuff buff, IBuffSysData data)
         {
             var to = ListenGroups.Ensure(data);
             to.LintenerBuffs.EnsureAdd(buff);
 
-            var toto=buffs.Ensure_SetKey(buff);
+            var toto = buffs.Ensure_SetKey(buff);
             toto.ListenTo.EnsureAdd(data);
 
             BuffSys.AddNeedFreshBuff(buff);
         }
 
-        public static void CancelListene(this IBuff buff, IBuffSysData data)
+        public static void CancelListene(IBuff buff, IBuffSysData data)
         {
             var to = ListenGroups.Ensure(data);
             to.LintenerBuffs.Remove(buff);
 
             //todo 是否要加这个
-            BuffSys.AddNeedFreshBuff(buff);
+            //结果 可能造成沉默复杂度增加先删除
+            //BuffSys.AddNeedFreshBuff(buff);
 
         }
         public static bool OnListening(IBuffSysData d, out DataListenGroup to)
@@ -33,7 +36,7 @@ using System;
             if (to.LintenerBuffs.Coumt == 0) return false;
             return true;
         }
-        
+
         //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
         static Dictionary<IBuffSysBuffableData, BuffsToOneData> IBuffableDatas = new Dictionary<IBuffSysBuffableData, BuffsToOneData>();
         public static BuffsToOneData EnsureBuffsToOneData(IBuffSysBuffableData data)
@@ -46,41 +49,16 @@ using System;
             to.buffs.EnsureAdd(buff);
 
             var toto = buffs.Ensure_SetKey(buff);
-            toto.AttachTo=data;
+            toto.ApplyTo = data;
 
             BuffSys.AddNeedFreshData(data);
         }
-        public static void RemoveAttach(this IBuff buff, IBuffSysBuffableData data)
+        public static void RemoveWillApply(this IBuff buff, IBuffSysBuffableData data)
         {
             var to = EnsureBuffsToOneData(data);
             to.buffs.Remove(buff);
         }
         //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-        static Dictionary<IBuff,BuffLinks> buffs=new Dictionary<IBuff, BuffLinks>();
-        public static void RemoveBuff(IBuff b)
-        {
-            if (buffs.TryGetValue(b, out var links) == false) return;
-            for(var i = 0; i < links.ListenTo.Count; i++)
-            {
-                var to= links.ListenTo.Get(i);
-                CancelListene(b, to);
-            }
-            RemoveAttach(b, links.AttachTo);
-
-            BuffSys.AddNeedFreshData(links.AttachTo);
-
-        }
-    }
-    public class BuffLinks:ISet<IBuff>
-    {
-        public IBuff Value { get; set; }
-        public HashSet_List<IBuffSysData> ListenTo = new HashSet_List<IBuffSysData>();
-        public IBuffSysBuffableData AttachTo;
-
-    }
-    public static partial class BuffSysData
-    {
         static Dictionary_List<IBuffSysMonitor, OneMonitor> monitors = new Dictionary_List<IBuffSysMonitor, OneMonitor>();
         public static void AddMonitor(IBuffSysMonitor monitor)
         {
@@ -88,9 +66,31 @@ using System;
             to.SnapshotKey = "BuffSys|" + monitor.FullName;
         }
         public static void ForEachOneMonitor(Action<OneMonitor> act) { monitors.ForEach(act); }
+        //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+        static Dictionary<IBuff, BuffGroup> buffs = new Dictionary<IBuff, BuffGroup>();
+        public static void RemoveBuff(IBuff b)
+        {
+            //b.Removed = true;
+            if (buffs.TryGetValue(b, out var group) == false) return;
+            for (var i = 0; i < group.ListenTo.Count; i++)
+            {
+                var to = group.ListenTo.Get(i);
+                CancelListene(b, to);
+            }
+            RemoveWillApply(b, group.ApplyTo);
+            //Debug.Log("need fresh  " +links.AttachTo);
+            BuffSys.AddNeedFreshData(group.ApplyTo);
+        }
     }
-    public static partial class BuffSysData
-    { 
+    public class BuffGroup : ISet<IBuff>
+    {
+        public IBuff Value { get; set; }
+        public HashSet_List<IBuffSysData> ListenTo = new HashSet_List<IBuffSysData>();
+        public IBuffSysBuffableData ApplyTo;
+
     }
 
 
+
+}
