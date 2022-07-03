@@ -140,7 +140,7 @@ partial class Skill //转string ID 网络同步数据
     public int upID { get => UPID.Value; set => UPID.Value = value; }
     public Param<int> UPID = Param<int>.GetNew(nameof(UPID)).Act(x => x.TrySetDefault(IDs.NullID));
     public Param<int> _groupData = Param<int>.GetNew(nameof(_groupData));
-    public Param<int> _classSetting => Param<int>.GetNew(nameof(_classSetting));
+    public Param<int> _classSetting = Param<int>.GetNew(nameof(_classSetting));
 
     public int groupData { get => _groupData.Value; set { _groupData.Value = value; } }
     public int ClassSetting { get => _classSetting.Value; set { _classSetting.Value = value; } }

@@ -24,6 +24,7 @@ public static class Extension
     }
     public static IGetSeat<T> ExPtr<T>(this int hash, string DataName)
     {
+        if(hash==0)Debug.Log("int hash   " + hash + "| " + DataName);
         var re = Extension<IGetSeat<T>>.EnsureExtension(hash, DataName);
         return re;
     }
