@@ -5,6 +5,14 @@ using UnityEngine;
 [Api]
 public class BuffSkill_Delegate :BuffSkill
 {
+    public BuffSkill_Delegate()
+    {
+        A_FreshActive.SetSelf(this);
+        A_FreshRemove.SetSelf(this);
+        A_Apply.SetSelf(this);
+        A_OnSetID_LoadStructure.SetSelf(this);
+    }
+
     public override void FreshActive()
     {
         base.FreshActive();

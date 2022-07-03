@@ -115,7 +115,7 @@ using System;
             base.Awake_OnSetMaster();
             //Debug.Log(GetType()+" "+  up );
             //if (up == null) return;
-            SpaceCanvas.ToCanvas_Space(transform, kind);
+            SpaceCanvas.MoveToCanvasSpace(transform, kind);
             //Debug.Log(transform.parent);
             //Debug.LogError("pause");
         }

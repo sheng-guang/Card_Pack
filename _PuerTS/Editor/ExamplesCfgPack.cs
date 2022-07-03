@@ -55,8 +55,8 @@ public class ExamplesCfg_Pack
 
             yield return typeof(LongSkil_Delegate);
             yield return typeof(ILongSkil_Delegate);
-            yield return typeof(BeCallSkill_Delegate);
-            yield return typeof(IBeCallSkill_Delegate);
+            yield return typeof(FixSkill_Delegate);
+            yield return typeof(IFixSkill_Delegate);
             yield return typeof(InputSkill_Delegate);
             yield return typeof(IInputSkill_Delegate);
             yield return typeof(StackSkill_Delegate);
@@ -81,7 +81,7 @@ public class ExamplesCfg_Pack
         { 
 
 
-            yield return typeof(SkillNodeResult);
+            yield return typeof(SNResult);
             yield return typeof(CallSys);
 
             yield return typeof(FuncMix<int, int, Func0<int, int>, Func0Node<int, int>>.Func);

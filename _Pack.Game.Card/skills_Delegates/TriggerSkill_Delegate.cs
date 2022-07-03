@@ -23,6 +23,10 @@ public class TriggerSkill_Delegate : Skill, ITriggerSkill_Delegate, ITriggerSkil
 }
 public class CallReaction_Delegate : ICallReaction
 {
+    CallReaction_Delegate()
+    {
+        A_Do.SetSelf(this);
+    }
     public void Do()
     {
         A_Do.Invoke();

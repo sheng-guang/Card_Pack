@@ -13,6 +13,7 @@ public interface ILongSkil_Delegate:ISkill_Delegate
 
 public class LongSkil_Delegate : Skill_Delegate, ILongSkill,ILongSkil_Delegate
 {
+
     public LongSkil_Delegate()
     {
         A_FixStart.SetSelf(this);

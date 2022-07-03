@@ -4,6 +4,13 @@ using UnityEngine;
 
 public class Buff_Delegate : Buff
 {
+    public Buff_Delegate()
+    {
+        A_setKV.SetSelf(this);
+        A_FreshActive.SetSelf(this);
+        A_FreshRemove.SetSelf(this);
+        A_Apply.SetSelf(this);
+    }
     public Act2<Buff, string, object> A_setKV { get; set; } = new Act2<Buff, string, object>();
     public override void setKV(string key, object o)
     {

@@ -78,10 +78,11 @@ using UnityEngine;
                 if (OnPoint == null) break;
                 //Debug.Log(OnPoint);
                 var option = OnPoint.Fix_1Exit_2ToNext_4Break();
-                //todo 为什么下一行会被注释
+            //todo 为什么下一行会被注释
+            if (option == 0) break;
                 //if (option.MaskContain(1)) { Exist(); }
-                if (option.MaskContain(2)) { ToNext(); }
-                if (option.MaskContain(4)) break;
+                if (option.MaskContain(SNResult.ToNext)) { ToNext(); }
+                if (option.MaskContain(SNResult.Break_TryThisAgain)) break;
             }
         }
         void ToNext()

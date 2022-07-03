@@ -198,14 +198,29 @@ partial class Skill //设置ID 设置上级 初始化函数
 
 partial class Skill //技能组件 comp
 {
-    public void EnsureComp()
-    {
-        if (Comp != null) return;
-        Comp = Creater<SkillComp>.GetNew("-'" + nameof(SkillComp));
-        Comp.SetSkill(this);
-    }
-    public SkillComp Comp { get; set; }
+    HashSet<string>Comps=new HashSet<string>();
 
+    public void EnsureComp(string FullName)
+    {
+        if(Comps.Contains(FullName)) return;
+        Comps.Add(FullName);
+        var c = Creater<SkillComp>.GetNew(FullName);
+        c.SetSkill(this);
+    }
+    public bool HasStackComp = true;
+
+    public void EnsureStackComp()
+    {
+        if (HasStackComp == false) return;
+        eve.EnsureStackComp(this);
+    }
+    public bool HasLongSkillComp = true;
+    public void EnsureLongSkillComp()
+    {
+        if (HasLongSkillComp == false) return;
+        eve.EnsureLongSkillComp(this);
+
+    }
 }
 
 partial class Skill //创建 技能输入 网络包 input Msg  /static
@@ -227,7 +242,7 @@ partial class Skill : ISetKV //var 设置数据 set  kv
 
 partial class Skill//卡牌堆叠 stack 
 {
-    public int StackInde = 0;
+    public int StackInde = -1;
     public int StackTotal = 0;
     public void SetStackIndex(int index, int total)
     {
@@ -236,6 +251,19 @@ partial class Skill//卡牌堆叠 stack
     }
     public bool InStack => StackInde >= 0;
     public bool IsStackTop => InStack && (StackInde == (StackTotal - 1));
+}
+partial class Skill//long list  index
+{
+    public int LongIndex = -1;
+    public int LongTotal = 0;
+    public void SetLongListIndex(int index, int total)
+    {
+        LongIndex = index;
+        LongTotal = total;
+    }
+    public bool InList => LongIndex >= 0;
+    public bool ListTop => InList && (LongIndex == (LongTotal - 1));
+
 }
 partial class Skill//是否有超过一个的单位
 {

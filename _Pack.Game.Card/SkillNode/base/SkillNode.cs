@@ -115,7 +115,7 @@ using Pack;
             return ToNext;
         }
     }
-public class SkillNodeResult
+public class SNResult
 {
     public const int Exit = SKillNode.Exit;
     public const int ToNext = SKillNode.ToNext;

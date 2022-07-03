@@ -46,8 +46,8 @@ public abstract partial class LayerID //skill
     public HashSet_NodeList<Skill> skills { get; private set; } = new HashSet_NodeList<Skill>();
     //Inputs
     public List<InputSkill> InputSkills = new List<InputSkill>();
-    public List<IBeCallSkill> loopSkills = new List<IBeCallSkill>();
-    public List<IBeCallSkill50ms> loopSkills50ms = new List<IBeCallSkill50ms>();
+    public List<IFixSkill> loopSkills = new List<IFixSkill>();
+    public List<IFixSkill50ms> loopSkills50ms = new List<IFixSkill50ms>();
     public List<ITriggerSkill> TriggerSkills = new List<ITriggerSkill>();
     public void LinkToSkill(object to)
     {
@@ -73,14 +73,14 @@ public abstract partial class LayerID //skill
             InputSkills.EnsureIndex_ThenSet(s.SkillKind, s);
             InputSkillVersion++;
         }
-        if (ToAddMask.MaskContain(SkillKind.becall) && to is IBeCallSkill)
+        if (ToAddMask.MaskContain(SkillKind.becall) && to is IFixSkill)
         {
-            IBeCallSkill s = to as IBeCallSkill;
+            IFixSkill s = to as IFixSkill;
             loopSkills.Add(s);
         }
-        if (ToAddMask.MaskContain(SkillKind.becall50) && to is IBeCallSkill50ms)
+        if (ToAddMask.MaskContain(SkillKind.becall50) && to is IFixSkill50ms)
         {
-            IBeCallSkill50ms s = to as IBeCallSkill50ms;
+            IFixSkill50ms s = to as IFixSkill50ms;
             loopSkills50ms.Add(s);
         }
         if (ToAddMask.MaskContain(SkillKind.TriggerSkill) && to is ITriggerSkill)

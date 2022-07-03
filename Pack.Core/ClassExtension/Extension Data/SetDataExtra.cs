@@ -62,7 +62,7 @@ using System.Reflection;
 
             var to = o.ToIGet<T>();
             if (to != null) { re = to.Value; return true; }
-
+        Debug.Log(o + "  can not to " + typeof(T).Name);
             return false;
         }
 

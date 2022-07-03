@@ -26,29 +26,37 @@ partial class eve//设置图标
 partial class eve//技能 相关
 {
 
-    public static void PauseSkillForSeconds_EnsureComp(this Skill s,float t)
+    public static void PauseSkillForSeconds(this Skill s,float t)
     {
-        s.EnsureComp();
         s.ServerSetPauseTime(t);
     }
-    public static void PauseSkillForPlayer_EnsureComp(this Skill s,int PausePlayerID)
+    public static void PauseSkillForPlayer(this Skill s,int PausePlayerID)
     {
-        s.EnsureComp();
         s.ServerSetPausing(PausePlayerID);
+    }
+    public static void EnsureStackComp(this Skill s)
+    {
+        s.EnsureComp($"-'{nameof(StackSkillComp)}");
+    }  
+    public static void EnsureLongSkillComp(this Skill s)
+    {
+        s.EnsureComp($"-'{nameof(LongSkillComp)}");
     }
     public static void ReducePauseLeft(Skill s)
     {
-        if (s.PauseTimeLeft > 0) ;
-        s.PauseTimeLeft -= TimeSetting.FixedDeltaTime;
+        if (s.PauseTimeLeft > 0)
+        {
+            s.PauseTimeLeft -= TimeSetting.FixedDeltaTime;
+        }
     }
     public static int SN_TestPause(this Skill s)
     {
         if (s.IsPausing)
         {
             ReducePauseLeft(s);
-            return SkillNodeResult.Break_TryThisAgain;
+            return SNResult.Break_TryThisAgain;
         }
-        return SkillNodeResult.ToNext;
+        return SNResult.ToNext;
     }
 
 
@@ -61,10 +69,7 @@ partial class eve//技能 相关
     {
         up.LinkToSkill(s);
     }
-    public static void EnsureSkillComp(this Skill s)
-    {
-        s.EnsureComp();
-    }
+
 }
 
 partial class eve//沉默 buff

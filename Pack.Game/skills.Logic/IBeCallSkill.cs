@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-    public interface IBeCallSkill50ms
+    public interface IFixSkill50ms
     {
         void Fix50ms();
     }
-    public interface IBeCallSkill
+    public interface IFixSkill
     {
         void Fix();
     }

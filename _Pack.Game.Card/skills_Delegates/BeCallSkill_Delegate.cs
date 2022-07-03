@@ -2,13 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface IBeCallSkill_Delegate:ISkill_Delegate
+public interface IFixSkill_Delegate:ISkill_Delegate
 {
     SkillNodeGroupLoop A_Fix { get; set; }
 }
-public class BeCallSkill_Delegate : Skill, IBeCallSkill,IBeCallSkill_Delegate
+public class FixSkill_Delegate : Skill, IFixSkill,IFixSkill_Delegate
 {
-    public BeCallSkill_Delegate()
+    public FixSkill_Delegate()
     {
         F_Visible.SetSelf(this);
         A_Fix.SetSelf(this);

@@ -33,7 +33,7 @@ using UnityEngine;
         [Header("middel0_SkillStack1_Hand2_Space3")]
         public List<RectTransform> UISpaces;
         //public SkillLayOutExtra SkillLayout;
-        public static void ToCanvas_Space(Transform child, canvas_kind k)
+        public static void MoveToCanvasSpace(Transform child, canvas_kind k)
         {
             //print(instance);
             Component tr = null;

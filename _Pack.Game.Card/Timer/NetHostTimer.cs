@@ -43,6 +43,7 @@ public class NetHostTimer :MonoBehaviour
         {
             bool is50 = TimeSetting.Test_and_UpdateTime(ref FixedCount);
             GameLogicFunctions.DoSkillList(is50);
+
             SendMsg(TimeSetting.FixedDeltaTime);
             Physics.Simulate(TimeSetting.FixedDeltaTime);
             Physics.SyncTransforms();

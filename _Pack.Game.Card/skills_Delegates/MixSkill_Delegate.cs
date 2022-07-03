@@ -13,9 +13,9 @@ public interface IMixSkill : ILongSkill, IStackSkill
 
 }
 //»ìºÏ°æ
-public class MixSkill_Delegate : InputSkill_Delegate, IMixSkill
-    , IMixSkill_Delegate
+public class MixSkill_Delegate : InputSkill_Delegate, IMixSkill, IMixSkill_Delegate
 {
+
     public MixSkill_Delegate()
     {
         //long
