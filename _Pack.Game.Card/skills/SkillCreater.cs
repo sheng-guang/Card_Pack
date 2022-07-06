@@ -63,10 +63,10 @@ public struct SkillBuilder
 
         if (GroupSetting == default) GroupSetting = GetNewSettingID();
         if (ClassSetting == default) ClassSetting = GetNewSettingID();
-        Debug.Log("  on build  1:" + ClassSetting + "     " + GroupSetting);
+        //Debug.Log("  on build  1:" + ClassSetting + "     " + GroupSetting);
         re.groupData = GroupSetting;
         re.ClassSetting = ClassSetting;
-        Debug.Log("  on build  2:" + re.ClassSetting + "     " + re.groupData);
+        //Debug.Log("  on build  2:" + re.ClassSetting + "     " + re.groupData);
 
         //Debug.Log("id[" + re.ID + "]      upid[" + re.UPID.Value + "]");
         if (up != null)
@@ -79,7 +79,7 @@ public struct SkillBuilder
 
 
         FinalAct?.Invoke(re);
-        Debug.Log("  on build  3:" + re.ClassSetting + "     " + re.groupData);
+        //Debug.Log("  on build  3:" + re.ClassSetting + "     " + re.groupData);
 
 
         return re;

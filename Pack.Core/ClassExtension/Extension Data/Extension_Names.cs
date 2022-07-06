@@ -11,8 +11,10 @@ public static partial class nn
     public const string Version = nameof(Version);
     public const string FreshVersion = nameof(FreshVersion);
     public const string BuffUpgrade = nameof(BuffUpgrade);
-    //settting
+    //bool
     public const string IsServer = nameof(IsServer);
+    public const string IsVisable = nameof(IsVisable);
+
     //result
     public const string result = nameof(result);
 

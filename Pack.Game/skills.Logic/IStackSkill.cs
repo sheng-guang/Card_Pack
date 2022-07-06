@@ -9,7 +9,7 @@ public interface IStackSkill
     void SetExistStackAction(Action<object> a);
     void Stack_Start();
     bool Run_ToBreak();
-    void SetStackIndex(int index, int total);
+    void  SetStackIndex(int index, int total);
     void EnsureStackComp();
 }
 

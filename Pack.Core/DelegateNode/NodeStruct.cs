@@ -22,6 +22,12 @@ namespace Pack
                 else { Last.Next = ne; Last = ne; }
                 return ne;
             }
+            public void Clear()
+            {
+                First= null;
+                Last= null;
+                OnPoint = null;
+            }
         }
         public abstract class nodeBase
         {

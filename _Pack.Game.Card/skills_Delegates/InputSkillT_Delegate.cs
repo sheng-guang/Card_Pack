@@ -19,8 +19,18 @@ public interface IInputSkill_Delegate:ISkill_Delegate
 [Api]
 public class InputSkill_Delegate : InputSkill,ISkill_Delegate,IInputSkill_Delegate
 {
+    public override void OnSetID_LoadStructure() => A_OnSetID_LoadStructure.Invoke();
+    public Act0<InputSkill> A_OnSetID_LoadStructure { get; private set; } = new Act0<InputSkill>();
+    public override void setKV(string key, object o)
+    {
+        base.setKV(key, o);
+        A_setKV.Invoke(key, o);
+    }
+    public Act2<InputSkill, string, object> A_setKV { get; private set; } = new Act2<InputSkill, string, object>();
     public InputSkill_Delegate()
     {
+        A_OnSetID_LoadStructure.SetSelf(this);
+
         F_Visible.SetSelf(this);
 
         F_NodeForm.SetSelf(this);
