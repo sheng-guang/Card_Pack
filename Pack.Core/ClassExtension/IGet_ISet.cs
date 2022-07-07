@@ -5,7 +5,7 @@ using UnityEngine;
 
     public interface ISetKV
     {
-        void setKV(string key, object o);
+        void SetKV(string key, object o);
     }
     public interface ISet<T>
     {

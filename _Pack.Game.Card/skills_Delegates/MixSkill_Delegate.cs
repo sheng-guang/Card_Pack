@@ -19,47 +19,47 @@ public class MixSkill_Delegate : InputSkill_Delegate, IMixSkill, IMixSkill_Deleg
     public MixSkill_Delegate()
     {
         //long
-        A_FixStart.SetSelf(this);
-        A_Fix.SetSelf(this);
-        A_Fix50.SetSelf(this);
+        fixStart.SetSelf(this);
+        fix.SetSelf(this);
+        fix50.SetSelf(this);
         //stack
-        A_StackStart.SetSelf(this);
-        A_Run_ToBreak.SetSelf(this);
+        stackStart.SetSelf(this);
+        runToBreak.SetSelf(this);
     }
 
     //long--------------------------------------------------------------------------------------
     //1
-    public SkillNodeGroupOnce A_FixStart { get; set; } = new SkillNodeGroupOnce();
-    public virtual void Fix_Start() { A_FixStart.Invoke(); }
+    public SkillNodeGroupOnce fixStart { get; set; } = new SkillNodeGroupOnce();
+    public virtual void Fix_Start() { fixStart.Invoke(); }
     //2
-    public SkillNodeGroupStep A_Fix { get; set; } = new SkillNodeGroupStep();
-    public virtual void Fix() { A_Fix.Invoke(); }
+    public SkillNodeGroupStep fix { get; set; } = new SkillNodeGroupStep();
+    public virtual void Fix() { fix.Invoke(); }
     //3
-    public SkillNodeGroupStep A_Fix50 { get; set; } = new SkillNodeGroupStep();
-    public virtual void Fix50() { A_Fix50.Invoke(); }
+    public SkillNodeGroupStep fix50 { get; set; } = new SkillNodeGroupStep();
+    public virtual void Fix50() { fix50.Invoke(); }
     public void SetExitListAction(Action<object> a)
     {
         existList = a;
-        A_Fix.SetExistAction(a);
-        A_FixStart.SetExistAction(a);
-        A_Fix50.SetExistAction(a);
+        fix.SetExistAction(a);
+        fixStart.SetExistAction(a);
+        fix50.SetExistAction(a);
     }
 
     Action<object> existList { get; set; }
     public void ExistList() { existList?.Invoke(this); }
 
     //stack--------------------------------------------------------------------------------------
-    public SkillNodeGroupOnce A_StackStart { get; set; } = new SkillNodeGroupOnce();
-    public virtual void Stack_Start() { A_StackStart.Invoke(); }
+    public SkillNodeGroupOnce stackStart { get; set; } = new SkillNodeGroupOnce();
+    public virtual void Stack_Start() { stackStart.Invoke(); }
 
-    public SkillNodeGroupStack A_Run_ToBreak { get; set; } = new SkillNodeGroupStack();
-    public virtual bool Run_ToBreak() { return A_Run_ToBreak.Invoke(); }
+    public SkillNodeGroupStack runToBreak { get; set; } = new SkillNodeGroupStack();
+    public virtual bool Run_ToBreak() { return runToBreak.Invoke(); }
 
     public void SetExistStackAction(Action<object> a)
     {
         existStack = a;
-        A_StackStart.SetExistAction(a);
-        A_Run_ToBreak.SetExistAction(a);
+        stackStart.SetExistAction(a);
+        runToBreak.SetExistAction(a);
     }
 
     Action<object> existStack { get; set; }

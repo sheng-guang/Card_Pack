@@ -86,39 +86,39 @@ partial class Skill //一个目标的技能
 {
     public static void ApplyOneTargetInput(Skill skill, InputForm p1)
     {
-        skill.groupData.ExPtr<Vector3>(nn.Input_StartV3 + skill.GroupIndex)
+        skill.groupData.Ex<Vector3>(nn.Input_StartV3 + skill.GroupIndex)
             .SetIGet(skill.unit.RealPoss);
-        skill.groupData.ExPtr<Vector3>(nn.Input_DirectionV3 + skill.GroupIndex)
+        skill.groupData.Ex<Vector3>(nn.Input_DirectionV3 + skill.GroupIndex)
              .SetIGet((p1.Child.Point.Value - skill.unit.RealPoss).normalized);
-        skill.groupData.ExPtr<Vector3>(nn.Input_TargetV3 + skill.GroupIndex)
+        skill.groupData.Ex<Vector3>(nn.Input_TargetV3 + skill.GroupIndex)
             .SetIGet(p1.Child.Point.Value);
-        skill.groupData.ExPtr<N<int>>(nn.LayerID + skill.GroupIndex)
+        skill.groupData.Ex<N<int>>(nn.LayerID + skill.GroupIndex)
             .SetIGet(p1.Child.LayerID);
     }
     public string GroupIndex = "";
     public Vector3 StartV3()
     {
-        return groupData.ExPtr<Vector3>(nn.Input_StartV3 + GroupIndex).Value;
+        return groupData.Ex<Vector3>(nn.Input_StartV3 + GroupIndex).Value;
     }
     public Vector3 DirV3()
     {
-        return groupData.ExPtr<Vector3>(nn.Input_DirectionV3 + GroupIndex).Value;
+        return groupData.Ex<Vector3>(nn.Input_DirectionV3 + GroupIndex).Value;
     }
     public Vector3 TarV3()
     {
         var to = TarID().To<IIDTarget>();
         if (to != null) { return to.RealPoss; }
-        return groupData.ExPtr<Vector3>(nn.Input_TargetV3 + GroupIndex).Value;
+        return groupData.Ex<Vector3>(nn.Input_TargetV3 + GroupIndex).Value;
     }
     public Vector3 TarV3Visual()
     {
         var to = TarID().To<IIDTarget>();
         if (to != null) { return to.VisualPoss; }
-        return groupData.ExPtr<Vector3>(nn.Input_TargetV3 + GroupIndex).Value;
+        return groupData.Ex<Vector3>(nn.Input_TargetV3 + GroupIndex).Value;
     }
     public N<int> TarID()
     {
-        return groupData.ExPtr<N<int>>(nn.LayerID + GroupIndex).Value;
+        return groupData.Ex<N<int>>(nn.LayerID + GroupIndex).Value;
     }
     public Unit TarUnit()
     {
@@ -237,7 +237,7 @@ partial class Skill //创建 技能输入 网络包 input Msg  /static
 
 partial class Skill : ISetKV //var 设置数据 set  kv
 {
-    public virtual void setKV(string key, object o) { }
+    public virtual void SetKV(string key, object o) { }
 }
 
 partial class Skill//卡牌堆叠 stack 
@@ -267,6 +267,6 @@ partial class Skill//long list  index
 }
 partial class Skill//是否有超过一个的单位
 {
-    public bool HasMoreThanOneTar { get; protected set; } = false;
+    public bool HasMoreThanZeroTar { get; protected set; } = false;
 }
 

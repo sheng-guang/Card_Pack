@@ -25,7 +25,10 @@ partial class eve//设置图标
 }
 partial class eve//技能 相关
 {
-
+    public static void ApplyOneTarInputToSkill(Skill s,InputForm f)
+    {
+        Skill.ApplyOneTargetInput(s, f);
+    }
     public static void PauseSkillForSeconds(this Skill s,float t)
     {
         s.ServerSetPauseTime(t);
@@ -180,5 +183,9 @@ partial class eve//新建
     public static void AddToStackSkillList(IStackSkill s)
     {
         s.AddToStackSkillList();
+    }
+    public static void AddToLongSkillList(ILongSkill s)
+    {
+        s.AddToLongSkillList();
     }
 }

@@ -6,9 +6,9 @@ using UnityEngine;
 
 public interface ILongSkil_Delegate:ISkill_Delegate
 {
-    SkillNodeGroupOnce A_FixStart { get; set; }
-    SkillNodeGroupStep A_Fix { get; set; }
-    SkillNodeGroupStep A_Fix50 { get; set; }
+    SkillNodeGroupOnce fixStart { get; set; }
+    SkillNodeGroupStep fix { get; set; }
+    SkillNodeGroupStep fix50 { get; set; }
 }
 
 public class LongSkil_Delegate : Skill_Delegate, ILongSkill,ILongSkil_Delegate
@@ -16,26 +16,26 @@ public class LongSkil_Delegate : Skill_Delegate, ILongSkill,ILongSkil_Delegate
 
     public LongSkil_Delegate()
     {
-        A_FixStart.SetSelf(this);
-        A_Fix.SetSelf(this);
-        A_Fix50.SetSelf(this);
+        fixStart.SetSelf(this);
+        fix.SetSelf(this);
+        fix50.SetSelf(this);
     }
     //long
     //1
-    public SkillNodeGroupOnce A_FixStart { get; set; } = new SkillNodeGroupOnce();
-    public virtual void Fix_Start() { A_FixStart.Invoke(); }
+    public SkillNodeGroupOnce fixStart { get; set; } = new SkillNodeGroupOnce();
+    public virtual void Fix_Start() { fixStart.Invoke(); }
     //2
-    public SkillNodeGroupStep A_Fix { get; set; } = new SkillNodeGroupStep();
-    public virtual void Fix() { A_Fix.Invoke(); }
+    public SkillNodeGroupStep fix { get; set; } = new SkillNodeGroupStep();
+    public virtual void Fix() { fix.Invoke(); }
     //3
-    public SkillNodeGroupStep A_Fix50 { get; set; } = new SkillNodeGroupStep();
-    public virtual void Fix50() { A_Fix50.Invoke(); }
+    public SkillNodeGroupStep fix50 { get; set; } = new SkillNodeGroupStep();
+    public virtual void Fix50() { fix50.Invoke(); }
     public void SetExitListAction(Action<object> a)
     {
         exitList = a;
-        A_Fix.SetExistAction(a);
-        A_FixStart.SetExistAction(a);
-        A_Fix50.SetExistAction(a);
+        fix.SetExistAction(a);
+        fixStart.SetExistAction(a);
+        fix50.SetExistAction(a);
     }
 
     Action<object> exitList { get; set; }

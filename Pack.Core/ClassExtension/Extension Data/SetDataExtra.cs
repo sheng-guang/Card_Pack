@@ -20,7 +20,7 @@ public static partial class SetDataExtra
     public static object Var(this object obj, string key, object value)
     {
         {
-            if (obj is ISetKV) { (obj as ISetKV).setKV(key, value); return obj; }
+            if (obj is ISetKV) { (obj as ISetKV).SetKV(key, value); return obj; }
         }
         {
             var t = obj.GetType();

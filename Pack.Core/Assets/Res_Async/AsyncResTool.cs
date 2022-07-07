@@ -49,24 +49,24 @@ using UnityEditor;
         public void BeforeAsPrefabe1(IRes res)
         {
            var first = this.getFirstComponetInParent<IRes>();
-            this.ExPtr<bool>("do").SetIGet(first==res);
-            if (this.ExPtr<bool>("do").Value == false) return;
+            this.Ex<bool>("do").SetIGet(first==res);
+            if (this.Ex<bool>("do").Value == false) return;
 
             var c = transform.GetChild(transform.childCount - 1);
-            this.ExPtr<Transform>("child").SetIGet(c);
+            this.Ex<Transform>("child").SetIGet(c);
             AssetName = c.name;
             AssetDir_AseetBundle = res.GetABAsycPath();
         }
         public void BeforeAsPrefabe2(IRes res)
         {
-            if (this.ExPtr<bool>("do").Value == false) return;
-            var c = this.ExPtr<Transform>("child").Value;
+            if (this.Ex<bool>("do").Value == false) return;
+            var c = this.Ex<Transform>("child").Value;
             c.parent = null;
         }
         public void AfterAsPrefabe1(IRes res)
         {
-            if (this.ExPtr<bool>("do").Value == false) return;
-            var c = this.ExPtr<Transform>("child").Value;
+            if (this.Ex<bool>("do").Value == false) return;
+            var c = this.Ex<Transform>("child").Value;
             var p = this.GetAsyncAssetPath(res);
 #if UNITY_EDITOR
             var saved = PrefabUtility.SaveAsPrefabAssetAndConnect(c.gameObject, p, InteractionMode.UserAction);
@@ -77,8 +77,8 @@ using UnityEditor;
 
         public void AfterAsPrefabe2(IRes res)
         {
-            if (this.ExPtr<bool>("do").Value == false) return;
-            var c = this.ExPtr<Transform>("child").Value;
+            if (this.Ex<bool>("do").Value == false) return;
+            var c = this.Ex<Transform>("child").Value;
             c.parent = transform;
             c.SetAsLastSibling();
         }

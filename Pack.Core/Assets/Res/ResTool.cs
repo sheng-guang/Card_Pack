@@ -19,7 +19,7 @@ using System;
         public void BeforeAsPrefabe1(IRes res)
         {
             if (GetComponent<IRes>() == res) return;
-            this.ExPtr<Transform>("par").SetIGet(transform.parent);
+            this.Ex<Transform>("par").SetIGet(transform.parent);
         }
         //2
         public void BeforeAsPrefabe2(IRes res)
@@ -37,7 +37,7 @@ using System;
         public void AfterAsPrefabe2(IRes res)
         {
             if (GetComponent<IRes>() == res) return;
-            var par = this.ExPtr<Transform>("par").Value;
+            var par = this.Ex<Transform>("par").Value;
             transform.parent = par;
         }
     }

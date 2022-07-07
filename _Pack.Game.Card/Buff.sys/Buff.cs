@@ -12,7 +12,7 @@ partial class Buff//remove
 }
 partial class Buff : ISetKV
 {
-    public virtual void setKV(string key, object o) { }
+    public virtual void SetKV(string key, object o) { }
 }
 partial class Buff//layer 
 {

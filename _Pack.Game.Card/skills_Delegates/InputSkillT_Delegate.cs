@@ -5,79 +5,80 @@ using UnityEngine;
 
 public interface IInputSkill_Delegate:ISkill_Delegate
 {
-    Func1<InputSkill, int, IEnumerable<string>> F_NodeForm { get; set; }
-    Func2<InputSkill, string, int, N<float>> F_GetFloat { get; set; }
-    Func2<InputSkill, string, int, N<bool>> F_GetBool { get; set; }
-    Func2<InputSkill, string, int, N<int>> F_GetInt { get; set; }
-    Func2<InputSkill, string, int, N<Vector3>> F_GetV3 { get; set; }
-    Func0<InputSkill, bool> F_HighLightTest { get; set; }
-    Func1<InputSkill, InputNode, bool> F_TestNodeUseful { get; set; }
+    Act2<InputSkill,Action<string>,int> forEachNodeForm { get;set;}
+    Func2<InputSkill, string, int, N<float>> getFloat { get; set; }
+    Func2<InputSkill, string, int, N<bool>> getBool { get; set; }
+    Func2<InputSkill, string, int, N<int>> getInt { get; set; }
+    Func2<InputSkill, string, int, N<Vector3>> getV3 { get; set; }
+    Func0<InputSkill, bool> highLightTest { get; set; }
+    Func1<InputSkill, InputNode, bool> testNodeUseful { get; set; }
 
-    Func2<InputSkill, InputNode, int, InputNode> F_AfterWrite_GetNext { get; set; }
-    Act1<InputSkill, InputForm> A_Tested_Then_RunSkill { get; set; }
+    Func2<InputSkill, InputNode, int, InputNode> afterWrite_GetNext { get; set; }
+    Act1<InputSkill, InputForm> tested_Then_RunSkill { get; set; }
 }
 [Api]
 public class InputSkill_Delegate : InputSkill,ISkill_Delegate,IInputSkill_Delegate
 {
-    public override void OnSetID_LoadStructure() => A_OnSetID_LoadStructure.Invoke();
-    public Act0<InputSkill> A_OnSetID_LoadStructure { get; private set; } = new Act0<InputSkill>();
-    public override void setKV(string key, object o)
+    public override void OnSetID_LoadStructure() => onSetID_LoadStructure.Invoke();
+    public Act0<InputSkill> onSetID_LoadStructure { get; private set; } = new Act0<InputSkill>();
+    public override void SetKV(string key, object o)
     {
-        base.setKV(key, o);
-        A_setKV.Invoke(key, o);
+        base.SetKV(key, o);
+        setKV.Invoke(key, o);
     }
-    public Act2<InputSkill, string, object> A_setKV { get; private set; } = new Act2<InputSkill, string, object>();
+    public Act2<InputSkill, string, object> setKV { get; private set; } = new Act2<InputSkill, string, object>();
     public InputSkill_Delegate()
     {
-        A_OnSetID_LoadStructure.SetSelf(this);
+        setKV.SetSelf(this);
+        onSetID_LoadStructure.SetSelf(this);
 
-        F_Visible.SetSelf(this);
+        visible.SetSelf(this);
+        forEachNodeForm.SetSelf(this);
+        getFloat.SetSelf(this);
+        getBool.SetSelf(this);
+        getInt.SetSelf(this);
+        getV3.SetSelf(this);
 
-        F_NodeForm.SetSelf(this);
-        F_GetFloat.SetSelf(this);
-        F_GetBool.SetSelf(this);
-        F_GetInt.SetSelf(this);
-        F_GetV3.SetSelf(this);
+        highLightTest.SetSelf(this);
+        testNodeUseful.SetSelf(this);
 
-        F_HighLightTest.SetSelf(this);
-        F_TestNodeUseful.SetSelf(this);
-
-        F_AfterWrite_GetNext.SetSelf(this);
-        A_Tested_Then_RunSkill.SetSelf(this);
+        afterWrite_GetNext.SetSelf(this);
+        tested_Then_RunSkill.SetSelf(this);
 
     }
-    public Func0<Skill, bool> F_Visible { get; set; } = new Func0<Skill, bool>().Act(x => x.SetDef(true));
-    public override bool Visible => F_Visible.Invoke();
+    public Func0<Skill, bool> visible { get; set; } = new Func0<Skill, bool>().Act(x => x.SetDef(true));
+    public override bool Visible => visible.Invoke();
 
     //forPreView
-    public Func1<InputSkill, int, IEnumerable<string>> F_NodeForm { get; set; } = new Func1<InputSkill, int, IEnumerable<string>>().Act(x => x.SetDef(null));
-    public override IEnumerable<string> NodeForm(int kind) { return F_NodeForm.Invoke(kind); }
+    public Act2<InputSkill, Action<string>, int> forEachNodeForm { get; set; } = new Act2<InputSkill, Action<string>, int>();
+    //public Func1<InputSkill, int, IEnumerable<string>> nodeForm { get; set; } = new Func1<InputSkill, int, IEnumerable<string>>().Act(x => x.SetDef(null));
+    public override void ForEachNodeForm(Action<string> act, int kind)    {        forEachNodeForm.Invoke(act, kind);    }
     //----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-    public Func2<InputSkill, string, int, N<float>> F_GetFloat { get; set; } = new Func2<InputSkill, string, int, N<float>>().Act(x => x.SetDef(null));
-    public override N<float> GetFloat(string DataName, int kind) { return F_GetFloat.Invoke(DataName, kind); }
+    public Func2<InputSkill, string, int, N<float>> getFloat { get; set; } = new Func2<InputSkill, string, int, N<float>>().Act(x => x.SetDef(null));
+    public override N<float> GetFloat(string DataName, int kind) { return getFloat.Invoke(DataName, kind); }
 
-    public Func2<InputSkill, string, int, N<bool>> F_GetBool { get; set; } = new Func2<InputSkill, string, int, N<bool>>().Act(x => x.SetDef(null));
-    public override N<bool> GetBool(string DataName, int kind) { return F_GetBool.Invoke(DataName, kind); }
+    public Func2<InputSkill, string, int, N<bool>> getBool { get; set; } = new Func2<InputSkill, string, int, N<bool>>().Act(x => x.SetDef(null));
+    public override N<bool> GetBool(string DataName, int kind) { return getBool.Invoke(DataName, kind); }
 
-    public Func2<InputSkill, string, int, N<int>> F_GetInt { get; set; } = new Func2<InputSkill, string, int, N<int>>().SetDef(null);
-    public override N<int> GetInt(string DataName, int kind) { return F_GetInt.Invoke(DataName, kind); }
+    public Func2<InputSkill, string, int, N<int>> getInt { get; set; } = new Func2<InputSkill, string, int, N<int>>().SetDef(null);
+    public override N<int> GetInt(string DataName, int kind) { return getInt.Invoke(DataName, kind); }
 
-    public Func2<InputSkill, string, int, N<Vector3>> F_GetV3 { get; set; } = new Func2<InputSkill, string, int, N<Vector3>>().SetDef(null);
-    public override N<Vector3> GetV3(string DataName, int kind) { return F_GetV3.Invoke(DataName, kind); }
+    public Func2<InputSkill, string, int, N<Vector3>> getV3 { get; set; } = new Func2<InputSkill, string, int, N<Vector3>>().SetDef(null);
+    public override N<Vector3> GetV3(string DataName, int kind) { return getV3.Invoke(DataName, kind); }
     //test----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-    public Func0<InputSkill, bool> F_HighLightTest { get; set; } = new Func0<InputSkill, bool>().SetDef(true);
-    public override bool HighLightTest() { return F_HighLightTest.Invoke(); }
+    public Func0<InputSkill, bool> highLightTest { get; set; } = new Func0<InputSkill, bool>().SetDef(true);
+    public override bool HighLightTest() { return highLightTest.Invoke(); }
 
-    public Func1<InputSkill, InputNode, bool> F_TestNodeUseful { get; set; } = new Func1<InputSkill, InputNode, bool>().Act(x => x.SetDef(true));
-    public override bool TestNodeUseful(InputNode n) { return F_TestNodeUseful.Invoke(n); }
+    public Func1<InputSkill, InputNode, bool> testNodeUseful { get; set; } = new Func1<InputSkill, InputNode, bool>().Act(x => x.SetDef(true));
+    public override bool TestNodeUseful(InputNode n) { return testNodeUseful.Invoke(n); }
 
     // node tree
-    public Func2<InputSkill, InputNode, int, InputNode> F_AfterWrite_GetNext { get; set; } = new Func2<InputSkill, InputNode, int, InputNode>();
-    public override InputNode AfterWrite_GetNext(InputNode n, int Extrainfo) { return F_AfterWrite_GetNext.Invoke(n, Extrainfo); }
+    public Func2<InputSkill, InputNode, int, InputNode> afterWrite_GetNext { get; set; } = new Func2<InputSkill, InputNode, int, InputNode>();
+    public override InputNode AfterWrite_GetNext(InputNode n, int Extrainfo) { return afterWrite_GetNext.Invoke(n, Extrainfo); }
 
     //test_run--------------------------------------------------------------------------------------
-    public Act1<InputSkill, InputForm> A_Tested_Then_RunSkill { get; set; } = new Act1<InputSkill, InputForm>();
-    public override void Tested_Then_RunSkill(InputForm f) { A_Tested_Then_RunSkill.Invoke(f); }
+    public Act1<InputSkill, InputForm> tested_Then_RunSkill { get; set; } = new Act1<InputSkill, InputForm>();
+    public override void Tested_Then_RunSkill(InputForm f) { tested_Then_RunSkill.Invoke(f); }
 
 
 }

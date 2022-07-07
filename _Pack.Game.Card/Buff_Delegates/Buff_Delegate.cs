@@ -12,9 +12,9 @@ public class Buff_Delegate : Buff
         A_Apply.SetSelf(this);
     }
     public Act2<Buff, string, object> A_setKV { get; set; } = new Act2<Buff, string, object>();
-    public override void setKV(string key, object o)
+    public override void SetKV(string key, object o)
     {
-        base.setKV(key, o);
+        base.SetKV(key, o);
         A_setKV.Invoke(key, o);
     }
 

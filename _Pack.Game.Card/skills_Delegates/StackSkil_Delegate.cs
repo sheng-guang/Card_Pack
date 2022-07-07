@@ -5,29 +5,29 @@ using UnityEngine;
 
 public interface IStackSkill_Delegate:ISkill_Delegate
 {
-    SkillNodeGroupOnce A_StackStart { get; set; }
-    SkillNodeGroupStack A_Run_ToBreak { get; set; }
+    SkillNodeGroupOnce stackStart { get; set; }
+    SkillNodeGroupStack runToBreak { get; set; }
 
 }
 public class StackSkill_Delegate : Skill_Delegate, IStackSkill, IStackSkill_Delegate
 {
     public StackSkill_Delegate()
     {
-        A_StackStart.SetSelf(this);
-        A_Run_ToBreak.SetSelf(this);
+        stackStart.SetSelf(this);
+        runToBreak.SetSelf(this);
     }
     //stack
-    public SkillNodeGroupOnce A_StackStart { get; set; } = new SkillNodeGroupOnce();
-    public virtual void Stack_Start() { A_StackStart.Invoke(); }
+    public SkillNodeGroupOnce stackStart { get; set; } = new SkillNodeGroupOnce();
+    public virtual void Stack_Start() { stackStart.Invoke(); }
 
-    public SkillNodeGroupStack A_Run_ToBreak { get; set; } = new SkillNodeGroupStack();
-    public virtual bool Run_ToBreak() { return A_Run_ToBreak.Invoke(); }
+    public SkillNodeGroupStack runToBreak { get; set; } = new SkillNodeGroupStack();
+    public virtual bool Run_ToBreak() { return runToBreak.Invoke(); }
 
     public void SetExistStackAction(Action<object> a)
     {
         existStack = a;
-        A_StackStart.SetExistAction(a);
-        A_Run_ToBreak.SetExistAction(a);
+        stackStart.SetExistAction(a);
+        runToBreak.SetExistAction(a);
     }
 
     Action<object> existStack { get; set; }

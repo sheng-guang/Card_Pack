@@ -5,6 +5,9 @@ using UnityEngine;
 
 public static partial class nn
 {
+
+    //need
+    public const string ValueNeeded=nameof(ValueNeeded);
     //setKV
     public const string setKV=nameof(setKV);
     //buff
