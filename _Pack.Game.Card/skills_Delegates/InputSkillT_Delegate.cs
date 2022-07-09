@@ -6,10 +6,10 @@ using UnityEngine;
 public interface IInputSkill_Delegate:ISkill_Delegate
 {
     Act2<InputSkill,Action<string>,int> forEachNodeForm { get;set;}
-    Func2<InputSkill, string, int, N<float>> getFloat { get; set; }
-    Func2<InputSkill, string, int, N<bool>> getBool { get; set; }
-    Func2<InputSkill, string, int, N<int>> getInt { get; set; }
-    Func2<InputSkill, string, int, N<Vector3>> getV3 { get; set; }
+    Func2<InputSkill, string, int, N<float>> preFloat { get; set; }
+    Func2<InputSkill, string, int, N<bool>> preBool { get; set; }
+    Func2<InputSkill, string, int, N<int>> preInt { get; set; }
+    Func2<InputSkill, string, int, N<Vector3>> preV3 { get; set; }
     Func0<InputSkill, bool> highLightTest { get; set; }
     Func1<InputSkill, InputNode, bool> testNodeUseful { get; set; }
 
@@ -34,10 +34,10 @@ public class InputSkill_Delegate : InputSkill,ISkill_Delegate,IInputSkill_Delega
 
         visible.SetSelf(this);
         forEachNodeForm.SetSelf(this);
-        getFloat.SetSelf(this);
-        getBool.SetSelf(this);
-        getInt.SetSelf(this);
-        getV3.SetSelf(this);
+        preFloat.SetSelf(this);
+        preBool.SetSelf(this);
+        preInt.SetSelf(this);
+        preV3.SetSelf(this);
 
         highLightTest.SetSelf(this);
         testNodeUseful.SetSelf(this);
@@ -54,17 +54,17 @@ public class InputSkill_Delegate : InputSkill,ISkill_Delegate,IInputSkill_Delega
     //public Func1<InputSkill, int, IEnumerable<string>> nodeForm { get; set; } = new Func1<InputSkill, int, IEnumerable<string>>().Act(x => x.SetDef(null));
     public override void ForEachNodeForm(Action<string> act, int kind)    {        forEachNodeForm.Invoke(act, kind);    }
     //----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-    public Func2<InputSkill, string, int, N<float>> getFloat { get; set; } = new Func2<InputSkill, string, int, N<float>>().Act(x => x.SetDef(null));
-    public override N<float> GetFloat(string DataName, int kind) { return getFloat.Invoke(DataName, kind); }
+    public Func2<InputSkill, string, int, N<float>> preFloat { get; set; } = new Func2<InputSkill, string, int, N<float>>().Act(x => x.SetDef(null));
+    public override N<float> PreFloat(string DataName, int kind) { return preFloat.Invoke(DataName, kind); }
 
-    public Func2<InputSkill, string, int, N<bool>> getBool { get; set; } = new Func2<InputSkill, string, int, N<bool>>().Act(x => x.SetDef(null));
-    public override N<bool> GetBool(string DataName, int kind) { return getBool.Invoke(DataName, kind); }
+    public Func2<InputSkill, string, int, N<bool>> preBool { get; set; } = new Func2<InputSkill, string, int, N<bool>>().Act(x => x.SetDef(null));
+    public override N<bool> PreBool(string DataName, int kind) { return preBool.Invoke(DataName, kind); }
 
-    public Func2<InputSkill, string, int, N<int>> getInt { get; set; } = new Func2<InputSkill, string, int, N<int>>().SetDef(null);
-    public override N<int> GetInt(string DataName, int kind) { return getInt.Invoke(DataName, kind); }
+    public Func2<InputSkill, string, int, N<int>> preInt { get; set; } = new Func2<InputSkill, string, int, N<int>>().SetDef(null);
+    public override N<int> PreInt(string DataName, int kind) { return preInt.Invoke(DataName, kind); }
 
-    public Func2<InputSkill, string, int, N<Vector3>> getV3 { get; set; } = new Func2<InputSkill, string, int, N<Vector3>>().SetDef(null);
-    public override N<Vector3> GetV3(string DataName, int kind) { return getV3.Invoke(DataName, kind); }
+    public Func2<InputSkill, string, int, N<Vector3>> preV3 { get; set; } = new Func2<InputSkill, string, int, N<Vector3>>().SetDef(null);
+    public override N<Vector3> PreV3(string DataName, int kind) { return preV3.Invoke(DataName, kind); }
     //test----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     public Func0<InputSkill, bool> highLightTest { get; set; } = new Func0<InputSkill, bool>().SetDef(true);
     public override bool HighLightTest() { return highLightTest.Invoke(); }

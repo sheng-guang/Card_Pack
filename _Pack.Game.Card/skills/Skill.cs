@@ -86,13 +86,13 @@ partial class Skill //一个目标的技能
 {
     public static void ApplyOneTargetInput(Skill skill, InputForm p1)
     {
-        skill.groupData.Ex<Vector3>(nn.Input_StartV3 + skill.GroupIndex)
+        skill.groupData.V3(nn.Input_StartV3 + skill.GroupIndex)
             .SetIGet(skill.unit.RealPoss);
-        skill.groupData.Ex<Vector3>(nn.Input_DirectionV3 + skill.GroupIndex)
+        skill.groupData.V3(nn.Input_DirectionV3 + skill.GroupIndex)
              .SetIGet((p1.Child.Point.Value - skill.unit.RealPoss).normalized);
-        skill.groupData.Ex<Vector3>(nn.Input_TargetV3 + skill.GroupIndex)
+        skill.groupData.V3(nn.Input_TargetV3 + skill.GroupIndex)
             .SetIGet(p1.Child.Point.Value);
-        skill.groupData.Ex<N<int>>(nn.LayerID + skill.GroupIndex)
+        skill.groupData.NInt(nn.LayerID + skill.GroupIndex)
             .SetIGet(p1.Child.LayerID);
     }
     public string GroupIndex = "";
@@ -179,6 +179,7 @@ partial class Skill //设置ID 设置上级 初始化函数
 {
     public virtual void SetUP(LayerID l)
     {
+        if (up != null) return;
         up = l;
         if (ID != IDs.NullID && ToLoad) { ToLoad = false; OnSetID_LoadStructure(); }
     }

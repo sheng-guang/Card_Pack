@@ -8,23 +8,30 @@ public static class OneTargetInputSkill
 {
     public const int FirstNodeKind = 1;
 }
+
 partial class InputSkill//static function set
 {
     public static void SetOneTarMode(InputSkill_Delegate s)
     {
         s.HasMoreThanZeroTar = true;
-        s.visible.AddFunc((skill) =>
+        s.visible.AddFunc((skill) =>   
         {
             s.visible.re(eve.IsCardInHand(s.unit));
         });
+        //s.afterWrite_GetNext.AddNode(new AfterWrite_GetNext_LineNode());
         s.afterWrite_GetNext.AddFunc((inpusk, node, Extrainfo) =>
         {
-            if (node.NodeKind == 0) { s.afterWrite_GetNext.re(node.CreatChild(1)); return; }
+            //Debug.Log(node.NodeKind);
+            if (node.NodeKind == 0)
+            {
+                s.afterWrite_GetNext.re(node.CreatChild(1)); return;
+            }
             else if (node.NodeKind == 1)
             {
                 if (Extrainfo.MeansToNext() && s.TestNodeUseful(node))
                 { s.afterWrite_GetNext.re(InputNode.FinishNode); return; }
             }
+            s.afterWrite_GetNext.re(node);
         });
 
         // test
@@ -33,27 +40,32 @@ partial class InputSkill//static function set
             if (s.unit.ManaCost.Value_Buffed.HasValue == false) return;
             if (s.player.Mana.Value < s.unit.ManaCost.Value_Buffed) { s.highLightTest.re(false); return; }
         });
-
-
         //preview
         s.forEachNodeForm.AddAct((s, act, kin) =>
         {
             if (kin == 1) { act(Pre_Line); act(Pre_Point); return; }
         });
-        //testThenRun
-        s.tested_Then_RunSkill.AddAct((s, inputForm) =>
-        {
-            eve.ApplyOneTarInputToSkill(s, inputForm);
-        });
     }
 
+    public static void EnableBranckSkill(InputSkill_Delegate s, object skillName,object ListKind)
+    {
+        s.ClassSetting.Str(nn.SkillName,skillName);
+        s.ClassSetting.Int(nn.SkillListKind, ListKind);
+        s.tested_Then_RunSkill.AddAct((sk, inputForm) =>
+        {
+            var to = eve.CreatSkill(sk.ClassSetting.Str(nn.SkillName)).Branch(sk);
+            eve.SetSkillUp(to, sk.up);
+            eve.ApplyOneTarInputToSkill(to, inputForm);
+            eve.AddToSkillList(to, sk.ClassSetting.Int(nn.SkillListKind));
+        });
+    }
 
     /// <summary>
     ///  must add *.0f
     /// </summary>
     public static void EnableReach(InputSkill_Delegate s, object reac)
     {
-        var reach= s.Ex<N<float>>(nn.Reach).SetIGet(reac);
+        var reach = s.NFloat(nn.Reach, reac);
         s.testNodeUseful.AddFunc((sk, node) =>
         {
             if (reach.Value.HasValue == false) return;
@@ -65,58 +77,55 @@ partial class InputSkill//static function set
         {
             if (kind == 0) act(Pre_Reach);
         });
-        s.getFloat.AddFunc((sk, key, kind) =>
+        s.preFloat.AddFunc((sk, key, kind) =>
         {
             if (key != nn.Reach) return;
-            s.getFloat.re(reach.Value);
+            s.preFloat.re(reach.Value);
         });
     }
-    public static void EnableThrowLine(InputSkill_Delegate s, object HighThrow, IGet<N<int>> speed)
+    public static void EnableThrowLine(InputSkill_Delegate s, Func<bool> HighThrow)
     {
-        var highThrow= s.Ex<N<bool>>(nn.HighThrow).SetIGet(HighThrow);
-
+        EnableThrowLine(s, new IGetFunc<bool> (HighThrow));
+    }
+    public static void EnableThrowLine(InputSkill_Delegate s, object HighThrow)
+    {
+        var highThrow = s.ClassSetting.NBool(nn.HighThrow,HighThrow);
+        var ss = s.ClassSetting.NInt(nn.speed,s.unit.speed.Value_Buffed_IGet);
         s.forEachNodeForm.AddAct((s, act, kind) =>
         {
             if (kind == 1) act(Pre_ThrowLine);
         });
-        s.getBool.AddFunc((sk, key, kind) =>
+        s.preBool.AddFunc((sk, key, kind) =>
         {
             if (key != nn.HighThrow) return;
             if (kind != 1) return;
-            if (highThrow.Value.HasValue == false) return;
-            s.getBool.re(highThrow.Value);
+            s.preBool.re(highThrow);
         });
-        s.getInt.AddFunc((sk, key, kind) =>
+        s.preInt.AddFunc((sk, key, kind) =>
         {
             if (key != nn.speed) return;
             if (kind != 1) return;
-            if (s.unit.speed.Value_Buffed.HasValue == false) return;
-            s.getInt.re(s.unit.speed.Value_Buffed);
+            s.preInt.re(ss);
         });
 
-
-        //s.Ex<N<bool>>(nn.HighThrow).SetIGet(HighThrow);
-
-        //s.getBool.AddNode(new GetBool_IsHighThrow()).Set(nn.HighThrow, HighThrow);
-        //s.getInt.AddNode(new GetInt_Speed()).Set(nn.speed, speed);
     }
-    public static void EnableThrowOffset(InputSkill_Delegate s, IGet<N<float>> OffsetY, IGet<N<float>> OffsetXZ)
+    public static void EnableThrowOffset(InputSkill_Delegate s, object OffsetY,object OffsetXZ)
     {
-        s.getFloat.AddFunc((x, key, NodeKind) =>
+        var Y = s.ClassSetting.NFloat(nn.OffSetY, OffsetY);
+        var XZ = s.ClassSetting.NFloat(nn.OffSetY, OffsetXZ);
+
+        s.preFloat.AddFunc((x, key, NodeKind) =>
         {
             if (NodeKind != 1) return;
             if (key == nn.OffSetY)
             {
-                s.getFloat.re(OffsetY.Value);
+                s.preFloat.re(Y);
             }
             else if (key == nn.OffSetXZ)
             {
-                s.getFloat.re(OffsetXZ.Value);
+                s.preFloat.re(XZ);
             }
         });
-        //s.getFloat.AddNode(new GetFloat_Offset())
-        //    .Set(nn.OffSetY, OffsetY)
-        //    .Set(nn.OffSetXZ, OffsetXZ);
     }
 
 

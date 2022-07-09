@@ -34,10 +34,10 @@ partial class InputSkill//test
 partial class InputSkill//get float int bool V3
 {
     //forPreView
-    public virtual N<float> GetFloat(string DataName, int kind) { return null; }
-    public virtual N<int> GetInt(string DataName, int kind) { return null; }
-    public virtual N<bool> GetBool(string DataName, int kind) { return null; }
-    public virtual N<Vector3> GetV3(string DataName, int kind) { return null; }
+    public virtual N<float> PreFloat(string DataName, int kind) { return null; }
+    public virtual N<int> PreInt(string DataName, int kind) { return null; }
+    public virtual N<bool> PreBool(string DataName, int kind) { return null; }
+    public virtual N<Vector3> PreV3(string DataName, int kind) { return null; }
     public virtual void ForEachNodeForm(Action<string> act, int kind) { return; }
 }
 

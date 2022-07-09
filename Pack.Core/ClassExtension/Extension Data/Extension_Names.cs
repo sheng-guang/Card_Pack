@@ -79,7 +79,7 @@ public static partial class nn
     public const string ID_offset = nameof(ID_offset);
 
     public const string SkillKind_1Stack_2Long = nameof(SkillKind_1Stack_2Long);
-    public const string SkillListKind_1Stack_2Long = nameof(SkillListKind_1Stack_2Long);
+    public const string SkillListKind = nameof(SkillListKind);
     //method name
     public const string TrySetMethodName = "Set";
 

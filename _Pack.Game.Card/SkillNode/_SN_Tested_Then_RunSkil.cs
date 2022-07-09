@@ -62,7 +62,7 @@ using System;
         {
             base.Set_(key, o);
             if(key==nn.Skill) skill = o.ToIGet<Skill>();
-            if(key==nn.SkillListKind_1Stack_2Long)SkillList=o.ToIGet<int>();
+            if(key==nn.SkillListKind)SkillList=o.ToIGet<int>();
         }
         IGet<Skill> skill = (null as object).ToIGet<Skill>();
         IGet<int> SkillList = 0.ToIGet<int>();

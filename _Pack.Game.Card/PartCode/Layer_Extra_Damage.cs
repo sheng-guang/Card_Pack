@@ -23,12 +23,16 @@ partial class eve//设置图标
         b.FullName = name;
     }
 }
-partial class eve//技能 相关
+partial class eve//技能单目标
 {
-    public static void ApplyOneTarInputToSkill(Skill s,InputForm f)
+    public static void ApplyOneTarInputToSkill(Skill s, InputForm f)
     {
         Skill.ApplyOneTargetInput(s, f);
     }
+}
+
+partial class eve//技能 相关
+{
     public static void PauseSkillForSeconds(this Skill s,float t)
     {
         s.ServerSetPauseTime(t);
@@ -63,12 +67,12 @@ partial class eve//技能 相关
     }
 
 
-    public static void AddSkillToLayerID(this Skill s, LayerID l,int SkillKindMask,byte kind=0)
+    public static void AddSkillToLayerID( object s, LayerID l,int SkillKindMask,byte kind=0)
     {
         l.AddSkill(s, SkillKindMask, kind);
     }
 
-    public static void SetSkillUp(this Skill s,LayerID up)
+    public static void SetSkillUp( object s,LayerID up)
     {
         up.LinkToSkill(s);
     }
@@ -188,4 +192,16 @@ partial class eve//新建
     {
         s.AddToLongSkillList();
     }
+    public static void AddToSkillList(object o, int ListKind) 
+    {
+        if (ListKind.MaskContain(SkillListKind.Stack))
+        {
+            AddToStackSkillList(o as IStackSkill);
+        }
+        if (ListKind.MaskContain(SkillListKind.Long))
+        {
+            AddToLongSkillList(o as ILongSkill);
+        }
+    }
+
 }

@@ -74,7 +74,11 @@ public class SN_ThrowUnit : SKillNode
             return ToNext; 
         }
         //Debug.Log("is HighThrow: " + HighThrow.GetT);
-        var v = PhyExtra.GetThrowVelocity(TargetPoint.Value, unit.RealPoss, HighThrow.Value, unit.speed.Value_Buffed.Value);
+        var v = PhyExtra.GetThrowVelocity(
+            TargetPoint.Value, 
+            unit.RealPoss,
+            HighThrow.Value, 
+            unit.speed.Value_Buffed.Value);
         unit.rig.velocity = v;
         return ToNext;
     }

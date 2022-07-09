@@ -75,29 +75,29 @@ public class InputNode : IPreViewMasterNode
 
         set { _Point = value; }
     }
-    public virtual N<Vector3> GetV3(string DataName)
+    public virtual N<Vector3> PreV3(string DataName)
     {
         if (DataName == nn.Point) return Point;
-        return MasterSkill.GetV3(DataName, NodeKind);
+        return MasterSkill.PreV3(DataName, NodeKind);
     }
     //int
     public virtual N<int> LayerID { get; set; }
-    public virtual N<int> GetInt(string DataName)
+    public virtual N<int> PreInt(string DataName)
     {
         if (DataName == nn.LayerID) return LayerID;
-        return MasterSkill.GetInt(DataName, NodeKind);
+        return MasterSkill.PreInt(DataName, NodeKind);
     }
     //float
-    public virtual N<float> GetFloat(string DataName)
+    public virtual N<float> PreFloat(string DataName)
     {
-        return MasterSkill.GetFloat(DataName, NodeKind);
+        return MasterSkill.PreFloat(DataName, NodeKind);
     }
 
     //bool
-    public virtual N<bool> GetBool(string DataName)
+    public virtual N<bool> PreBool(string DataName)
     {
         if (DataName == nn.Useful) return MasterSkill.TestNodeUseful(this);
-        return MasterSkill.GetBool(DataName, NodeKind);
+        return MasterSkill.PreBool(DataName, NodeKind);
     }
 
 

@@ -83,7 +83,7 @@ public static partial class SetDataExtra
     public static bool TryToIGet_ref<T>(this object value, ref IGet<T> re)
     {
         if (value is IGet<T>) { re = value as IGet<T>; return true; }
-        if (value is Func<T>) { re = new IGet_Func<T>() { f = value as Func<T> }; return true; }
+        if (value is Func<T>) { re = new IGetFunc<T>() { f = value as Func<T> }; return true; }
         if (value is T) { re = new IGet_Value<T>() { Value = (T)value }; return true; }
         if (value.IsNull_or_EqualNull()) { re = new IGet_Value<T>(); return true; }
         {

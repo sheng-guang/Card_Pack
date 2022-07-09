@@ -59,12 +59,13 @@ public abstract partial class LayerID //skill
     }
     public void AddSkill(object to, int ToAddMask, byte inputSkillKind = 0)
     {
+        LinkToSkill(to);
         if (to is Skill)
         {
             Skill s = to as Skill;
             skills.EnsureAdd(s);
         }
-        LinkToSkill(to);
+        
 
         if (ToAddMask.MaskContain(SkillKind.Input) && to is InputSkill)
         {

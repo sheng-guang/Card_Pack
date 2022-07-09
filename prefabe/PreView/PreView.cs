@@ -16,10 +16,10 @@ public interface IPreViewMasterNode
 {
     IPreViewMasterNode UPViewNode { get; }
     public void ForEachNode(Action<string> act);
-    public N<int> GetInt(string DataName);
-    public N<Vector3> GetV3(string DataName);
-    public N<float> GetFloat(string DataName);
-    public N<bool> GetBool(string DataName);
+    public N<int> PreInt(string DataName);
+    public N<Vector3> PreV3(string DataName);
+    public N<float> PreFloat(string DataName);
+    public N<bool> PreBool(string DataName);
 
 
 }
