@@ -85,7 +85,7 @@ public static partial class SetDataExtra
         if (value is IGet<T>) { re = value as IGet<T>; return true; }
         if (value is Func<T>) { re = new IGetFunc<T>() { f = value as Func<T> }; return true; }
         if (value is T) { re = new IGet_Value<T>() { Value = (T)value }; return true; }
-        if (value.IsNull_or_EqualNull()) { re = new IGet_Value<T>(); return true; }
+        if (value.Null_Or_EqualNull()) { re = new IGet_Value<T>(); return true; }
         {
             T r = default;
             if (r != null)
@@ -127,9 +127,9 @@ public static partial class SetDataExtra
         }
     }
 
-    public static IGetSeat<T> ToIGetSeat<T>(this object value)
+    public static Var<T> ToIGetSeat<T>(this object value)
     {
-        return new IGetSeat<T>().SetIGet(value.ToIGet<T>());
+        return new Var<T>().SetIGet(value.ToIGet<T>());
     }
 }
 

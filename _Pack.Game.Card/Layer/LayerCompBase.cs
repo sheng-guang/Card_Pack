@@ -43,8 +43,8 @@ using System;
 
         public void SetMaster(int g)
         {
-            //mono类不通过set  方法设置master
-            //mono类通过 Awake_FindMasterBySelf 找master
+            //mono????????set  ????????master
+            //mono?????? Awake_FindMasterBySelf ??master
             //if (up != null) return;
             //up = IDs<LayerID>.Get(g);
             //Awake_OnSetMaster();
@@ -59,7 +59,7 @@ using System;
             if (up == null)
             {
                 var to = GetComponentInParent<ILayerLinkUp>();
-                if (to.NotNull_and_NotEqualNull())
+                if (to.NotNull_And_NotEqualNull())
                 {
                     to.Listen(this);
                 }
@@ -95,7 +95,7 @@ using System;
         }
     }
 
-    public abstract partial class LayerCompRes : LayerComp, IResGetter<ILayerComp>//base
+    public abstract partial class LayerCompRes : LayerComp, IResCreater<ILayerComp>//base
     {
 
         public ILayerComp GetNew(ResArgs args)

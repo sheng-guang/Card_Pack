@@ -4,7 +4,7 @@ using UnityEngine;
 
     //unit      //unit      //unit      //unit      //unit      //unit      //unit      //unit      //unit      //unit      //unit      //unit      //unit      //unit  
 
-    partial class Unit : ICallListener //触发 call 
+    partial class Unit : ICallListener //???? call 
     {
         public virtual void DoCall(Call call) 
         {
@@ -41,7 +41,7 @@ using UnityEngine;
         }
     }
 
-    partial class Unit //初始化函数  awake functions 
+    partial class Unit //??????????  awake functions 
     {
         public override void OnSetID_Awake()
         {
@@ -55,7 +55,7 @@ using UnityEngine;
 
             EnsureComponet("-'" + nameof(ComUnit3DUI));
             //Debug.Log(this + "2.2   " + transform.position);
-            //这里cardmesh会将卡牌位置归零
+            //????cardmesh????????????????
             EnsureComponet("-'" + nameof(CardMesh));
             //Debug.Log(this + "2.3   " + transform.position);
 
@@ -66,7 +66,7 @@ using UnityEngine;
             if(rig==null) rig = GetComponent<Rigidbody>();
         }
     }
-    partial class Unit//配置的数据 unit Data
+    partial class Unit//?????????? unit Data
     {
         public virtual bool CreatUnitData => true;
         UnitData _BaseData = null;
@@ -88,7 +88,7 @@ using UnityEngine;
             HP.Value = BaseData.MaxHp;
         }
     }
-    partial class Unit //网络同步属性 param 
+    partial class Unit //???????????? param 
     {
         public float UIHeight => BaseData.UIHeight;
         public float UIWide => BaseData.WideR;
@@ -138,7 +138,7 @@ using UnityEngine;
     [RequireComponent(typeof(Rigidbody))]
     [RequireComponent(typeof(ResTool))]
     [RequireComponent(typeof(ComRig))]
-    partial class Unit // 实现layer相关属性和函数  layer
+    partial class Unit // ????layer??????????????  layer
     {
         public override Unit TopUnit { get { if (up.unit == null) { return this; } else return up.TopUnit; } }
         //hero
@@ -150,7 +150,7 @@ using UnityEngine;
         public Rigidbody rig;
     }
 
-    partial class Unit : IResGetter<Unit>  //资源创建 res
+    partial class Unit : IResCreater<Unit>  //???????? res
     {
         public override string DirectoryName => "Assets/" + nameof(Unit);
         public Unit GetNew(ResArgs args)
@@ -163,7 +163,7 @@ using UnityEngine;
         public object GetNewObject(ResArgs a) { return GetNew(a); }
     }
 
-    partial class Unit : IAfterSimulate//物理刷新   是否在地上  onland
+    partial class Unit : IAfterSimulate//????????   ??????????  onland
     {
         public virtual void AfterSimulate_()
         {
@@ -177,7 +177,7 @@ using UnityEngine;
     }
 
 
-    partial class Unit : ITarget   //作为 输入目标
+    partial class Unit : ITarget   //???? ????????
     {
         //target
         public IInputData GetData()
@@ -190,7 +190,7 @@ using UnityEngine;
 
 
 
-    partial class Unit //空间坐标  realposs poss 
+    partial class Unit //????????  realposs poss 
     {
         public void _SetPoss(Vector3 v) { transform.position = v; }
         public override Vector3 RealPoss
@@ -213,7 +213,7 @@ using UnityEngine;
 
 
 
-    partial class Unit //添加或移除 附着卡牌 follower 
+    partial class Unit //?????????? ???????? follower 
     {
         public override void AddUnitFollower(Unit u)
         {
@@ -285,7 +285,7 @@ using UnityEngine;
 
 
     //---------------------------------------------------------------------------------------------------------------------------
-    public abstract class Hero : Unit//英雄单位
+    public abstract class Hero : Unit//????????
     {
         //private void Awake()
         //{

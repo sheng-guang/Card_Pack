@@ -84,7 +84,7 @@ public class PreView
 }
 
 [RequireComponent(typeof(ResTool))]
-public abstract class PreViewNodeMono : MonoBehaviour, IPreViewNode, IResGetter<IPreViewNode>, IRes
+public abstract class PreViewNodeMono : MonoBehaviour, IPreViewNode, IResCreater<IPreViewNode>, IRes
 {
     public virtual void Awake() { DontDestroyOnLoad(gameObject); }
 

@@ -25,15 +25,7 @@ public class HighLightTest_ManaEnough : Func0Node<InputSkill, bool>
 
 public class NodeFormLists
 {
-    public static List<string> Empty
-    = new List<string>();
-    public static List<string> Reach
-        = new List<string>() { InputSkill.Pre_Reach };
 
-    public static List<string> Line_Point
-        = new List<string>() { InputSkill.Pre_Line, InputSkill.Pre_Point };
-    public static List<string> Line_Point_Throw
-        = new List<string> { InputSkill.Pre_Line, InputSkill.Pre_Point, InputSkill.Pre_ThrowLine };
 }
 public class NodeForm_Reach_OneTarget : Func1Node<InputSkill, int, IEnumerable<string>>
 {
@@ -55,15 +47,15 @@ public class NodeForm_Reach_OneTarget : Func1Node<InputSkill, int, IEnumerable<s
     public override void Invoke(int p1)
     {
         if (p1 == 0)
-        { re(Reach != null && Reach.Value.HasValue ?NodeFormLists.Reach : NodeFormLists.Empty); return; }
+        { re(Reach != null && Reach.Value.HasValue ?eveInputSkill.Reach : eveInputSkill.Empty); return; }
         else if (p1 == 1)
         {
 
-            re(HighThrow != null && Reach.Value.HasValue ? NodeFormLists.Line_Point_Throw : NodeFormLists.Line_Point);
+            re(HighThrow != null && Reach.Value.HasValue ? eveInputSkill.Line_Point_Throw : eveInputSkill.Line_Point);
 
             return;
         }
-        re(NodeFormLists.Empty);
+        re(eveInputSkill.Empty);
     }
 
 }
@@ -86,7 +78,7 @@ public class GetFloat_Reach : GetFloat_Node
     {
         if (p1 != nn.Reach) return;
         if (kind != null && kind.Value != p2) return;
-        if (reach.IsNull_or_EqualNull()) return;
+        if (reach.Null_Or_EqualNull()) return;
         if (reach.Value.HasValue == false) return;
         re(reach.Value);
     }
@@ -110,13 +102,13 @@ public class GetFloat_Offset : Func2Node<InputSkill, string, int, N<float>>
         if (kind != null && kind.Value != p2) return;
         if (p1 == nn.OffSetY)
         {
-            if (OffSetY.IsNull_or_EqualNull()) return;
+            if (OffSetY.Null_Or_EqualNull()) return;
             if (OffSetY.Value.HasValue == false) return;
             re(OffSetY.Value);
         }
         else if (p1 == nn.OffSetXZ)
         {
-            if (OffSetXZ.IsNull_or_EqualNull()) return;
+            if (OffSetXZ.Null_Or_EqualNull()) return;
             if (OffSetXZ.Value.HasValue == false) return;
             re(OffSetXZ.Value);
         }
@@ -140,7 +132,7 @@ public class GetInt_Speed : GetInt_Node
     {
         if (p1 != nn.speed) return;
         if (kind != null && kind.Value != p2) return;
-        if (Speed.IsNull_or_EqualNull()) return;
+        if (Speed.Null_Or_EqualNull()) return;
         if (Speed.Value.HasValue == false) return;
         re(Speed.Value);
     }
@@ -165,7 +157,7 @@ public class GetBool_IsHighThrow : GetBool_Node
     {
         if (p1 != nn.HighThrow) return;
         if (kind != null && kind.Value != p2) return;
-        if (HighThrow.IsNull_or_EqualNull()) return;
+        if (HighThrow.Null_Or_EqualNull()) return;
         if (HighThrow.Value.HasValue == false) return;
         re(HighThrow.Value);
     }

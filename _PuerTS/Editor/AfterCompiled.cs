@@ -1,18 +1,21 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.Callbacks;
 using UnityEngine;
 using Puerts.Editor;
+using UnityEditor;
 public class AfterCompiled 
 {
     [DidReloadScripts]
     public static void ReCreatPuerTs()
     {
-        Debug.Log("©°©¤GenerateDTS");
-        Puerts.Editor.Generator.Menu.GenerateDTS();
+        //Debug.Log(EditorApplication.isPlayingOrWillChangePlaymode);
+        if (EditorApplication.isPlayingOrWillChangePlaymode) return;
+        Debug.Log("â”Œâ”€GenerateDTS");
+        Puerts.Editor.Generator.UnityMenu.GenerateDTS();
         GenFullNames.Gen();
-        Debug.Log("©¸©¤GenerateDTS");
-
+        Debug.Log("â””â”€GenerateDTS");
+        
 
     }
 

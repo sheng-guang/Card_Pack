@@ -34,12 +34,12 @@ using System.Threading.Tasks;
             loaded[kind] = null;
             PrefabList.TryGetValue(kind, out var g);
             if (g == null) return false;
-            IResGetter<T> getter = g.GetComponent<IResGetter<T>>();
+            IResCreater<T> getter = g.GetComponent<IResCreater<T>>();
             if (getter == null) return false;
             loaded[kind] = getter;
             return true;
         }
-        static Dictionary<string, IResGetter<T>> loaded = new Dictionary<string, IResGetter<T>>();
+        static Dictionary<string, IResCreater<T>> loaded = new Dictionary<string, IResCreater<T>>();
         public static T GetNew(string kind,ResArgs  args)
         {
             if (loaded.TryGetValue(kind, out var g) == false||g==null) return default;

@@ -14,7 +14,7 @@ namespace Pack
             public TNode First, Last, OnPoint;
             public TNode AddNode(TNode ne)
             {
-                if (ne.IsNull_or_EqualNull()) { Debug.LogWarning("error node null");return null; }
+                if (ne.Null_Or_EqualNull()) { Debug.LogWarning("error node null");return null; }
                 ne.group = this as TGroup;
                 ne.OnSetSelf();
                 if (First == null)

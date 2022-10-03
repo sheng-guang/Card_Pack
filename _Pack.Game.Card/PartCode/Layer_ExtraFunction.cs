@@ -54,7 +54,7 @@ partial class eve//物理计算
         {
             var Getter = c[i].ToUnit();
             //todogc
-            if (Getter.IsNull_or_EqualNull()) continue;
+            if (Getter.Null_Or_EqualNull()) continue;
             WriteResult(Getter.u);
         }
     }
@@ -147,7 +147,7 @@ partial class eve//初始化
     //layer
     public static void AwakeLoad(LayerID l)
     {
-        if (l.AsIAfterSimulate.NotNull_and_NotEqualNull())
+        if (l.AsIAfterSimulate.NotNull_And_NotEqualNull())
         {
             AfterSimulate.collection.AddToList(l.AsIAfterSimulate);
         }

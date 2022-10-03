@@ -28,6 +28,7 @@ public static partial class nn
 
     //skill
     public const string Skill = nameof(Skill);
+    public const string OnCreateNewSkill = nameof(OnCreateNewSkill);
     //new skill name
     public const string SkillName = nameof(SkillName);
 

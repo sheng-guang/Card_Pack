@@ -115,12 +115,12 @@ using UnityEngine;
         public static T MarkAs<T>(this T t, out T name) { name = t; return t; }
         public static T Act<T>(this T t, Action<T> a) { a(t); return t; }
 
-        public static bool NotNull_and_NotEqualNull<T>(this T t)
+        public static bool NotNull_And_NotEqualNull<T>(this T t)
         {
             return t != null && (t.Equals(null) == false);
         }
 
-        public static bool IsNull_or_EqualNull<T>(this T t)
+        public static bool Null_Or_EqualNull<T>(this T t)
         {
             return t == null || t.Equals(null);
         }

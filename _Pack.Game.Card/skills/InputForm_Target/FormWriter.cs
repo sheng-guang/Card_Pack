@@ -39,7 +39,7 @@ public class FormWriter : MonoBehaviour, ICameraFollowe_update
     {
         //Debug.Log("try Set" + ToSet.GetCopyForm());
         if (Form != null) return;
-        if (ToSet.NotNull_and_NotEqualNull() == false) return;
+        if (ToSet.NotNull_And_NotEqualNull() == false) return;
         if (ToSet.Useful == false) return;
         Form = ToSet.GetCopyForm();
         if (Form == null) return;

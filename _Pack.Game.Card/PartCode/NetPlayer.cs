@@ -12,7 +12,7 @@ using System;
 
     }
     [RequireComponent(typeof(ResTool))]
-    public abstract partial class Player : IResGetter<Player>
+    public abstract partial class Player : IResCreater<Player>
     {
         //id
         public int ID_;

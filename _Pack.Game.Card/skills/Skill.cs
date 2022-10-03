@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -14,7 +14,7 @@ public struct InputDataSkill : IInputData
 
     public N<int> LayerId => skill.ID;
 }
-partial class Skill : ITarget//×÷Îª Ä¿±ê
+partial class Skill : ITarget//ä½œä¸º ç›®æ ‡
 {
     InputDataSkill tar = new InputDataSkill();
     public IInputData GetData()
@@ -23,7 +23,7 @@ partial class Skill : ITarget//×÷Îª Ä¿±ê
         return tar;
     }
 }
-partial class Skill : IInputUser // ÍøÂçÊı¾İ°ü
+partial class Skill : IInputUser // ç½‘ç»œæ•°æ®åŒ…
 {
     public virtual void ServerUseInput(InputMsg msg)
     {
@@ -37,7 +37,7 @@ partial class Skill : IInputUser // ÍøÂçÊı¾İ°ü
         }
     }
 }
-partial class Skill //ÔİÍ£
+partial class Skill //æš‚åœ
 {
     public const int Pause_Off = 10001;
     public const int Pause_On = 10002;
@@ -66,7 +66,7 @@ partial class Skill //ÔİÍ£
 }
 
 
-partial class Skill //ÖÖÀà Ãû³Æ Res
+partial class Skill //ç§ç±» åç§° Res
 {
     public Skill()
     {
@@ -77,12 +77,12 @@ partial class Skill //ÖÖÀà Ãû³Æ Res
 }
 
 
-partial class Skill //ÊÇ·ñ¿É¼û
+partial class Skill //æ˜¯å¦å¯è§
 {
     public virtual bool Visible => true;
 }
 
-partial class Skill //Ò»¸öÄ¿±êµÄ¼¼ÄÜ
+partial class Skill //ä¸€ä¸ªç›®æ ‡çš„æŠ€èƒ½
 {
     public static void ApplyOneTargetInput(Skill skill, InputForm p1)
     {
@@ -129,7 +129,7 @@ partial class Skill //Ò»¸öÄ¿±êµÄ¼¼ÄÜ
         return TarID().To<Skill>();
     }
 }
-partial class Skill //×ªstring ID ÍøÂçÍ¬²½Êı¾İ
+partial class Skill //è½¬string ID ç½‘ç»œåŒæ­¥æ•°æ®
 {
     public override string ToString()
     {
@@ -146,7 +146,7 @@ partial class Skill //×ªstring ID ÍøÂçÍ¬²½Êı¾İ
     public int ClassSetting { get => _classSetting.Value; set { _classSetting.Value = value; } }
 }
 [Api]
-public abstract partial class Skill //ÉÏ¼¶µ¥Î»
+public abstract partial class Skill //ä¸Šçº§å•ä½
 {
     public Unit SelfHero()
     {
@@ -156,26 +156,26 @@ public abstract partial class Skill //ÉÏ¼¶µ¥Î»
     public virtual Unit unit => up.unit;
     public virtual Player player => up.player;
 }
-partial class Skill //´´½¨ ¸´ÖÆ ·ÖÖ§ Ô­Ê¼
+partial class Skill //åˆ›å»º å¤åˆ¶ åˆ†æ”¯ åŸå§‹
 {
     public Skill GetCopy() { return Layer.CreatSkill(FullName).SetUp(up).Copy(this); }
     public Skill GetBranch(string Name) { return Layer.CreatSkill(Name).SetUp(up).Branch(this); }
     public Skill GetOrigin(string Name) { return Layer.CreatSkill(Name).SetUp(up).Origin(); }
 }
-partial class Skill : ISpawnable//ÍøÂçÍ¬²½ spwan
+partial class Skill : ISpawnable//ç½‘ç»œåŒæ­¥ spwan
 {
     public int NetID => ID;
     public virtual string dirPass => "";
     public virtual string kindID => GetType().Name;
     public void ClientSetNetID(int NetID) { SetID(NetID); }
 }
-partial class Skill : IIDTarget//ÕæÊµ×ø±ê  ĞéÄâ×ø±ê
+partial class Skill : IIDTarget//çœŸå®åæ ‡  è™šæ‹Ÿåæ ‡
 {
     public Vector3 RealPoss => up.RealPoss;
 
     public Vector3 VisualPoss => up.VisualPoss;
 }
-partial class Skill //ÉèÖÃID ÉèÖÃÉÏ¼¶ ³õÊ¼»¯º¯Êı
+partial class Skill //è®¾ç½®ID è®¾ç½®ä¸Šçº§ åˆå§‹åŒ–å‡½æ•°
 {
     public virtual void SetUP(LayerID l)
     {
@@ -197,7 +197,7 @@ partial class Skill //ÉèÖÃID ÉèÖÃÉÏ¼¶ ³õÊ¼»¯º¯Êı
 
 }
 
-partial class Skill //¼¼ÄÜ×é¼ş comp
+partial class Skill //æŠ€èƒ½ç»„ä»¶ comp
 {
     HashSet<string>Comps=new HashSet<string>();
 
@@ -224,7 +224,7 @@ partial class Skill //¼¼ÄÜ×é¼ş comp
     }
 }
 
-partial class Skill //´´½¨ ¼¼ÄÜÊäÈë ÍøÂç°ü input Msg  /static
+partial class Skill //åˆ›å»º æŠ€èƒ½è¾“å…¥ ç½‘ç»œåŒ… input Msg  /static
 {
     public static InputMsg CreatInput(byte kind)
     {
@@ -236,12 +236,12 @@ partial class Skill //´´½¨ ¼¼ÄÜÊäÈë ÍøÂç°ü input Msg  /static
     }
 }
 
-partial class Skill : ISetKV //var ÉèÖÃÊı¾İ set  kv
+partial class Skill : ISetKV //var è®¾ç½®æ•°æ® set  kv
 {
     public virtual void SetKV(string key, object o) { }
 }
 
-partial class Skill//¿¨ÅÆ¶Ñµş stack 
+partial class Skill//å¡ç‰Œå †å  stack 
 {
     public int StackInde = -1;
     public int StackTotal = 0;
@@ -266,8 +266,8 @@ partial class Skill//long list  index
     public bool ListTop => InList && (LongIndex == (LongTotal - 1));
 
 }
-partial class Skill//ÊÇ·ñÓĞ³¬¹ıÒ»¸öµÄµ¥Î»
+partial class Skill//æ˜¯å¦æœ‰è¶…è¿‡ä¸€ä¸ªçš„å•ä½
 {
-    public bool HasMoreThanZeroTar { get; protected set; } = false;
+    public bool HasMoreThanZeroTar { get; set; } = false;
 }
 

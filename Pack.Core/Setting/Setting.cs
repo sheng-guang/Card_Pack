@@ -5,7 +5,7 @@ using UnityEngine;
     public class Setting<T>
     {
         static object obj=new object();
-        public static IGetSeat<T> GetSetting(string key)
+        public static Var<T> GetSetting(string key)
         {
             return obj.Ex<T>(key);
         }

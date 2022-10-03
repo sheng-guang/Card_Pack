@@ -67,7 +67,7 @@ using UnityEngine;
             while (to)
             {
                var re= to.GetComponent<T>();
-                if (re.IsNull_or_EqualNull() == false) return re;
+                if (re.Null_Or_EqualNull() == false) return re;
                 to = to.parent;
             }
             return default;

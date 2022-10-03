@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(ResTool))]
-public class MeshRes : MonoBehaviour,IRes,IResGetter<MeshRes>,IResData
+public class MeshRes : MonoBehaviour,IRes,IResCreater<MeshRes>,IResData
 {
     public string DirectoryName => "Assets/" + "Mesh";
     public string PackName_ = "M";

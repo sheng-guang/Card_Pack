@@ -8,17 +8,16 @@ public static class OneTargetInputSkill
 {
     public const int FirstNodeKind = 1;
 }
-
-partial class InputSkill//static function set
+[Api]
+public class eveInputSkill
 {
-    public static void SetOneTarMode(InputSkill_Delegate s)
+    public static void EnableOneTargetMode(InputSkill_Delegate s)
     {
         s.HasMoreThanZeroTar = true;
-        s.visible.AddFunc((skill) =>   
+        s.visible.AddFunc((skill) =>
         {
             s.visible.re(eve.IsCardInHand(s.unit));
         });
-        //s.afterWrite_GetNext.AddNode(new AfterWrite_GetNext_LineNode());
         s.afterWrite_GetNext.AddFunc((inpusk, node, Extrainfo) =>
         {
             //Debug.Log(node.NodeKind);
@@ -37,6 +36,7 @@ partial class InputSkill//static function set
         // test
         s.highLightTest.AddFunc((skill) =>
         {
+            //Debug.Log(s.up);
             if (s.unit.ManaCost.Value_Buffed.HasValue == false) return;
             if (s.player.Mana.Value < s.unit.ManaCost.Value_Buffed) { s.highLightTest.re(false); return; }
         });
@@ -47,19 +47,25 @@ partial class InputSkill//static function set
         });
     }
 
-    public static void EnableBranckSkill(InputSkill_Delegate s, object skillName,object ListKind)
+    public static void EnableNewSkill(InputSkill_Delegate s, object skillName, object ListKind)
     {
-        s.ClassSetting.Str(nn.SkillName,skillName);
+        s.ClassSetting.Str(nn.SkillName, skillName);    
         s.ClassSetting.Int(nn.SkillListKind, ListKind);
         s.tested_Then_RunSkill.AddAct((sk, inputForm) =>
         {
-            var to = eve.CreatSkill(sk.ClassSetting.Str(nn.SkillName)).Branch(sk);
+            var to = eve.CreatSkill(sk.ClassSetting.Str(nn.SkillName)).Origin();
             eve.SetSkillUp(to, sk.up);
+            
+            s.ClassSetting.Act(nn.OnCreateNewSkill, to);
+
             eve.ApplyOneTarInputToSkill(to, inputForm);
             eve.AddToSkillList(to, sk.ClassSetting.Int(nn.SkillListKind));
         });
     }
-
+    public static void OnNewSkill(InputSkill_Delegate s,Action<Skill> act)
+    {
+        s.ClassSetting.Act(nn.OnCreateNewSkill, act);
+    }
     /// <summary>
     ///  must add *.0f
     /// </summary>
@@ -83,14 +89,22 @@ partial class InputSkill//static function set
             s.preFloat.re(reach.Value);
         });
     }
+    public static void SetThrowLine(InputSkill_Delegate s,object hh)
+    {
+        //Debug.Log("calss setting   "+ s.ClassSetting +"   "+ hh);
+        s.ClassSetting.NBool(nn.HighThrow, hh);
+        //Debug.Log(s.PreBool(nn.HighThrow, 1));
+    }
     public static void EnableThrowLine(InputSkill_Delegate s, Func<bool> HighThrow)
     {
-        EnableThrowLine(s, new IGetFunc<bool> (HighThrow));
+        EnableThrowLine(s, new IGetFunc<bool>(HighThrow));
     }
     public static void EnableThrowLine(InputSkill_Delegate s, object HighThrow)
     {
-        var highThrow = s.ClassSetting.NBool(nn.HighThrow,HighThrow);
-        var ss = s.ClassSetting.NInt(nn.speed,s.unit.speed.Value_Buffed_IGet);
+        var hh = s.ClassSetting.NBool(nn.HighThrow).TrySetDefault(HighThrow);
+        //Debug.Log("calss setting   " + s.ClassSetting + "   " + hh);
+
+        var speed = s.ClassSetting.NInt(nn.speed, s.unit.speed.Value_Buffed_IGet);
         s.forEachNodeForm.AddAct((s, act, kind) =>
         {
             if (kind == 1) act(Pre_ThrowLine);
@@ -99,17 +113,20 @@ partial class InputSkill//static function set
         {
             if (key != nn.HighThrow) return;
             if (kind != 1) return;
-            s.preBool.re(highThrow);
+            //Debug.Log(highThrow);
+            s.preBool.re(s.ClassSetting.NBool(nn.HighThrow));
         });
         s.preInt.AddFunc((sk, key, kind) =>
         {
             if (key != nn.speed) return;
             if (kind != 1) return;
-            s.preInt.re(ss);
+            s.preInt.re(speed);
         });
+        eveInputSkill.OnNewSkill(s,
+            x => x.ClassSetting.NBool(nn.HighThrow,hh));
 
     }
-    public static void EnableThrowOffset(InputSkill_Delegate s, object OffsetY,object OffsetXZ)
+    public static void EnableThrowOffset(InputSkill_Delegate s, object OffsetY, object OffsetXZ)
     {
         var Y = s.ClassSetting.NFloat(nn.OffSetY, OffsetY);
         var XZ = s.ClassSetting.NFloat(nn.OffSetY, OffsetXZ);
@@ -131,14 +148,23 @@ partial class InputSkill//static function set
 
     //no static
     public static Action<Skill, InputForm, Skill> EmptyApply = null;
-}
 
-partial class InputSkill//const preview string
-{
+
     public const string Pre_Reach = "Pre'Reach";
     public const string Pre_Line = "Pre'Line";
     public const string Pre_Point = "Pre'Point";
     public const string Pre_ThrowLine = "Pre'ThrowLine";
+
+
+    public static List<string> Empty
+= new List<string>();
+    public static List<string> Reach
+        = new List<string>() { Pre_Reach };
+
+    public static List<string> Line_Point
+        = new List<string>() { Pre_Line, Pre_Point };
+    public static List<string> Line_Point_Throw
+        = new List<string> { Pre_Line, Pre_Point, Pre_ThrowLine };
 }
 
 

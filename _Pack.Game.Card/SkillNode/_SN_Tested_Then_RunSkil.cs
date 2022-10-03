@@ -1,4 +1,4 @@
-using System.Collections;
+Ôªøusing System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
@@ -17,7 +17,7 @@ using System;
         public override void invoke(InputForm p1)
         {
             var ne = self.GetCopy();
-            if(result.NotNull_and_NotEqualNull())result.Value = ne;
+            if(result.NotNull_And_NotEqualNull())result.Value = ne;
             Value = ne;
         }
     }
@@ -32,7 +32,7 @@ using System;
         IGet<string> skillname;
         public override void invoke(InputForm p1)
         {
-            if (skillname.IsNull_or_EqualNull()) return;
+            if (skillname.Null_Or_EqualNull()) return;
             var ne = self.GetBranch(skillname.Value);
             //Debug.Log("new branch: "+ne);
             Value= ne;
@@ -117,7 +117,7 @@ using System;
         }
     }
     //mix---------------------------------------------------------------------------------------------------------------------------------------------
-    //’‚¿Ô ÷˜“™ « —È÷§ ‰»Î∫Ûµƒ≤Ÿ◊˜
+    //ËøôÈáå ‰∏ªË¶ÅÊòØ È™åËØÅËæìÂÖ•ÂêéÁöÑÊìç‰Ωú
     public class SN_CopyToSkillList : Act1Node<InputSkill, InputForm>
     {
         public override void Set_(string key, object o)
@@ -134,8 +134,8 @@ using System;
         {
             var ne = self.GetCopy();
 
-            if (ne.IsNull_or_EqualNull()) { return; }
-            if (TransferAction.NotNull_and_NotEqualNull() && TransferAction.Value != null)
+            if (ne.Null_Or_EqualNull()) { return; }
+            if (TransferAction.NotNull_And_NotEqualNull() && TransferAction.Value != null)
             {
                 TransferAction.Value.Invoke(self,p1, ne);
             }
@@ -169,8 +169,8 @@ using System;
         public override void invoke(InputForm p1)
         {
             var ne = self.GetBranch(SkillName.Value);
-            if (ne.IsNull_or_EqualNull()) { return; }
-            if (TransferAction.NotNull_and_NotEqualNull()&&TransferAction.Value!=null)
+            if (ne.Null_Or_EqualNull()) { return; }
+            if (TransferAction.NotNull_And_NotEqualNull()&&TransferAction.Value!=null)
             {
                 TransferAction.Value.Invoke(self,p1, ne);
             }

@@ -31,7 +31,7 @@ public class ExamplesCfg_Pack
             foreach (var t in to) yield return t;
         }
         {
-            yield return typeof(ts);
+            yield return typeof(eveTS);
             yield return typeof(eve);
 
         }
@@ -101,7 +101,7 @@ public class ExamplesCfg_Pack
             
 
             yield return typeof(ParamBuffable<int>);
-            yield return typeof(IGetSeat<int>);
+            yield return typeof(Var<int>);
         }
         {
 

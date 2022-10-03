@@ -31,7 +31,7 @@ public struct N<T> : IEquatable<N<T>> where T : struct, IEquatable<T>
         set
         {
             v = value;
-            HasValue = v.NotNull_and_NotEqualNull();
+            HasValue = v.NotNull_And_NotEqualNull();
         }
     }
     public bool TrySet(object o)

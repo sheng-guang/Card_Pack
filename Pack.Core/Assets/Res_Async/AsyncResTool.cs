@@ -13,9 +13,9 @@ using UnityEditor;
 //#if UNITY_EDITOR
 //        public Transform child { get; set; }
 //#endif
-        public string AssetName;
-        public string AssetDir_AseetBundle;
-        public string GetKey => AssetDir_AseetBundle + "|" + AssetName;
+        public string AsyncAsetName;
+        public string ABAsyncDir;
+        public string GetKey => ABAsyncDir + "|" + AsyncAsetName;
 
          //IOnAsyncLoaded[] Listener;
         private void Awake()
@@ -30,7 +30,7 @@ using UnityEditor;
                 return;
             }
 #endif
-            ASyncCreater<GameObject>.Load(AssetDir_AseetBundle, AssetName, OnLoaded);
+            ASyncCreater<GameObject>.Load(ABAsyncDir, AsyncAsetName, OnLoaded);
 
 
         }
@@ -49,25 +49,25 @@ using UnityEditor;
         public void BeforeAsPrefabe1(IRes res)
         {
            var first = this.getFirstComponetInParent<IRes>();
-            this.Ex<bool>("do").SetIGet(first==res);
-            if (this.Ex<bool>("do").Value == false) return;
+            this.Bool("do",first==res);
+            if (this.Bool("do").Value == false) return;
 
             var c = transform.GetChild(transform.childCount - 1);
             this.Ex<Transform>("child").SetIGet(c);
-            AssetName = c.name;
-            AssetDir_AseetBundle = res.GetABAsycPath();
+            AsyncAsetName = c.name;
+            ABAsyncDir = res.ABAsyncPath();
         }
         public void BeforeAsPrefabe2(IRes res)
         {
-            if (this.Ex<bool>("do").Value == false) return;
+            if (this.Bool("do").Value == false) return;
             var c = this.Ex<Transform>("child").Value;
             c.parent = null;
         }
         public void AfterAsPrefabe1(IRes res)
         {
-            if (this.Ex<bool>("do").Value == false) return;
+            if (this.Bool("do").Value == false) return;
             var c = this.Ex<Transform>("child").Value;
-            var p = this.GetAsyncAssetPath(res);
+            var p = this.PrefabeAsyncPath(res);
 #if UNITY_EDITOR
             var saved = PrefabUtility.SaveAsPrefabAssetAndConnect(c.gameObject, p, InteractionMode.UserAction);
             saved.transform.position = Vector3.zero;
@@ -77,7 +77,7 @@ using UnityEditor;
 
         public void AfterAsPrefabe2(IRes res)
         {
-            if (this.Ex<bool>("do").Value == false) return;
+            if (this.Bool("do").Value == false) return;
             var c = this.Ex<Transform>("child").Value;
             c.parent = transform;
             c.SetAsLastSibling();

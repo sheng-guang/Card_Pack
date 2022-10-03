@@ -31,7 +31,7 @@ using UnityEngine;
         T NewData_(string s)
         {
             var ne = def.CreatNew(s);
-            if (ne.IsNull_or_EqualNull()) return default;
+            if (ne.Null_Or_EqualNull()) return default;
             dic[ne.FullName] = ne;
             DataList.Add(ne);
             return ne;

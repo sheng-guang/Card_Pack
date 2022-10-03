@@ -18,7 +18,7 @@ using System;
         public int Count => ValueList.Count;
         public int Index;
         public bool IsConnected = false;
-        static IGetSeat<bool> IsServer = Setting<bool>.GetSetting(nn.IsServer);
+        static Var<bool> IsServer = Setting<bool>.GetSetting(nn.IsServer);
         bool isServer => IsServer.Value;
         List<T> ValueList = new List<T>();
 

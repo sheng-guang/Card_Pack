@@ -1,5 +1,4 @@
-﻿#if MIRROR
-
+﻿
 using System;
 using Mirror;
 
@@ -13,4 +12,3 @@ using Mirror;
             OnConnectionConnected?.Invoke(c);
         }
     }
-#endif

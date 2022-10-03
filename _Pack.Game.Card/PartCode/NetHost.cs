@@ -5,7 +5,7 @@ using UnityEngine;
     //Host      //Host      //Host      //Host      //Host      //Host      //Host      //Host      //Host      //Host      //Host      //Host      //Host      //Host  
 
     [RequireComponent(typeof(ResTool))]
-    public abstract partial class Host : IResGetter<Host>
+    public abstract partial class Host : IResCreater<Host>
     {
         //base
         public override bool IsLocal => false;

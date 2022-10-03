@@ -1,4 +1,4 @@
-using System;
+锘縰sing System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -18,15 +18,15 @@ public interface IGet<T>
 //}
 
 //class----------------------------------------------------------------------------------------------------------------
-public class IGetSeat<T> : IGet<T> /*IGetSeat<T>*/, ISetObj, ISet<T>
+public class Var<T> : IGet<T> /*IGetSeat<T>*/, ISetObj, ISet<T>
 {
     public IGet<T> IGet { get; set; }
-    public T Value { get { return IGet.NotNull_and_NotEqualNull() ? IGet.Value : default; } }
+    public T Value { get { return IGet.NotNull_And_NotEqualNull() ? IGet.Value : default; } }
     T ISet<T>.Value { set => SetIGet(value); }
 
 
     bool CanSetDefault = true;
-    public IGetSeat<T> TrySetDefault(object o)
+    public Var<T> TrySetDefault(object o)
     {
         if (CanSetDefault == false) return this;
         IGet = o.ToIGet<T>();
@@ -37,26 +37,20 @@ public class IGetSeat<T> : IGet<T> /*IGetSeat<T>*/, ISetObj, ISet<T>
     {
         SetIGet(value);
     }
-    public IGetSeat<T> SetIGet(object o)
+    public Var<T> SetIGet(object o)
     {
         CanSetDefault = false;
-        //这里无法使用方法重载
-        //需要在外部重载
+
         IGet = o.ToIGet<T>();
         return this;
     }
-    public static implicit operator T(IGetSeat<T> d)
+    public static implicit operator T(Var<T> d)
     {
         return d.Value;
     }
-    //public static explicit operator Digit(double d)
-    //{
-    //    return new Digit(d);
-    //}
-
     public override string ToString()
     {
-        return "" + GetType().Name + "  (  " + (IGet.NotNull_and_NotEqualNull() ? IGet.ToString() : " null ") + " ) ";
+        return "" + GetType().Name + "  (  " + (IGet.NotNull_And_NotEqualNull() ? IGet.ToString() : " null ") + " ) ";
 
     }
 }

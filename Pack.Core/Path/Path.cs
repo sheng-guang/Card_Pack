@@ -6,6 +6,6 @@ public static class PathForAsset
 {
     public static string AssetsResPath( string kind)
     {
-        return Application.dataPath + "\\Assets\\" + kind;
+        return Application.dataPath + "/Assets/" + kind;
     }
 }

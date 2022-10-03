@@ -1,54 +1,61 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 
-    public static partial class ResExtra
+public static partial class ResExtra
+{
+    public static string FullName(this IRes r)
     {
-        public static string FullName(this IRes r)
-        {
-            return r.PackName + "'" + r.KindName;
-        }
-        public static T LastItem<T>(this T[] list)
-        {
-            return list[list.Length - 1];
-        }
+        return r.PackName + "'" + r.KindName;
+    }
+    public static string Name(this IRes r)
+    {
+        return (r as Component).name;
+    }
+    public static T LastItem<T>(this T[] list)
+    {
+        return list[list.Length - 1];
+    }
 
-        //public static string[] ToPossArgs(this Vector3 poss)
-        //{
-        //    return new string[] { "PossX:"+poss.x,"PossY:"+poss.y,"PossZ:"+poss.z };
-        //}
-    }
-    public static partial class ResExtra
+    //public static string[] ToPossArgs(this Vector3 poss)
+    //{
+    //    return new string[] { "PossX:"+poss.x,"PossY:"+poss.y,"PossZ:"+poss.z };
+    //}
+}
+public static partial class ResExtra
+{
+    //---------------------------------------------------------------------
+    public static void EnsureAssetFolder(this IRes res)
     {
- 
-        //获取预制体路径
-        public static string GetAssetFolder(IRes res) { return "Assets/" + res.DirectoryName + "/" + res.FullName(); }
-        public static string GetAssetPath(this IRes res)
-        { return GetAssetFolder(res) + "/" + res.FullName() + ".prefab"; }
-        public static string GetAsyncAssetPath(this AsyncResTool n, IRes res)
-        { return GetAssetFolder(res) + "/" + n.AssetName + ".prefab"; }
-        public static string GetABDir(this IRes res)
-        {
-            return res.DirectoryName + "/" + res.FullName() + "/";
-        }
-        //获取包的路径
-        public static string GetABPath(this IRes res)
-        {
-            return res.DirectoryName + "/" + res.FullName()+"/" + res.FullName();
-        }
-        //由于是async 所以加下划线 使得异步加载ab包 在以文件名排序后  靠近瞬间加载的ab包
-        public static string GetABAsycPath(this IRes res)
-        {
-            return res.DirectoryName + "/" + res.FullName() + "/" + res.FullName() + "_";
-        }
-        ////设置包名
-        //public static void SetNameforABbuild(this AssetBundleBuild b, IRes res)
-        //{
-        //    b.assetBundleName = res.FullName();
-        //}
-        //public static void SetNameForAbBuildAsync(this AssetBundleBuild b, IRes res)
-        //{
-        //    b.assetBundleName = res.FullName();
-        //    b.assetBundleVariant = "Async";
-        //}
+        var f = Application.dataPath + "/" + res.DirectoryName + "/" + res.Name();
+        if (Directory.Exists(f) == false) Directory.CreateDirectory(f);
     }
+
+    //---------------------------------------------------------------------
+    public static string PrefabeDir(IRes res)
+    { return "Assets/" + res.DirectoryName + "/" + res.Name(); }
+
+    public static string PrefabPath(this IRes res)
+    { return PrefabeDir(res) + "/" + res.Name() + ".prefab"; }
+
+    public static string PrefabeAsyncPath(this AsyncResTool n, IRes res)
+    { return PrefabeDir(res) + "/" + n.AsyncAsetName + ".prefab"; }
+
+
+
+    //---------------------------------------------------------------------
+    public static string ABDir(this IRes res)
+    {
+        return res.DirectoryName + "/" + res.Name() + "/";
+    }
+    public static string ABPath(this IRes res)
+    {
+        return res.DirectoryName + "/" + res.Name() + "/" + res.Name();
+    }
+    public static string ABAsyncPath(this IRes res)
+    {
+        return res.DirectoryName + "/" + res.Name() + "/" + res.Name() + "_";
+    }
+
+}

@@ -113,7 +113,7 @@ using UnityEngine;
     {
         public int NetHashCode { get; set; }
         bool LinkedToNet = false;
-        static IGetSeat<bool> IsServer = Setting<bool>.GetSetting(nn.IsServer);
+        static Var<bool> IsServer = Setting<bool>.GetSetting(nn.IsServer);
         bool isServer => IsServer.Value;
     }
     //----------------------------------------------------------------------------------------------------------------------------------------------------------------------

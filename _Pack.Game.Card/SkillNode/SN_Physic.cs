@@ -104,7 +104,7 @@ public class SN_WaitTouchLand_OrBreak : SKillNode
     Action<Collider> Act_GetLand;
     void GetLand(Collider c)
     {
-        if (c.GetComponent<IIsUnit>().IsNull_or_EqualNull() == false) return;
+        if (c.GetComponent<IIsUnit>().Null_Or_EqualNull() == false) return;
         land = c;
     }
     Collider land;

@@ -18,7 +18,7 @@ using UnityEngine;
 
         public IGet<N<T>> IGet { get; set; }
         
-        public T Value { get { return IGet.NotNull_and_NotEqualNull() ? IGet.Value : default; } }
+        public T Value { get { return IGet.NotNull_And_NotEqualNull() ? IGet.Value : default; } }
         N<T> IGet<N<T>>.Value => IGet.Value;
         
         //default------------------------------------------------------------------------------

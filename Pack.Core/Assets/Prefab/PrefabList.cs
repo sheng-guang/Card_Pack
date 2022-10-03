@@ -77,10 +77,7 @@ public class PrefabList : ScriptableObject
         instance.dic.TryGetValue(name, out re);
 
     }
-    public static void Add(GameObject obj)
-    {
-        Add(obj, obj.name);
-    }
+
     public static void Remove(string name)
     {
         foreach (var item in instance.list)

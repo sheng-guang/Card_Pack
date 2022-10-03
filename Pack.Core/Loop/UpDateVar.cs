@@ -65,7 +65,7 @@ using UnityEngine;
             {
                 var onUpdate = to;
                 to = to.Next;
-                if (onUpdate.Value.NotNull_and_NotEqualNull()) a(onUpdate.Value); 
+                if (onUpdate.Value.NotNull_And_NotEqualNull()) a(onUpdate.Value); 
                 else Linked.Remove(onUpdate);
             }
 
